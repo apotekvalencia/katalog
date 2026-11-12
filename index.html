@@ -499,9 +499,19 @@
     import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+    const MANUAL_FIREBASE_CONFIG = {
+      apiKey: "AIzaSyDMOk1cjiYLb65vqLCUblUTmErYgq94Zzs",
+      authDomain: "apotek-valencia.firebaseapp.com",
+      projectId: "apotek-valencia",
+      storageBucket: "apotek-valencia.firebasestorage.app",
+      messagingSenderId: "222662271228",
+      appId: "1:222662271228:web:1fa91982f7515914c4b779",
+      measurementId: "G-Q5JXHQ4338"
+    };
+
     // Global variable fallback jika env cloud aktif
     const rawAppId = typeof __app_id !== 'undefined' ? __app_id : 'apotek-valencia-app';
-    const rawConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : null;
+    const rawConfig = MANUAL_FIREBASE_CONFIG ? JSON.stringify(MANUAL_FIREBASE_CONFIG) : (typeof __firebase_config !== 'undefined' ? __firebase_config : null);
     const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
     let db = null;
