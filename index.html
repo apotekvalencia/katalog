@@ -389,8 +389,17 @@
             id="inputNama" 
             required 
             placeholder="Contoh: Panadol Extra, Cendo Xitrol, Bioplacenton" 
+            oninput="checkLiveDuplicateWarning()"
             class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-semibold bg-leaf-50/20"
           >
+          <!-- Peringatan Real-time jika nama produk sudah ada -->
+          <div id="liveDuplicateBox" class="hidden mt-2 p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
+            <div class="font-bold flex items-center gap-1.5 text-amber-800 mb-1">
+              <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
+              <span>Produk serupa sudah ada di katalog:</span>
+            </div>
+            <ul id="liveDuplicateList" class="space-y-1 text-[11px] text-amber-800/90 pl-4 list-disc"></ul>
+          </div>
         </div>
 
         <!-- 2. Kandungan Isi -->
@@ -544,6 +553,43 @@
         </button>
         <button onclick="executeReset190()" class="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition shadow-md">
           Reset Data
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL KONFIRMASI PRODUK DUPLIKAT (ANTI-DOBEL) ================= -->
+  <div id="duplicateModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 max-w-md w-full text-left shadow-2xl border border-amber-200 animate-in fade-in zoom-in-95">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-xl shrink-0">
+          <i class="fa-solid fa-copy"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Data Produk Sudah Ada!</h3>
+          <p class="text-xs text-slate-500">Mencegah data ganda di katalog Apotek Valencia</p>
+        </div>
+      </div>
+
+      <div id="duplicateExistingCard" class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs space-y-1 mb-4">
+        <!-- Diisi dinamis oleh JS -->
+      </div>
+
+      <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+        Pilih tindakan yang paling sesuai agar database tetap rapi dan tidak dobel:
+      </p>
+
+      <div class="space-y-2">
+        <button type="button" onclick="resolveDuplicate('merge')" class="w-full py-2.5 px-4 rounded-xl bg-leaf-600 hover:bg-leaf-700 text-white font-bold text-xs transition shadow-sm flex items-center justify-center gap-2">
+          <i class="fa-solid fa-code-merge"></i>
+          <span>Perbarui Data Lama &amp; Gabungkan Lokasi Rak</span>
+        </button>
+        <button type="button" onclick="resolveDuplicate('force_add')" class="w-full py-2.5 px-4 rounded-xl bg-lavender-50 hover:bg-lavender-100 text-lavender-900 border border-lavender-200 font-bold text-xs transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-plus"></i>
+          <span>Tetap Simpan Sebagai Varian Baru</span>
+        </button>
+        <button type="button" onclick="closeDuplicateModal()" class="w-full py-2 rounded-xl text-slate-500 hover:text-slate-700 font-semibold text-xs transition">
+          Kembali ke Formulir
         </button>
       </div>
     </div>
@@ -905,6 +951,7 @@
     let currentFilterField = 'all';
     let currentViewMode = 'grid';
     let productToDeleteId = null;
+    let pendingDuplicateContext = null;
 
     // Listener ketika data diterima dari cloud (Realtime sinkron antar HP & Laptop)
     window.handleRemoteSync = function(remoteList) {
@@ -1201,6 +1248,8 @@
 
       form.reset();
       document.getElementById('editProductId').value = '';
+      const dupBox = document.getElementById('liveDuplicateBox');
+      if (dupBox) dupBox.classList.add('hidden');
 
       if (mode === 'edit' && productId) {
         const item = products.find(p => p.id === productId);
@@ -1226,6 +1275,52 @@
 
     function closeModal() {
       document.getElementById('productModal').classList.add('hidden');
+      const dupBox = document.getElementById('liveDuplicateBox');
+      if (dupBox) dupBox.classList.add('hidden');
+    }
+
+    // Normalisasi teks untuk pengecekan kemiripan nama obat
+    function normalizeProductName(str = '') {
+      return str.toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    // Peringatan langsung saat mengetik nama produk baru
+    function checkLiveDuplicateWarning() {
+      const editId = document.getElementById('editProductId').value;
+      const dupBox = document.getElementById('liveDuplicateBox');
+      const dupList = document.getElementById('liveDuplicateList');
+      if (!dupBox || !dupList) return;
+
+      // Hanya cek saat mode Tambah Baru
+      if (editId) {
+        dupBox.classList.add('hidden');
+        return;
+      }
+
+      const rawName = document.getElementById('inputNama').value.trim();
+      const normQuery = normalizeProductName(rawName);
+      if (normQuery.length < 3) {
+        dupBox.classList.add('hidden');
+        return;
+      }
+
+      const matches = products.filter(p => {
+        const normItem = normalizeProductName(p.nama);
+        return normItem === normQuery || (normQuery.length >= 4 && normItem.includes(normQuery));
+      }).slice(0, 3);
+
+      if (matches.length > 0) {
+        dupList.innerHTML = matches.map(m => `
+          <li>
+            <strong>${m.nama}</strong> (${m.sediaan}) &mdash; 
+            <span class="font-semibold">Lokasi: ${m.rak || '-'}</span>
+            <button type="button" onclick="openModal('edit', '${m.id}')" class="ml-1.5 underline text-leaf-700 hover:text-leaf-900 font-bold">Edit yang ini</button>
+          </li>
+        `).join('');
+        dupBox.classList.remove('hidden');
+      } else {
+        dupBox.classList.add('hidden');
+      }
     }
 
     async function saveProduct(event) {
@@ -1253,25 +1348,98 @@
           }
           showToast(`Produk "${nama}" berhasil diperbarui!`, 'success');
         }
-      } else {
-        const uniqueId = 'p_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
-        const newProduct = {
-          id: uniqueId,
-          nama,
-          kandungan,
-          indikasi,
-          sediaan,
-          rak,
-          createdAt: Date.now()
-        };
-        products.unshift(newProduct);
-        saveToLocalStorageOnly();
-        if (window.cloudEngine) {
-          await window.cloudEngine.addProduct(newProduct);
-        }
-        showToast(`Produk "${nama}" berhasil ditambahkan!`, 'success');
+        closeModal();
+        renderProducts();
+        return;
       }
 
+      // Cek apakah produk dengan nama & sediaan yang sama sudah ada (Anti-Dobel)
+      const normNama = normalizeProductName(nama);
+      const normSediaan = normalizeProductName(sediaan);
+      const exactMatch = products.find(p => normalizeProductName(p.nama) === normNama && normalizeProductName(p.sediaan) === normSediaan)
+        || products.find(p => normalizeProductName(p.nama) === normNama);
+
+      if (exactMatch) {
+        pendingDuplicateContext = {
+          existingId: exactMatch.id,
+          newData: { nama, kandungan, indikasi, sediaan, rak }
+        };
+        document.getElementById('duplicateExistingCard').innerHTML = `
+          <div class="font-bold text-slate-900 text-sm">${exactMatch.nama} <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-white border border-amber-200 text-amber-800 ml-1">${exactMatch.sediaan}</span></div>
+          <div class="text-slate-700"><span class="font-semibold">Kandungan:</span> ${exactMatch.kandungan}</div>
+          <div class="text-slate-700"><span class="font-semibold">Lokasi Rak Saat Ini:</span> <span class="font-bold text-lavender-800">${exactMatch.rak || '-'}</span></div>
+        `;
+        document.getElementById('duplicateModal').classList.remove('hidden');
+        return;
+      }
+
+      await commitNewProduct({ nama, kandungan, indikasi, sediaan, rak });
+      closeModal();
+      renderProducts();
+    }
+
+    async function commitNewProduct({ nama, kandungan, indikasi, sediaan, rak }) {
+      const uniqueId = 'p_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+      const newProduct = {
+        id: uniqueId,
+        nama,
+        kandungan,
+        indikasi,
+        sediaan,
+        rak,
+        createdAt: Date.now()
+      };
+      products.unshift(newProduct);
+      saveToLocalStorageOnly();
+      if (window.cloudEngine) {
+        await window.cloudEngine.addProduct(newProduct);
+      }
+      showToast(`Produk "${nama}" berhasil ditambahkan!`, 'success');
+    }
+
+    function closeDuplicateModal() {
+      document.getElementById('duplicateModal').classList.add('hidden');
+      pendingDuplicateContext = null;
+    }
+
+    async function resolveDuplicate(action) {
+      if (!pendingDuplicateContext) return;
+      const { existingId, newData } = pendingDuplicateContext;
+
+      if (action === 'merge') {
+        const index = products.findIndex(p => p.id === existingId);
+        if (index !== -1) {
+          const oldItem = products[index];
+          // Gabungkan lokasi rak lama dan baru tanpa duplikat
+          const oldRaks = (oldItem.rak || '').split(',').map(r => r.trim()).filter(Boolean);
+          const newRaks = (newData.rak || '').split(',').map(r => r.trim()).filter(Boolean);
+          const mergedRakSet = [...oldRaks];
+          newRaks.forEach(r => {
+            if (!mergedRakSet.some(existing => existing.toLowerCase() === r.toLowerCase())) {
+              mergedRakSet.push(r);
+            }
+          });
+
+          const updated = {
+            ...oldItem,
+            nama: newData.nama,
+            kandungan: newData.kandungan,
+            indikasi: newData.indikasi,
+            sediaan: newData.sediaan,
+            rak: mergedRakSet.join(', ')
+          };
+          products[index] = updated;
+          saveToLocalStorageOnly();
+          if (window.cloudEngine) {
+            await window.cloudEngine.updateProduct(updated);
+          }
+          showToast(`Data "${updated.nama}" diperbarui & lokasi rak digabung (${updated.rak})!`, 'success');
+        }
+      } else if (action === 'force_add') {
+        await commitNewProduct(newData);
+      }
+
+      closeDuplicateModal();
       closeModal();
       renderProducts();
     }
