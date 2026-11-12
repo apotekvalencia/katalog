@@ -85,15 +85,15 @@
         
         <!-- Brand & Logo Presisi Sesuai Panduan Brand Background Hijau-Ungu -->
         <div class="flex items-center gap-3 sm:gap-4.5 cursor-pointer py-1.5 select-none" onclick="clearSearch()">
-          <!-- Ikon Vektor Presisi (Varian Putih Bersih di atas Latar Gradasi) -->
-          <div class="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shrink-0 drop-shadow-md">
+          <!-- Ikon Logo Berlatar Putih Solid agar Selalu Terlihat Jelas & Kontras -->
+          <div class="relative w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-2xl p-2 shadow-lg flex items-center justify-center shrink-0 border border-white/60">
             <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Atap Heksagon Isometrik (Putih Solid Berongga) -->
-              <path d="M 50 12 L 79 28 L 79 43 L 50 27 L 21 43 L 21 28 Z" fill="#ffffff" />
-              <!-- Dinding Kotak Bawah Kiri Terbuka -->
-              <path d="M 21 45 L 50 61 L 50 71 L 21 55 Z" fill="#ffffff" />
-              <!-- Kelopak Daun Organik di Kanan Bawah dengan Rongga Urat Daun Oval -->
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M 50 71 C 50 71 52 50 67 44 C 82 38 88 51 86 58 C 82 72 63 80 50 71 Z M 57 66 C 67 68 76 60 77 54 C 77 50 72 45 64 49 C 55 53 54 63 57 66 Z" fill="#ffffff" />
+              <!-- Atap Heksagon Isometrik (Ungu Lavender Asli) -->
+              <path d="M 50 14 L 82 31 L 82 45 L 50 28 L 18 45 L 18 31 Z" fill="#9b6af0" />
+              <!-- Dinding Kotak Bawah Kiri (Hijau Daun) -->
+              <path d="M 18 48 L 50 64 L 50 76 L 18 60 Z" fill="#58883e" />
+              <!-- Kelopak Daun Organik di Kanan Bawah dengan Rongga Urat Daun Putih -->
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M 50 76 C 50 76 52 52 69 46 C 85 40 92 53 89 61 C 85 76 65 85 50 76 Z M 57 70 C 69 72 79 63 80 57 C 80 52 74 47 65 51 C 55 56 54 67 57 70 Z" fill="#6fa652" />
             </svg>
           </div>
           
@@ -228,9 +228,6 @@
           <button type="button" onclick="setSearchFilter('sediaan')" id="filter-sediaan" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
             Jenis Sediaan
           </button>
-          <button type="button" onclick="setSearchFilter('rak')" id="filter-rak" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
-            <i class="fa-solid fa-boxes-stacked text-[10px] mr-1"></i> Nomor Rak
-          </button>
         </div>
 
         <!-- Dropdown Sediaan Filter Cepat -->
@@ -289,7 +286,6 @@
           <thead>
             <tr class="bg-leaf-50/80 border-b border-leaf-100 text-xs font-bold text-leaf-900 uppercase tracking-wider">
               <th class="py-3.5 px-4">Nama Produk</th>
-              <th class="py-3.5 px-4">Posisi Rak / Lemari</th>
               <th class="py-3.5 px-4">Kandungan Isi (Zat Aktif)</th>
               <th class="py-3.5 px-4">Indikasi</th>
               <th class="py-3.5 px-4">Jenis Sediaan</th>
@@ -410,10 +406,9 @@
             id="inputIndikasi" 
             required 
             rows="2"
-            placeholder="Bisa pakai koma atau plus (+). Contoh: Meredakan sakit kepala, sakit gigi, demam ATAU gatal + eksim" 
+            placeholder="Contoh: Meredakan sakit kepala, sakit gigi, demam, sariawan" 
             class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
           ></textarea>
-          <p class="text-[11px] text-slate-400 mt-1">Bebas gunakan koma (,) atau plus (+) untuk memisahkan beberapa keluhan / indikasi.</p>
         </div>
 
         <!-- 4. Jenis Sediaan -->
@@ -428,21 +423,6 @@
             placeholder="Contoh: Krim, Salep, Gel, Tetes Mata, Tablet Hisap, Inhaler" 
             class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
           >
-        </div>
-
-        <!-- 5. Nomor Rak / Posisi Lemari (Bisa 2 atau 3 Lokasi Sekaligus) -->
-        <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 flex items-center justify-between">
-            <span>Nomor Rak / Posisi Lemari</span>
-            <span class="text-[10px] text-leaf-700 font-semibold lowercase">Bisa 2 atau 3 lokasi</span>
-          </label>
-          <input 
-            type="text" 
-            id="inputRak" 
-            placeholder="Contoh: Rak A-02, Lemari Kaca 1, Etalase Depan" 
-            class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
-          >
-          <p class="text-[11px] text-slate-400 mt-1">Pisahkan dengan koma (,) jika obat ditempatkan di lebih dari satu rak/lemari.</p>
         </div>
 
         <!-- Action Buttons -->
@@ -627,198 +607,198 @@
 
   <!-- ================= JAVASCRIPT APPLICATION CORE ================= -->
   <script>
-    // 190 DATA PRODUK LENGKAP UTUH APOTEK VALENCIA DENGAN 4 KOLOM UTAMA + NOMOR RAK / POSISI LEMARI (ETALASE 5B)
+    // 190 DATA PRODUK LENGKAP UTUH APOTEK VALENCIA DENGAN 4 KOLOM UTAMA
     const ORIGINAL_190_PRODUCTS = [
-      { id: "p1", nama: "Anfuhex", kandungan: "Ketoconazole", indikasi: "Infeksi dermatofit pada kulit, seperti tinea kruris", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p2", nama: "Aloclair Plus Gel", kandungan: "Gel", indikasi: "Meredakan nyeri dan membantu penyembuhan ulkus rongga mulut", sediaan: "Gel", rak: "ETALASE 5B" },
-      { id: "p3", nama: "Afucid", kandungan: "Fusidic Acid", indikasi: "Infeksi kulit disebabkan staphylococcus atau bakteri lain", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p4", nama: "Aciclovir", kandungan: "Aciclovir", indikasi: "Anti bakteri dan Jamur", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p5", nama: "Benoson-G", kandungan: "Betamethasone Valerate + Gentamicin Sulfate", indikasi: "Dermatosis yang responsif", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p6", nama: "Betason-N", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi Virus", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p7", nama: "Betamethasone Valerate", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Untuk peradangan kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p8", nama: "Betadin", kandungan: "Antiseptic Ointment", indikasi: "Antiseptik untuk membunuh kuman", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p9", nama: "Bioplacenton", kandungan: "Placenta Extract + Neomycin Sulfate", indikasi: "Membantu menyembuhkan berbagai jenis luka pada kulit", sediaan: "Gel", rak: "ETALASE 5B" },
-      { id: "p10", nama: "Beneson-N", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi bakteri sekunder", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p11", nama: "Bevalex", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi pada kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p12", nama: "Borraginol-S", kandungan: "Lithospermi Radix Extract + Prednisolone + Benzocaine + Lidocaine + Cetrimide", indikasi: "Obat wasir", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p13", nama: "Biocream", kandungan: "Ambiphilic Dermatological Cream", indikasi: "Krim ambifilik untuk kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p14", nama: "Benoson-G", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Infeksi perkutan primer yang disebabkan oleh virus", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p15", nama: "Brion", kandungan: "Policresulen 50 mg/g + Cinchocaine HCl 10 mg/g", indikasi: "Mengobati hemoroid (wasir) dan fisura ani", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p16", nama: "Bravoderm Cream", kandungan: "Fluocinolone Acetonide", indikasi: "Meringankan manifestasi inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p17", nama: "Besol", kandungan: "Clobetasol Propionate Cream 0.05 %", indikasi: "Pengobatan jangka pendek terhadap dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p18", nama: "Biocort", kandungan: "Gentamicin Sulfate + Betamethasone Valerate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p19", nama: "Cinolon", kandungan: "Fluocinolone Acetonide", indikasi: "Peradangan kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p20", nama: "Cinolon-N", kandungan: "Fluocinolone Acetonide + Neomycin Sulfate", indikasi: "Penyakit kulit inflamasi dan lesi kulit meradang", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p21", nama: "Centabio", kandungan: "Placenta Extract + Neomycin Sulfate Gel", indikasi: "Infeksi bakteri", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p22", nama: "Clobetasol Propionate", kandungan: "Clobetasol Propionate Cream 0.05 %", indikasi: "Peradangan kulit yang berat dan resistensi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p23", nama: "Clinovir", kandungan: "Aciclovir Krim 5%", indikasi: "Infeksi pada virus herpes", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p24", nama: "Desomex", kandungan: "Desoximetasone Krim 2,5 mg/g", indikasi: "Untuk meringankan manifestasi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p25", nama: "Desoximetasone", kandungan: "Desoximetasone Krim 0,25%", indikasi: "Penyakit kulit inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p26", nama: "Dip rosta", kandungan: "Betamethasone Dipropionate + Gentamicin Sulfate", indikasi: "Penyakit kulit akibat reaksi alergi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p27", nama: "Desigen", kandungan: "Desoximetasone", indikasi: "Indikasi infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p28", nama: "Digenta", kandungan: "Gentamicin Sulfate + Betamethasone Dipropionate", indikasi: "Manifestasi inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p29", nama: "Dolones", kandungan: "Lidocaine + Prilocaine Cream", indikasi: "Efek kebas atau mati rasa sementara pada kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p30", nama: "Erladerm", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Meredakan peradangan, gatal, kemerahan dan bengkak", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p31", nama: "Diclofenac Diethylamine", kandungan: "Diclofenac Diethylamine Emulgel 1%", indikasi: "Peradangan akibat trauma, terkilir, keseleo, memar", sediaan: "Gel", rak: "ETALASE 5B" },
-      { id: "p32", nama: "Enbatic", kandungan: "Neomycin Sulfate + Bacitracin Zinc", indikasi: "Anti bakteri pada kulit", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p33", nama: "Erymed", kandungan: "Erythromycin 2%", indikasi: "Untuk jerawat", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p34", nama: "Evalen Adapalene", kandungan: "Adapalene Gel 0,1%", indikasi: "Untuk jerawat", sediaan: "Gel", rak: "ETALASE 5B" },
-      { id: "p35", nama: "Enbatic", kandungan: "Neomycin Sulfate + Bacitracin Zinc", indikasi: "Untuk infeksi bakteri superfisial", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p36", nama: "Funtas", kandungan: "Miconazole Nitrate Cream", indikasi: "Pengobatan kandidiasis kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p37", nama: "Fasolon Cream", kandungan: "Fluocinolone Acetonide 0,025% + Neomycin Sulphate 0,5%", indikasi: "Pengobatan manifestasi inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p38", nama: "Fucilex", kandungan: "Fusidic Acid", indikasi: "Infeksi kulit staphylococcus atau bakteri lain", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p39", nama: "Salep Kulit Geranium Wilfordii", kandungan: "Geranium Wilfordii Ointment 10g", indikasi: "Eksim, gatal-gatal dan bengkak akibat gigitan serangga", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p40", nama: "Gentamicin Sulfate", kandungan: "Gentamicin Sulfate Krim 0,1%", indikasi: "Infeksi kulit primer dan sekunder", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p41", nama: "Taisho", kandungan: "Kenacort-A Cream + Triamcinolone Acetonide", indikasi: "Meredakan peradangan, kemerahan, gatal dan bengkak", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p42", nama: "Taisho", kandungan: "Kenalog in Orabase + Triamcinolone Acetonide", indikasi: "Sariawan, luka dimulut, peradangan selaput lendir", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p43", nama: "Klorfeson Krim", kandungan: "Chloramphenicol + Prednisolon", indikasi: "Nyeri inflamasi dan dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p44", nama: "Kalpanax Salep", kandungan: "Salicylic Acid + Champhora + Sulfur Praecipitatum + Benzoic Acid + Menthol", indikasi: "Kutu air, panu, kadas, kuap, gatal gatal", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p45", nama: "Kalpanax Krim", kandungan: "Miconazole Nitrate 2%", indikasi: "Kutu air dan infeksi penyakit jamur", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p46", nama: "Inerson", kandungan: "Desoximetasone Salep", indikasi: "Eksim dan dermatitis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p47", nama: "Ikaderm Cream", kandungan: "Clobetasol Propionate 0,5 mg", indikasi: "Psoriasis, eksim berat, dermatitis kronis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p48", nama: "Ikaderm Ointment", kandungan: "Clobetasol Propionate 0,5 mg", indikasi: "Psoriasis, eksim berat, dermatitis kronis", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p49", nama: "Hansaplast Salep Luka", kandungan: "Dexpanthenol 5%", indikasi: "Mempercepat penyembuhan luka", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p50", nama: "Heltiskin Cream", kandungan: "Clotrimazole + Betamethasone Dipropionate", indikasi: "Tinea cruris, tinea corporis dan tinea pedis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p51", nama: "Genoint Gentamicin Sulfate", kandungan: "Gentamicin 1 mg", indikasi: "Infeksi kulit oleh bakteri yang peka terhadap gentamicin", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p52", nama: "lafalos krim", kandungan: "menthol+eugenol+methyl salicylate", indikasi: "meredakan berbagai keluhan nyeri otot dan nyeri sendi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p53", nama: "miconazole nitrate", kandungan: "miconazole 0,02 gram", indikasi: "untuk tinea pedis, krusis, korporis, kandidiasis dan tinea versikolor", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p54", nama: "medicort", kandungan: "fluticasone propionate 0,05%", indikasi: "mengatasi peradangan dan gatal gatal", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p55", nama: "mycorine cream", kandungan: "miconazole nitrate 2%", indikasi: "tinea corporis, tinea pedis, tinea cruris, tinea versicolor", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p56", nama: "metcovazin silver", kandungan: "zinc oxide+cetearyl alcohol+capric triglyceride", indikasi: "mengurangi infeksi pada luka, membantu penyembuhan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
-      { id: "p57", nama: "metcovazin reguler 25gram", kandungan: "chitozan+zinc oxide", indikasi: "mepercepat penyembuhan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
-      { id: "p58", nama: "metcivazin reguler 10gram", kandungan: "chitozan+zinc oxide", indikasi: "Mempercepat penyembuhan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
-      { id: "p59", nama: "Taisho", kandungan: "myco-z ointment nystatin-zinc oxide", indikasi: "menyembuhkan infeksi jamur candida pada kulit", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p60", nama: "mebo mild burn treatment", kandungan: "coptis chinensis rhizoma+phellodendron chinense cortex", indikasi: "meringankan luka bakar ringan", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p61", nama: "matrovir cream", kandungan: "aciclovir", indikasi: "untuk infeksi virus herpes simplex pada kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p62", nama: "metcovazin red", kandungan: "hyaluronate acid + zinc oxide", indikasi: "mempercepat penyembuhan luka dan menjaga kelembapan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
-      { id: "p63", nama: "nebacetin powder", kandungan: "neomycin Sulfate + Bacitracin", indikasi: "untuk mengobati infeksi bakteri pada luka", sediaan: "Serbuk", rak: "ETALASE 5B" },
-      { id: "p64", nama: "nebacetin salep", kandungan: "neomycin 5 mg+bacitracin", indikasi: "untuk mencegah dan mengobati infeksi bakteri pada luka", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p65", nama: "nerilon", kandungan: "diflucortolone valerate 1 mg", indikasi: "untuk mengobati gatal, eksim dan dermatitis", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p66", nama: "oxytetracycline hcl", kandungan: "oxytetracycline hcl", indikasi: "infeksi bakteri pada mata", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p67", nama: "octenilin", kandungan: "allatoin 0,20%+octenidine hydrochloide 0,5%", indikasi: "pertolongan cepat untuk luka pada kulit dan mukosa", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p68", nama: "oviskin-N", kandungan: "betamethasone valerate+neomycin sulfate", indikasi: "untuk penyakit kulit yang meradang, gstsl dan terinfeksi bakteri", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
-      { id: "p69", nama: "pasquam dexpanthenol", kandungan: "Dexpanthenol 5%", indikasi: "untuk kulit yang mengalami ruam popok, lecet, dan luka ringan", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p70", nama: "parmethrin krim", kandungan: "permethrin", indikasi: "infeksi kulit kudis,membasmi  kutu tubuh dan kutu kemaluan", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p71", nama: "krim pi khang shuang", kandungan: "triamcilone acetonide+micinazole titrate+neomycin sulfate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p72", nama: "pai du zhi yang krim", kandungan: "asam salisilat+belerang+mentol+tea tree oil", indikasi: "meringankan penyakit kulit yang disebabkan jamur seperti panu", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p73", nama: "pizolon", kandungan: "triamcilone acetonide+micinazole titrate+neomycin sulfate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p74", nama: "permethrin krim", kandungan: "permethrin", indikasi: "infeksi kulit kudis, membasmi kutu tubuh dan kemaluan", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p75", nama: "pai yan pin", kandungan: "dexametasone asetat", indikasi: "untuk gatallokal yang menetap dan dermatitis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p76", nama: "star ag", kandungan: "collidal silver+basis gel", indikasi: "untuk luka meliputi pressure ulcers, venous ulcers dan ulkus diabetik", sediaan: "Gel", rak: "ETALASE 5B" },
-      { id: "p77", nama: "silver healing bio-gel", kandungan: "ion perak aktif+glisein+karbomer+trietanolamin+air murni", indikasi: "untuk penanganan luka dekubitus, luka statis vena dan luka diabetes", sediaan: "Gel", rak: "ETALASE 5B" },
-      { id: "p78", nama: "scabimite krim", kandungan: "permethrin 5%", indikasi: "untuk mengobati dan mengatasi scabies (gudik)", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p79", nama: "sulfadiazine silver cream", kandungan: "sulfadiazine silver 10 mg", indikasi: "sediaan antimikroba topikal untuk pencegahan dan pengobatan sepsis luka", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p80", nama: "synalten cream", kandungan: "fluconolone acetonide+gentamicin sulfate", indikasi: "untuk meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p81", nama: "sinobiotik", kandungan: "flucinolone acetonide+gentamicin sulfate", indikasi: "untuk peradangan dan gatal pada kulit disertai infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p82", nama: "sagestam krim", kandungan: "gentamicin sulfate", indikasi: "infeksi kulit akibat bakteri dan luka gores, luka lecet dan luka bakar ringan", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p83", nama: "ultrasiline", kandungan: "Clotrimazole + Betamethasone Dipropionate", indikasi: "untuk mengobati candidiasin", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p84", nama: "tix salep", kandungan: "nellumbinis nucifera folium+shoporae flavescentis radix", indikasi: "untuk meredakan gatal gatal pada kulit", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p85", nama: "vicansort", kandungan: "hydrocortisone+clioquinol+camphor", indikasi: "untuk mengobati dermatitis dan eksim yang disertai gatal, kemerahan dan infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p86", nama: "zensoderm", kandungan: "betamethasone+gentamicin", indikasi: "untuk penyakit kulit yang meradang dan gatal disertai infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p87", nama: "zoralin", kandungan: "ketoconazole", indikasi: "untuk mengobati dermatofitosis, pityriasis dan kandidosis kulit", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p88", nama: "zenalog", kandungan: "triamcinolone acetonide", indikasi: "untuk mengobati sariawan,luka di mulut,peradangan dan luka di gusi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p89", nama: "zalf", kandungan: "acidum salicylicum+sulfur praecipitatum+zalf base ad", indikasi: "membantu meringangankan penyakit kulit seperti kutu air, kadas dan kurap", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p90", nama: "pagoda salep", kandungan: "sulfur praecipitatum+asam benzoat+asam salisilat+camphora", indikasi: "untuk penyakit kulit seperti gatal di telapak tangan dan kaki", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p91", nama: "salep 2-4", kandungan: "asam salisilat+sulfur praecipitatum", indikasi: "meringankankan penyakit kulit yang disebabkan jamur", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p92", nama: "nosib cap bison", kandungan: "acidium salisilat+acidium benzocium+sulfur praecipitatum", indikasi: "meringankankan penyakit kulit seperti panu dan gatal karna kutu air", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p93", nama: "salep hitam ichtyol", kandungan: "icthammolum", indikasi: "untuk bisul", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p94", nama: "krim 88", kandungan: "miconazole nitrate 2%", indikasi: "krim anti jamur seperti kutu air kurap, dan panu", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p95", nama: "salep 88", kandungan: "acidum salicylum+acidum benzocum+sulfur praecipitatum", indikasi: "meringankan penyakit kulit seperti panu, kadas, kurap, dan kutu air", sediaan: "Salep", rak: "ETALASE 5B" },
-      { id: "p96", nama: "counterpain krim", kandungan: "metilsalisilat+eugenol+mentol+vanishing cream base", indikasi: "meringankan sakit pada otot, nyeri sendi, dan nyeri akibat encok", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p97", nama: "Diclofenac Diethylamine", kandungan: "diclofenac diethylamine", indikasi: "peradangan akibat trauma pada tedon, ligamenta, otot dan sendi", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p98", nama: "lumbar spine cooling gel", kandungan: "bahan herbal+mentol+metil salisilat", indikasi: "meredakan rasa nyeri dan pegal di area pinggang/punggung", sediaan: "Gel", rak: "ETALASE 5B" },
-      { id: "p99", nama: "cenfresh", kandungan: "carmellose sodium", indikasi: "untuk melembapkan keluhan mata kering serta lelah", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p100", nama: "floxa", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p101", nama: "polynel", kandungan: "fluorometholone+neomycin sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p102", nama: "polydex", kandungan: "dexamethasone sodium posphate+neomicyn+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p103", nama: "cendo xitrol", kandungan: "dexamethashone+neomycin sulfate+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p104", nama: "eyefresh mild", kandungan: "hypromellose+dextran", indikasi: "mengurangi iritasi pada mata yang kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p105", nama: "cendo LFX", kandungan: "levofloxacin hemihydrate", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p106", nama: "cendo lyteers", kandungan: "sodium chloride+potassium chloride", indikasi: "melembabkan, melumasi dan meredakan rasa kering serta iritasi", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p107", nama: "tobro", kandungan: "tobramycin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p108", nama: "0,5% mydriatil", kandungan: "tropicamide", indikasi: "memperlebar pupil mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p109", nama: "natacen", kandungan: "natamycin", indikasi: "mengobati infeksi jamur pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p110", nama: "0,5% cendo tropin", kandungan: "atropine sulfate", indikasi: "memperlebar pupil mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p111", nama: "polygran", kandungan: "polymyxin b sulfate+neomycin sulfate+gramicidin", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p112", nama: "vasacon-A", kandungan: "antazholinehydrochloride+naphazoline hydrochloride", indikasi: "meredakan kemerahan dan pembengkakan pada mata akibat alergi/ iritas", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p113", nama: "vasacon", kandungan: "naphazoline hydrochloride", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p114", nama: "0,5% timol", kandungan: "timolol maleate", indikasi: "pengobatan kenaikan tekanan intraokuler pada penderita hipertensi", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p115", nama: "p-pred", kandungan: "prednisolone acetate", indikasi: "meredakan peradangan pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p116", nama: "sanbe tears", kandungan: "dextran 70+hypromellose", indikasi: "mencegah kekeringan dan iritasi mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p117", nama: "Genoint Gentamicin Sulfate", kandungan: "gentamicin sulfate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p118", nama: "ximex optixitrol", kandungan: "polymixin b sulfat+neomycin sulfate+dexamethasone sodium", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p119", nama: "cendo mycos", kandungan: "hydrocortisone acetate+chloramphenicol", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Salep Mata", rak: "ETALASE 5B" },
-      { id: "p120", nama: "cendo xitrol", kandungan: "dexamethshone+neoumycin+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Salep Mata", rak: "ETALASE 5B" },
-      { id: "p121", nama: "timol 0,5%", kandungan: "timolol maleate", indikasi: "menurunkan tekanan intraokular pada penderita glaukoma", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p122", nama: "0,5% cendo tropin", kandungan: "atropine sulfate", indikasi: "memperlebar pupil mata dan peradangan pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p123", nama: "0,5% cendo mydriatil", kandungan: "tropicamide", indikasi: "sebagaisiklopelgia dan midriasis", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p124", nama: "floxa", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata yang disebabkan bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p125", nama: "augentonic", kandungan: "phenylephrine hydrochloride+zinc sulfate heptahydrate", indikasi: "mengobati mata merah dan peradangan akibat iritasi minor", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p126", nama: "cenfresh", kandungan: "carmellose sodium", indikasi: "melembapkan dan meredakan mata kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p127", nama: "0,3% genta", kandungan: "gentamicin sulfate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p128", nama: "vitrolenta", kandungan: "potassium iodide+sodium iodide", indikasi: "mengobati kekeruhan dan pendarahan pada vitreous body", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p129", nama: "polynel", kandungan: "fluorometholone+neomycin sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p130", nama: "catarlent", kandungan: "potassium iodide", indikasi: "membantu memperlambat perkembangan katarak pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p131", nama: "vasacon", kandungan: "naphazoline hydrochloride", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p132", nama: "vasacon-A", kandungan: "antazholinehydrochloride+naphazoline hydrochloride", indikasi: "untuk meredakan sementara alergi tertentu pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p133", nama: "0,5% pantocain", kandungan: "tetracaine hydrochlorise", indikasi: "sebagai obat bius lokal", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p134", nama: "tobroson", kandungan: "tobramycin+dexamethasone sodium phosphate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p135", nama: "eyefresh", kandungan: "hypromellose+dextran", indikasi: "mengurangi iritasi pada mata yang kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p136", nama: "polygran", kandungan: "polymyxin b sulfate+neomycin sulfate+gramicidin", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p137", nama: "lfx", kandungan: "levofloxacin hemihydrate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p138", nama: "polydex", kandungan: "dexamethasone sodium posphate+neomicyn+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p139", nama: "p-pred", kandungan: "prednisolone acetate", indikasi: "mengobati peradangan dan alergi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p140", nama: "cendo hyalub", kandungan: "sodium hyaluronate", indikasi: "melembapkan dan meredakan mata kering yang berat", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p141", nama: "akilen eye dops", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p142", nama: "akilen ear drops", kandungan: "oflaxacin", indikasi: "mengobati infeksi pada telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p143", nama: "rohto v-estra", kandungan: "tetrahydrozoline hcl 0,05%+macrogol", indikasi: "meredakan mata merah dang mata kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p144", nama: "erlamycetin chlorampenicol", kandungan: "chloramphenicoll", indikasi: "mengobati infeksi pada telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p145", nama: "blecidex ear/eye", kandungan: "framcetyn sulfate+gramicidin+dexamethasone sodium metasulfo", indikasi: "mengobati peradangan yang disertai infeksi", sediaan: "Tetes Telinga Dan Mata", rak: "ETALASE 5B" },
-      { id: "p146", nama: "bralifex plus", kandungan: "tobramycin+dexamethasone", indikasi: "mengobati peradangan yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p147", nama: "polidemisin", kandungan: "neomycin sulfate+polymyxin b sulfate+dexamethasone", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p148", nama: "braito", kandungan: "tetrahydrozoline hcl 0,05%+benzalkonium chloride 0.0%", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p149", nama: "braito dry eye", kandungan: "hydroxypropyl methylcellulose+benzalkokonium chloride 0.01%", indikasi: "mengatasi gejala mata kering,menyejukkan dan sebagai lubrican mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p150", nama: "baquinor", kandungan: "ciprofloxacin hydrochloride", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p151", nama: "otolin", kandungan: "chloramphenicol+polymyxin b sulphate+benzocaine", indikasi: "mengobati infeksi bakteri pada telinga yang disertai nyeri", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p152", nama: "hialid", kandungan: "sodium hyaluronate", indikasi: "melembapkan dan meredakan mata kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p153", nama: "otilon", kandungan: "polymyxin b sulfate+neomycin sulfate+fludrocortisone acetate+lidocaine hcl", indikasi: "mengobati peradangan dan infeksi bakteri pada telinga disertai nyeri", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p154", nama: "flamar", kandungan: "diclofenac sodium", indikasi: "mengurangi peradangan dan nyeri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p155", nama: "rohto cool", kandungan: "naphazoline hcl 0,012%", indikasi: "meredakan sementara mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p156", nama: "rohto", kandungan: "tetrahydrozoline hcl 0,05%", indikasi: "mengatasi mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
-      { id: "p157", nama: "sterimar", kandungan: "air laut alami", indikasi: "membersihkan saluran hidung bayi secara lembut", sediaan: "Semprotan Hidung", rak: "ETALASE 5B" },
-      { id: "p158", nama: "forumen", kandungan: "docusate sodium", indikasi: "untuk mengeluarkan kotoran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p159", nama: "cooling 5", kandungan: "phenol crystal 1,4%", indikasi: "meredakan sakit tenggorokan,iritasi,sakit pada mulut, gusi dan sariawan", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
-      { id: "p160", nama: "docusate sodium", kandungan: "docusate sodium", indikasi: "untuk membantu mengeluarkan kotoran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p161", nama: "aloclair Plus spray", kandungan: "aloe vera dan asam hyaluronic", indikasi: "meredakan nyeri secara cepat dan penyembuhan ulkus mulut", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
-      { id: "p162", nama: "vital ear oil", kandungan: "thymol+peppermint oil+champor", indikasi: "sebagai antiseptik pada saluran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p163", nama: "iliadin", kandungan: "oxymerazoline hcl 0,05%", indikasi: "untuk meringankan hidung tersumbat akibat rhinitis akut", sediaan: "Semprot Hidung", rak: "ETALASE 5B" },
-      { id: "p164", nama: "modexa", kandungan: "mometasone furuate monohydrte", indikasi: "mengobati rhinitis alergi (hidung tersumbat,berair dan bersin-bersin)", sediaan: "Semprotan Hidung", rak: "ETALASE 5B" },
-      { id: "p165", nama: "nasonex", kandungan: "mometasone furuate monohydrte", indikasi: "pengobatan dan pencegahan rinitis alergi", sediaan: "Semprot Hidung", rak: "ETALASE 5B" },
-      { id: "p166", nama: "callusol", kandungan: "salicylic acid+lactic acid+polidocanol", indikasi: "mengobsti mata ikan,kapalan,kulit yang mengeras dan kutil", sediaan: "Cairan Obat Luar", rak: "ETALASE 5B" },
-      { id: "p167", nama: "ofloxacin", kandungan: "ofloxacin", indikasi: "mengobati infeksi bakteri pada saluran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
-      { id: "p168", nama: "nubreathe nasal wash", kandungan: "natrium klorida", indikasi: "membersihkan saluran hidung", sediaan: "Larutan Cuci", rak: "ETALASE 5B" },
-      { id: "p169", nama: "tupepe", kandungan: "urea+dimethicone+ekstrsak lidah buaya", indikasi: "melembapkan dan merawat kulit yang, pecah-pecah, dan menebal", sediaan: "Krim", rak: "ETALASE 5B" },
-      { id: "p170", nama: "aloclair plus mouthwash", kandungan: "aloevera+asam hialuronat", indikasi: "meredakan nyeri ulkus rongga mulut secara cepat", sediaan: "Cairan Kumur", rak: "ETALASE 5B" },
-      { id: "p171", nama: "cooling 5 cherry", kandungan: "phenol crystal 1,4%", indikasi: "meredakan sakit tenggorokan,iritasi,sakit pada mulut, gusi dan sariawan", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
-      { id: "p172", nama: "cooling 5 plus", kandungan: "phenol+benzocaine", indikasi: "menghilangkan rasa sakit seperti sakit gigi dan radang gusi", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
-      { id: "p173", nama: "tantum verde", kandungan: "benzydamine", indikasi: "meringankan rasa sakit pada mulut dan tenggorokan seperti tonsilitis", sediaan: "Larutan Kumur", rak: "ETALASE 5B" },
-      { id: "p174", nama: "regrou", kandungan: "minoxidil", indikasi: "membantu menumbuhkan kembali rambut", sediaan: "Cairan Obat Luar", rak: "ETALASE 5B" },
-      { id: "p175", nama: "ketomed", kandungan: "ketoconozale", indikasi: "menghilangkan ketombe", sediaan: "Larutan Kulit Kepala", rak: "ETALASE 5B" },
-      { id: "p176", nama: "betadine cleanser", kandungan: "povidone-lodine 7,5%", indikasi: "cairan untuk membersihkan luka", sediaan: "Cairan Pembersih Kulit", rak: "ETALASE 5B" },
-      { id: "p177", nama: "betadine feminine hygiene", kandungan: "povidone-lodine 10%", indikasi: "pembersih khusus kewanitaan untuk gejala iritas ringan", sediaan: "Cairan", rak: "ETALASE 5B" },
-      { id: "p178", nama: "betadine moutwash", kandungan: "povidone-lodine 1%", indikasi: "untuk rongga mulut seperti gusi bengkak dan sakit tenggorokan", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
-      { id: "p179", nama: "minosep extra", kandungan: "chlorhexadine gluconate +cpc", indikasi: "meredakan nyeri dan melindungi rongga mulut", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
-      { id: "p180", nama: "minosep red", kandungan: "chlorhexadine gluconate", indikasi: "meringankan sariawan", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
-      { id: "p181", nama: "minosep mild", kandungan: "chlorhexadine gluconate", indikasi: "meringankan sariawan", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
-      { id: "p182", nama: "minosep kids", kandungan: "cpc+sodium flouride", indikasi: "untuk gigi berlubang", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
-      { id: "p183", nama: "ventolin inhaler", kandungan: "salbutamol", indikasi: "membantu melegakan sesak napas pada asma dan penyakit paru", sediaan: "Inhaler", rak: "ETALASE 5B" },
-      { id: "p184", nama: "medisio", kandungan: "policresulen", indikasi: "untuk kauterisasi dan irigasi pada luka/ perawatan luka tertentu", sediaan: "Cairan Obat Luar", rak: "ETALASE 5B" },
-      { id: "p185", nama: "sp troches", kandungan: "dequalinium chloride", indikasi: "untuk infeksi bakteri dan fungi dalam ruang mulut dan tenggorokan", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
-      { id: "p186", nama: "tantum lozenges", kandungan: "benzydamine hydrochloride", indikasi: "untuk meringankan rasa sakit pada rongga mulut", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
-      { id: "p187", nama: "degirol", kandungan: "dequalinium chloride 0,5 mg", indikasi: "untuk mengobati peradangan,sakit tenggorokan dan infeksi", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
-      { id: "p188", nama: "meiji", kandungan: "neomycin+gramicidin", indikasi: "antibiotik ringan untuk untuk ingeksi pada rongga mulut", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
-      { id: "p189", nama: "seretide diskus", kandungan: "salmeterol xinafote+fluticasone propionate", indikasi: "pengobatan rutin asma bronkial dan PPOK yang memerlukan kombinasi", sediaan: "Serbuk Inhalasi", rak: "ETALASE 5B" },
-      { id: "p190", nama: "desolex-N", kandungan: "desonidine+neomycin sulfate", indikasi: "untuk meringankan inflamasi dari dermatoses yang responsif terhadap kortikosteroid", sediaan: "Krim", rak: "ETALASE 5B" }
+      { id: "p1", nama: "Anfuhex", kandungan: "Ketoconazole", indikasi: "Infeksi dermatofit pada kulit, seperti tinea kruris", sediaan: "Krim" },
+      { id: "p2", nama: "Aloclair Plus Gel", kandungan: "Gel", indikasi: "Meredakan nyeri dan membantu penyembuhan ulkus rongga mulut", sediaan: "Gel" },
+      { id: "p3", nama: "Afucid", kandungan: "Fusidic Acid", indikasi: "Infeksi kulit disebabkan staphylococcus atau bakteri lain", sediaan: "Krim" },
+      { id: "p4", nama: "Aciclovir", kandungan: "Aciclovir", indikasi: "Anti bakteri dan Jamur", sediaan: "Krim" },
+      { id: "p5", nama: "Benoson-G", kandungan: "Betamethasone Valerate + Gentamicin Sulfate", indikasi: "Dermatosis yang responsif", sediaan: "Krim" },
+      { id: "p6", nama: "Betason-N", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi Virus", sediaan: "Krim" },
+      { id: "p7", nama: "Betamethasone Valerate", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Untuk peradangan kulit", sediaan: "Krim" },
+      { id: "p8", nama: "Betadin", kandungan: "Antiseptic Ointment", indikasi: "Antiseptik untuk membunuh kuman", sediaan: "Salep" },
+      { id: "p9", nama: "Bioplacenton", kandungan: "Placenta Extract + Neomycin Sulfate", indikasi: "Membantu menyembuhkan berbagai jenis luka pada kulit", sediaan: "Gel" },
+      { id: "p10", nama: "Beneson-N", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi bakteri sekunder", sediaan: "Krim" },
+      { id: "p11", nama: "Bevalex", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi pada kulit", sediaan: "Krim" },
+      { id: "p12", nama: "Borraginol-S", kandungan: "Lithospermi Radix Extract + Prednisolone + Benzocaine + Lidocaine + Cetrimide", indikasi: "Obat wasir", sediaan: "Salep" },
+      { id: "p13", nama: "Biocream", kandungan: "Ambiphilic Dermatological Cream", indikasi: "Krim ambifilik untuk kulit", sediaan: "Krim" },
+      { id: "p14", nama: "Benoson-G", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Infeksi perkutan primer yang disebabkan oleh virus", sediaan: "Krim" },
+      { id: "p15", nama: "Brion", kandungan: "Policresulen 50 mg/g + Cinchocaine HCl 10 mg/g", indikasi: "Mengobati hemoroid (wasir) dan fisura ani", sediaan: "Salep" },
+      { id: "p16", nama: "Bravoderm Cream", kandungan: "Fluocinolone Acetonide", indikasi: "Meringankan manifestasi inflamasi", sediaan: "Krim" },
+      { id: "p17", nama: "Besol", kandungan: "Clobetasol Propionate Cream 0.05 %", indikasi: "Pengobatan jangka pendek terhadap dermatosis", sediaan: "Krim" },
+      { id: "p18", nama: "Biocort", kandungan: "Gentamicin Sulfate + Betamethasone Valerate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim" },
+      { id: "p19", nama: "Cinolon", kandungan: "Fluocinolone Acetonide", indikasi: "Peradangan kulit", sediaan: "Krim" },
+      { id: "p20", nama: "Cinolon-N", kandungan: "Fluocinolone Acetonide + Neomycin Sulfate", indikasi: "Penyakit kulit inflamasi dan lesi kulit meradang", sediaan: "Krim" },
+      { id: "p21", nama: "Centabio", kandungan: "Placenta Extract + Neomycin Sulfate Gel", indikasi: "Infeksi bakteri", sediaan: "Salep" },
+      { id: "p22", nama: "Clobetasol Propionate", kandungan: "Clobetasol Propionate Cream 0.05 %", indikasi: "Peradangan kulit yang berat dan resistensi", sediaan: "Krim" },
+      { id: "p23", nama: "Clinovir", kandungan: "Aciclovir Krim 5%", indikasi: "Infeksi pada virus herpes", sediaan: "Krim" },
+      { id: "p24", nama: "Desomex", kandungan: "Desoximetasone Krim 2,5 mg/g", indikasi: "Untuk meringankan manifestasi", sediaan: "Krim" },
+      { id: "p25", nama: "Desoximetasone", kandungan: "Desoximetasone Krim 0,25%", indikasi: "Penyakit kulit inflamasi", sediaan: "Krim" },
+      { id: "p26", nama: "Dip rosta", kandungan: "Betamethasone Dipropionate + Gentamicin Sulfate", indikasi: "Penyakit kulit akibat reaksi alergi", sediaan: "Krim" },
+      { id: "p27", nama: "Desigen", kandungan: "Desoximetasone", indikasi: "Indikasi infeksi bakteri", sediaan: "Krim" },
+      { id: "p28", nama: "Digenta", kandungan: "Gentamicin Sulfate + Betamethasone Dipropionate", indikasi: "Manifestasi inflamasi", sediaan: "Krim" },
+      { id: "p29", nama: "Dolones", kandungan: "Lidocaine + Prilocaine Cream", indikasi: "Efek kebas atau mati rasa sementara pada kulit", sediaan: "Krim" },
+      { id: "p30", nama: "Erladerm", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Meredakan peradangan, gatal, kemerahan dan bengkak", sediaan: "Krim" },
+      { id: "p31", nama: "Diclofenac Diethylamine", kandungan: "Diclofenac Diethylamine Emulgel 1%", indikasi: "Peradangan akibat trauma, terkilir, keseleo, memar", sediaan: "Gel" },
+      { id: "p32", nama: "Enbatic", kandungan: "Neomycin Sulfate + Bacitracin Zinc", indikasi: "Anti bakteri pada kulit", sediaan: "Salep" },
+      { id: "p33", nama: "Erymed", kandungan: "Erythromycin 2%", indikasi: "Untuk jerawat", sediaan: "Salep" },
+      { id: "p34", nama: "Evalen Adapalene", kandungan: "Adapalene Gel 0,1%", indikasi: "Untuk jerawat", sediaan: "Gel" },
+      { id: "p35", nama: "Enbatic", kandungan: "Neomycin Sulfate + Bacitracin Zinc", indikasi: "Untuk infeksi bakteri superfisial", sediaan: "Salep" },
+      { id: "p36", nama: "Funtas", kandungan: "Miconazole Nitrate Cream", indikasi: "Pengobatan kandidiasis kulit", sediaan: "Krim" },
+      { id: "p37", nama: "Fasolon Cream", kandungan: "Fluocinolone Acetonide 0,025% + Neomycin Sulphate 0,5%", indikasi: "Pengobatan manifestasi inflamasi", sediaan: "Krim" },
+      { id: "p38", nama: "Fucilex", kandungan: "Fusidic Acid", indikasi: "Infeksi kulit staphylococcus atau bakteri lain", sediaan: "Krim" },
+      { id: "p39", nama: "Salep Kulit Geranium Wilfordii", kandungan: "Geranium Wilfordii Ointment 10g", indikasi: "Eksim, gatal-gatal dan bengkak akibat gigitan serangga", sediaan: "Salep" },
+      { id: "p40", nama: "Gentamicin Sulfate", kandungan: "Gentamicin Sulfate Krim 0,1%", indikasi: "Infeksi kulit primer dan sekunder", sediaan: "Krim" },
+      { id: "p41", nama: "Taisho", kandungan: "Kenacort-A Cream + Triamcinolone Acetonide", indikasi: "Meredakan peradangan, kemerahan, gatal dan bengkak", sediaan: "Krim" },
+      { id: "p42", nama: "Taisho", kandungan: "Kenalog in Orabase + Triamcinolone Acetonide", indikasi: "Sariawan, luka dimulut, peradangan selaput lendir", sediaan: "Krim" },
+      { id: "p43", nama: "Klorfeson Krim", kandungan: "Chloramphenicol + Prednisolon", indikasi: "Nyeri inflamasi dan dermatosis", sediaan: "Krim" },
+      { id: "p44", nama: "Kalpanax Salep", kandungan: "Salicylic Acid + Champhora + Sulfur Praecipitatum + Benzoic Acid + Menthol", indikasi: "Kutu air, panu, kadas, kuap, gatal gatal", sediaan: "Salep" },
+      { id: "p45", nama: "Kalpanax Krim", kandungan: "Miconazole Nitrate 2%", indikasi: "Kutu air dan infeksi penyakit jamur", sediaan: "Krim" },
+      { id: "p46", nama: "Inerson", kandungan: "Desoximetasone Salep", indikasi: "Eksim dan dermatitis", sediaan: "Krim" },
+      { id: "p47", nama: "Ikaderm Cream", kandungan: "Clobetasol Propionate 0,5 mg", indikasi: "Psoriasis, eksim berat, dermatitis kronis", sediaan: "Krim" },
+      { id: "p48", nama: "Ikaderm Ointment", kandungan: "Clobetasol Propionate 0,5 mg", indikasi: "Psoriasis, eksim berat, dermatitis kronis", sediaan: "Salep" },
+      { id: "p49", nama: "Hansaplast Salep Luka", kandungan: "Dexpanthenol 5%", indikasi: "Mempercepat penyembuhan luka", sediaan: "Salep" },
+      { id: "p50", nama: "Heltiskin Cream", kandungan: "Clotrimazole + Betamethasone Dipropionate", indikasi: "Tinea cruris, tinea corporis dan tinea pedis", sediaan: "Krim" },
+      { id: "p51", nama: "Genoint Gentamicin Sulfate", kandungan: "Gentamicin 1 mg", indikasi: "Infeksi kulit oleh bakteri yang peka terhadap gentamicin", sediaan: "Krim" },
+      { id: "p52", nama: "lafalos krim", kandungan: "menthol+eugenol+methyl salicylate", indikasi: "meredakan berbagai keluhan nyeri otot dan nyeri sendi", sediaan: "Krim" },
+      { id: "p53", nama: "miconazole nitrate", kandungan: "miconazole 0,02 gram", indikasi: "untuk tinea pedis, krusis, korporis, kandidiasis dan tinea versikolor", sediaan: "Krim" },
+      { id: "p54", nama: "medicort", kandungan: "fluticasone propionate 0,05%", indikasi: "mengatasi peradangan dan gatal gatal", sediaan: "Krim" },
+      { id: "p55", nama: "mycorine cream", kandungan: "miconazole nitrate 2%", indikasi: "tinea corporis, tinea pedis, tinea cruris, tinea versicolor", sediaan: "Krim" },
+      { id: "p56", nama: "metcovazin silver", kandungan: "zinc oxide+cetearyl alcohol+capric triglyceride", indikasi: "mengurangi infeksi pada luka, membantu penyembuhan luka", sediaan: "Krim/Salep" },
+      { id: "p57", nama: "metcovazin reguler 25gram", kandungan: "chitozan+zinc oxide", indikasi: "mepercepat penyembuhan luka", sediaan: "Krim/Salep" },
+      { id: "p58", nama: "metcivazin reguler 10gram", kandungan: "chitozan+zinc oxide", indikasi: "Mempercepat penyembuhan luka", sediaan: "Krim/Salep" },
+      { id: "p59", nama: "Taisho", kandungan: "myco-z ointment nystatin-zinc oxide", indikasi: "menyembuhkan infeksi jamur candida pada kulit", sediaan: "Salep" },
+      { id: "p60", nama: "mebo mild burn treatment", kandungan: "coptis chinensis rhizoma+phellodendron chinense cortex", indikasi: "meringankan luka bakar ringan", sediaan: "Salep" },
+      { id: "p61", nama: "matrovir cream", kandungan: "aciclovir", indikasi: "untuk infeksi virus herpes simplex pada kulit", sediaan: "Krim" },
+      { id: "p62", nama: "metcovazin red", kandungan: "hyaluronate acid + zinc oxide", indikasi: "mempercepat penyembuhan luka dan menjaga kelembapan luka", sediaan: "Krim/Salep" },
+      { id: "p63", nama: "nebacetin powder", kandungan: "neomycin Sulfate + Bacitracin", indikasi: "untuk mengobati infeksi bakteri pada luka", sediaan: "Serbuk" },
+      { id: "p64", nama: "nebacetin salep", kandungan: "neomycin 5 mg+bacitracin", indikasi: "untuk mencegah dan mengobati infeksi bakteri pada luka", sediaan: "Salep" },
+      { id: "p65", nama: "nerilon", kandungan: "diflucortolone valerate 1 mg", indikasi: "untuk mengobati gatal, eksim dan dermatitis", sediaan: "Salep" },
+      { id: "p66", nama: "oxytetracycline hcl", kandungan: "oxytetracycline hcl", indikasi: "infeksi bakteri pada mata", sediaan: "Krim" },
+      { id: "p67", nama: "octenilin", kandungan: "allatoin 0,20%+octenidine hydrochloide 0,5%", indikasi: "pertolongan cepat untuk luka pada kulit dan mukosa", sediaan: "Krim" },
+      { id: "p68", nama: "oviskin-N", kandungan: "betamethasone valerate+neomycin sulfate", indikasi: "untuk penyakit kulit yang meradang, gstsl dan terinfeksi bakteri", sediaan: "Krim/Salep" },
+      { id: "p69", nama: "pasquam dexpanthenol", kandungan: "Dexpanthenol 5%", indikasi: "untuk kulit yang mengalami ruam popok, lecet, dan luka ringan", sediaan: "Krim" },
+      { id: "p70", nama: "parmethrin krim", kandungan: "permethrin", indikasi: "infeksi kulit kudis,membasmi  kutu tubuh dan kutu kemaluan", sediaan: "Krim" },
+      { id: "p71", nama: "krim pi khang shuang", kandungan: "triamcilone acetonide+micinazole titrate+neomycin sulfate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim" },
+      { id: "p72", nama: "pai du zhi yang krim", kandungan: "asam salisilat+belerang+mentol+tea tree oil", indikasi: "meringankan penyakit kulit yang disebabkan jamur seperti panu", sediaan: "Krim" },
+      { id: "p73", nama: "pizolon", kandungan: "triamcilone acetonide+micinazole titrate+neomycin sulfate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim" },
+      { id: "p74", nama: "permethrin krim", kandungan: "permethrin", indikasi: "infeksi kulit kudis, membasmi kutu tubuh dan kemaluan", sediaan: "Krim" },
+      { id: "p75", nama: "pai yan pin", kandungan: "dexametasone asetat", indikasi: "untuk gatallokal yang menetap dan dermatitis", sediaan: "Krim" },
+      { id: "p76", nama: "star ag", kandungan: "collidal silver+basis gel", indikasi: "untuk luka meliputi pressure ulcers, venous ulcers dan ulkus diabetik", sediaan: "Gel" },
+      { id: "p77", nama: "silver healing bio-gel", kandungan: "ion perak aktif+glisein+karbomer+trietanolamin+air murni", indikasi: "untuk penanganan luka dekubitus, luka statis vena dan luka diabetes", sediaan: "Gel" },
+      { id: "p78", nama: "scabimite krim", kandungan: "permethrin 5%", indikasi: "untuk mengobati dan mengatasi scabies (gudik)", sediaan: "Krim" },
+      { id: "p79", nama: "sulfadiazine silver cream", kandungan: "sulfadiazine silver 10 mg", indikasi: "sediaan antimikroba topikal untuk pencegahan dan pengobatan sepsis luka", sediaan: "Krim" },
+      { id: "p80", nama: "synalten cream", kandungan: "fluconolone acetonide+gentamicin sulfate", indikasi: "untuk meringankan inflamasi dari dermatosis", sediaan: "Krim" },
+      { id: "p81", nama: "sinobiotik", kandungan: "flucinolone acetonide+gentamicin sulfate", indikasi: "untuk peradangan dan gatal pada kulit disertai infeksi bakteri", sediaan: "Krim" },
+      { id: "p82", nama: "sagestam krim", kandungan: "gentamicin sulfate", indikasi: "infeksi kulit akibat bakteri dan luka gores, luka lecet dan luka bakar ringan", sediaan: "Krim" },
+      { id: "p83", nama: "ultrasiline", kandungan: "Clotrimazole + Betamethasone Dipropionate", indikasi: "untuk mengobati candidiasin", sediaan: "Krim" },
+      { id: "p84", nama: "tix salep", kandungan: "nellumbinis nucifera folium+shoporae flavescentis radix", indikasi: "untuk meredakan gatal gatal pada kulit", sediaan: "Salep" },
+      { id: "p85", nama: "vicansort", kandungan: "hydrocortisone+clioquinol+camphor", indikasi: "untuk mengobati dermatitis dan eksim yang disertai gatal, kemerahan dan infeksi bakteri", sediaan: "Krim" },
+      { id: "p86", nama: "zensoderm", kandungan: "betamethasone+gentamicin", indikasi: "untuk penyakit kulit yang meradang dan gatal disertai infeksi bakteri", sediaan: "Krim" },
+      { id: "p87", nama: "zoralin", kandungan: "ketoconazole", indikasi: "untuk mengobati dermatofitosis, pityriasis dan kandidosis kulit", sediaan: "Krim" },
+      { id: "p88", nama: "zenalog", kandungan: "triamcinolone acetonide", indikasi: "untuk mengobati sariawan,luka di mulut,peradangan dan luka di gusi", sediaan: "Krim" },
+      { id: "p89", nama: "zalf", kandungan: "acidum salicylicum+sulfur praecipitatum+zalf base ad", indikasi: "membantu meringangankan penyakit kulit seperti kutu air, kadas dan kurap", sediaan: "Salep" },
+      { id: "p90", nama: "pagoda salep", kandungan: "sulfur praecipitatum+asam benzoat+asam salisilat+camphora", indikasi: "untuk penyakit kulit seperti gatal di telapak tangan dan kaki", sediaan: "Salep" },
+      { id: "p91", nama: "salep 2-4", kandungan: "asam salisilat+sulfur praecipitatum", indikasi: "meringankankan penyakit kulit yang disebabkan jamur", sediaan: "Salep" },
+      { id: "p92", nama: "nosib cap bison", kandungan: "acidium salisilat+acidium benzocium+sulfur praecipitatum", indikasi: "meringankankan penyakit kulit seperti panu dan gatal karna kutu air", sediaan: "Salep" },
+      { id: "p93", nama: "salep hitam ichtyol", kandungan: "icthammolum", indikasi: "untuk bisul", sediaan: "Salep" },
+      { id: "p94", nama: "krim 88", kandungan: "miconazole nitrate 2%", indikasi: "krim anti jamur seperti kutu air kurap, dan panu", sediaan: "Krim" },
+      { id: "p95", nama: "salep 88", kandungan: "acidum salicylum+acidum benzocum+sulfur praecipitatum", indikasi: "meringankan penyakit kulit seperti panu, kadas, kurap, dan kutu air", sediaan: "Salep" },
+      { id: "p96", nama: "counterpain krim", kandungan: "metilsalisilat+eugenol+mentol+vanishing cream base", indikasi: "meringankan sakit pada otot, nyeri sendi, dan nyeri akibat encok", sediaan: "Krim" },
+      { id: "p97", nama: "Diclofenac Diethylamine", kandungan: "diclofenac diethylamine", indikasi: "peradangan akibat trauma pada tedon, ligamenta, otot dan sendi", sediaan: "Krim" },
+      { id: "p98", nama: "lumbar spine cooling gel", kandungan: "bahan herbal+mentol+metil salisilat", indikasi: "meredakan rasa nyeri dan pegal di area pinggang/punggung", sediaan: "Gel" },
+      { id: "p99", nama: "cenfresh", kandungan: "carmellose sodium", indikasi: "untuk melembapkan keluhan mata kering serta lelah", sediaan: "Tetes Mata" },
+      { id: "p100", nama: "floxa", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata" },
+      { id: "p101", nama: "polynel", kandungan: "fluorometholone+neomycin sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p102", nama: "polydex", kandungan: "dexamethasone sodium posphate+neomicyn+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p103", nama: "cendo xitrol", kandungan: "dexamethashone+neomycin sulfate+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p104", nama: "eyefresh mild", kandungan: "hypromellose+dextran", indikasi: "mengurangi iritasi pada mata yang kering", sediaan: "Tetes Mata" },
+      { id: "p105", nama: "cendo LFX", kandungan: "levofloxacin hemihydrate", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata" },
+      { id: "p106", nama: "cendo lyteers", kandungan: "sodium chloride+potassium chloride", indikasi: "melembabkan, melumasi dan meredakan rasa kering serta iritasi", sediaan: "Tetes Mata" },
+      { id: "p107", nama: "tobro", kandungan: "tobramycin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata" },
+      { id: "p108", nama: "0,5% mydriatil", kandungan: "tropicamide", indikasi: "memperlebar pupil mata", sediaan: "Tetes Mata" },
+      { id: "p109", nama: "natacen", kandungan: "natamycin", indikasi: "mengobati infeksi jamur pada mata", sediaan: "Tetes Mata" },
+      { id: "p110", nama: "0,5% cendo tropin", kandungan: "atropine sulfate", indikasi: "memperlebar pupil mata", sediaan: "Tetes Mata" },
+      { id: "p111", nama: "polygran", kandungan: "polymyxin b sulfate+neomycin sulfate+gramicidin", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata" },
+      { id: "p112", nama: "vasacon-A", kandungan: "antazholinehydrochloride+naphazoline hydrochloride", indikasi: "meredakan kemerahan dan pembengkakan pada mata akibat alergi/ iritas", sediaan: "Tetes Mata" },
+      { id: "p113", nama: "vasacon", kandungan: "naphazoline hydrochloride", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata" },
+      { id: "p114", nama: "0,5% timol", kandungan: "timolol maleate", indikasi: "pengobatan kenaikan tekanan intraokuler pada penderita hipertensi", sediaan: "Tetes Mata" },
+      { id: "p115", nama: "p-pred", kandungan: "prednisolone acetate", indikasi: "meredakan peradangan pada mata", sediaan: "Tetes Mata" },
+      { id: "p116", nama: "sanbe tears", kandungan: "dextran 70+hypromellose", indikasi: "mencegah kekeringan dan iritasi mata", sediaan: "Tetes Mata" },
+      { id: "p117", nama: "Genoint Gentamicin Sulfate", kandungan: "gentamicin sulfate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata" },
+      { id: "p118", nama: "ximex optixitrol", kandungan: "polymixin b sulfat+neomycin sulfate+dexamethasone sodium", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata" },
+      { id: "p119", nama: "cendo mycos", kandungan: "hydrocortisone acetate+chloramphenicol", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Salep Mata" },
+      { id: "p120", nama: "cendo xitrol", kandungan: "dexamethshone+neoumycin+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Salep Mata" },
+      { id: "p121", nama: "timol 0,5%", kandungan: "timolol maleate", indikasi: "menurunkan tekanan intraokular pada penderita glaukoma", sediaan: "Tetes Mata" },
+      { id: "p122", nama: "0,5% cendo tropin", kandungan: "atropine sulfate", indikasi: "memperlebar pupil mata dan peradangan pada mata", sediaan: "Tetes Mata" },
+      { id: "p123", nama: "0,5% cendo mydriatil", kandungan: "tropicamide", indikasi: "sebagaisiklopelgia dan midriasis", sediaan: "Tetes Mata" },
+      { id: "p124", nama: "floxa", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata yang disebabkan bakteri", sediaan: "Tetes Mata" },
+      { id: "p125", nama: "augentonic", kandungan: "phenylephrine hydrochloride+zinc sulfate heptahydrate", indikasi: "mengobati mata merah dan peradangan akibat iritasi minor", sediaan: "Tetes Mata" },
+      { id: "p126", nama: "cenfresh", kandungan: "carmellose sodium", indikasi: "melembapkan dan meredakan mata kering", sediaan: "Tetes Mata" },
+      { id: "p127", nama: "0,3% genta", kandungan: "gentamicin sulfate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata" },
+      { id: "p128", nama: "vitrolenta", kandungan: "potassium iodide+sodium iodide", indikasi: "mengobati kekeruhan dan pendarahan pada vitreous body", sediaan: "Tetes Mata" },
+      { id: "p129", nama: "polynel", kandungan: "fluorometholone+neomycin sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p130", nama: "catarlent", kandungan: "potassium iodide", indikasi: "membantu memperlambat perkembangan katarak pada mata", sediaan: "Tetes Mata" },
+      { id: "p131", nama: "vasacon", kandungan: "naphazoline hydrochloride", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata" },
+      { id: "p132", nama: "vasacon-A", kandungan: "antazholinehydrochloride+naphazoline hydrochloride", indikasi: "untuk meredakan sementara alergi tertentu pada mata", sediaan: "Tetes Mata" },
+      { id: "p133", nama: "0,5% pantocain", kandungan: "tetracaine hydrochlorise", indikasi: "sebagai obat bius lokal", sediaan: "Tetes Mata" },
+      { id: "p134", nama: "tobroson", kandungan: "tobramycin+dexamethasone sodium phosphate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p135", nama: "eyefresh", kandungan: "hypromellose+dextran", indikasi: "mengurangi iritasi pada mata yang kering", sediaan: "Tetes Mata" },
+      { id: "p136", nama: "polygran", kandungan: "polymyxin b sulfate+neomycin sulfate+gramicidin", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata" },
+      { id: "p137", nama: "lfx", kandungan: "levofloxacin hemihydrate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata" },
+      { id: "p138", nama: "polydex", kandungan: "dexamethasone sodium posphate+neomicyn+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p139", nama: "p-pred", kandungan: "prednisolone acetate", indikasi: "mengobati peradangan dan alergi pada mata", sediaan: "Tetes Mata" },
+      { id: "p140", nama: "cendo hyalub", kandungan: "sodium hyaluronate", indikasi: "melembapkan dan meredakan mata kering yang berat", sediaan: "Tetes Mata" },
+      { id: "p141", nama: "akilen eye dops", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata" },
+      { id: "p142", nama: "akilen ear drops", kandungan: "oflaxacin", indikasi: "mengobati infeksi pada telinga", sediaan: "Tetes Telinga" },
+      { id: "p143", nama: "rohto v-estra", kandungan: "tetrahydrozoline hcl 0,05%+macrogol", indikasi: "meredakan mata merah dang mata kering", sediaan: "Tetes Mata" },
+      { id: "p144", nama: "erlamycetin chlorampenicol", kandungan: "chloramphenicoll", indikasi: "mengobati infeksi pada telinga", sediaan: "Tetes Telinga" },
+      { id: "p145", nama: "blecidex ear/eye", kandungan: "framcetyn sulfate+gramicidin+dexamethasone sodium metasulfo", indikasi: "mengobati peradangan yang disertai infeksi", sediaan: "Tetes Telinga Dan Mata" },
+      { id: "p146", nama: "bralifex plus", kandungan: "tobramycin+dexamethasone", indikasi: "mengobati peradangan yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p147", nama: "polidemisin", kandungan: "neomycin sulfate+polymyxin b sulfate+dexamethasone", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata" },
+      { id: "p148", nama: "braito", kandungan: "tetrahydrozoline hcl 0,05%+benzalkonium chloride 0.0%", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata" },
+      { id: "p149", nama: "braito dry eye", kandungan: "hydroxypropyl methylcellulose+benzalkokonium chloride 0.01%", indikasi: "mengatasi gejala mata kering,menyejukkan dan sebagai lubrican mata", sediaan: "Tetes Mata" },
+      { id: "p150", nama: "baquinor", kandungan: "ciprofloxacin hydrochloride", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata" },
+      { id: "p151", nama: "otolin", kandungan: "chloramphenicol+polymyxin b sulphate+benzocaine", indikasi: "mengobati infeksi bakteri pada telinga yang disertai nyeri", sediaan: "Tetes Telinga" },
+      { id: "p152", nama: "hialid", kandungan: "sodium hyaluronate", indikasi: "melembapkan dan meredakan mata kering", sediaan: "Tetes Mata" },
+      { id: "p153", nama: "otilon", kandungan: "polymyxin b sulfate+neomycin sulfate+fludrocortisone acetate+lidocaine hcl", indikasi: "mengobati peradangan dan infeksi bakteri pada telinga disertai nyeri", sediaan: "Tetes Telinga" },
+      { id: "p154", nama: "flamar", kandungan: "diclofenac sodium", indikasi: "mengurangi peradangan dan nyeri pada mata", sediaan: "Tetes Mata" },
+      { id: "p155", nama: "rohto cool", kandungan: "naphazoline hcl 0,012%", indikasi: "meredakan sementara mata merah akibat iritasi ringan", sediaan: "Tetes Mata" },
+      { id: "p156", nama: "rohto", kandungan: "tetrahydrozoline hcl 0,05%", indikasi: "mengatasi mata merah akibat iritasi ringan", sediaan: "Tetes Mata" },
+      { id: "p157", nama: "sterimar", kandungan: "air laut alami", indikasi: "membersihkan saluran hidung bayi secara lembut", sediaan: "Semprotan Hidung" },
+      { id: "p158", nama: "forumen", kandungan: "docusate sodium", indikasi: "untuk mengeluarkan kotoran telinga", sediaan: "Tetes Telinga" },
+      { id: "p159", nama: "cooling 5", kandungan: "phenol crystal 1,4%", indikasi: "meredakan sakit tenggorokan,iritasi,sakit pada mulut, gusi dan sariawan", sediaan: "Semprot Mulut" },
+      { id: "p160", nama: "docusate sodium", kandungan: "docusate sodium", indikasi: "untuk membantu mengeluarkan kotoran telinga", sediaan: "Tetes Telinga" },
+      { id: "p161", nama: "aloclair Plus spray", kandungan: "aloe vera dan asam hyaluronic", indikasi: "meredakan nyeri secara cepat dan penyembuhan ulkus mulut", sediaan: "Semprot Mulut" },
+      { id: "p162", nama: "vital ear oil", kandungan: "thymol+peppermint oil+champor", indikasi: "sebagai antiseptik pada saluran telinga", sediaan: "Tetes Telinga" },
+      { id: "p163", nama: "iliadin", kandungan: "oxymerazoline hcl 0,05%", indikasi: "untuk meringankan hidung tersumbat akibat rhinitis akut", sediaan: "Semprot Hidung" },
+      { id: "p164", nama: "modexa", kandungan: "mometasone furuate monohydrte", indikasi: "mengobati rhinitis alergi (hidung tersumbat,berair dan bersin-bersin)", sediaan: "Semprotan Hidung" },
+      { id: "p165", nama: "nasonex", kandungan: "mometasone furuate monohydrte", indikasi: "pengobatan dan pencegahan rinitis alergi", sediaan: "Semprot Hidung" },
+      { id: "p166", nama: "callusol", kandungan: "salicylic acid+lactic acid+polidocanol", indikasi: "mengobsti mata ikan,kapalan,kulit yang mengeras dan kutil", sediaan: "Cairan Obat Luar" },
+      { id: "p167", nama: "ofloxacin", kandungan: "ofloxacin", indikasi: "mengobati infeksi bakteri pada saluran telinga", sediaan: "Tetes Telinga" },
+      { id: "p168", nama: "nubreathe nasal wash", kandungan: "natrium klorida", indikasi: "membersihkan saluran hidung", sediaan: "Larutan Cuci" },
+      { id: "p169", nama: "tupepe", kandungan: "urea+dimethicone+ekstrsak lidah buaya", indikasi: "melembapkan dan merawat kulit yang, pecah-pecah, dan menebal", sediaan: "Krim" },
+      { id: "p170", nama: "aloclair plus mouthwash", kandungan: "aloevera+asam hialuronat", indikasi: "meredakan nyeri ulkus rongga mulut secara cepat", sediaan: "Cairan Kumur" },
+      { id: "p171", nama: "cooling 5 cherry", kandungan: "phenol crystal 1,4%", indikasi: "meredakan sakit tenggorokan,iritasi,sakit pada mulut, gusi dan sariawan", sediaan: "Semprot Mulut" },
+      { id: "p172", nama: "cooling 5 plus", kandungan: "phenol+benzocaine", indikasi: "menghilangkan rasa sakit seperti sakit gigi dan radang gusi", sediaan: "Semprot Mulut" },
+      { id: "p173", nama: "tantum verde", kandungan: "benzydamine", indikasi: "meringankan rasa sakit pada mulut dan tenggorokan seperti tonsilitis", sediaan: "Larutan Kumur" },
+      { id: "p174", nama: "regrou", kandungan: "minoxidil", indikasi: "membantu menumbuhkan kembali rambut", sediaan: "Cairan Obat Luar" },
+      { id: "p175", nama: "ketomed", kandungan: "ketoconozale", indikasi: "menghilangkan ketombe", sediaan: "Larutan Kulit Kepala" },
+      { id: "p176", nama: "betadine cleanser", kandungan: "povidone-lodine 7,5%", indikasi: "cairan untuk membersihkan luka", sediaan: "Cairan Pembersih Kulit" },
+      { id: "p177", nama: "betadine feminine hygiene", kandungan: "povidone-lodine 10%", indikasi: "pembersih khusus kewanitaan untuk gejala iritas ringan", sediaan: "Cairan" },
+      { id: "p178", nama: "betadine moutwash", kandungan: "povidone-lodine 1%", indikasi: "untuk rongga mulut seperti gusi bengkak dan sakit tenggorokan", sediaan: "Obat Kumur" },
+      { id: "p179", nama: "minosep extra", kandungan: "chlorhexadine gluconate +cpc", indikasi: "meredakan nyeri dan melindungi rongga mulut", sediaan: "Obat Kumur" },
+      { id: "p180", nama: "minosep red", kandungan: "chlorhexadine gluconate", indikasi: "meringankan sariawan", sediaan: "Obat Kumur" },
+      { id: "p181", nama: "minosep mild", kandungan: "chlorhexadine gluconate", indikasi: "meringankan sariawan", sediaan: "Obat Kumur" },
+      { id: "p182", nama: "minosep kids", kandungan: "cpc+sodium flouride", indikasi: "untuk gigi berlubang", sediaan: "Obat Kumur" },
+      { id: "p183", nama: "ventolin inhaler", kandungan: "salbutamol", indikasi: "membantu melegakan sesak napas pada asma dan penyakit paru", sediaan: "Inhaler" },
+      { id: "p184", nama: "medisio", kandungan: "policresulen", indikasi: "untuk kauterisasi dan irigasi pada luka/ perawatan luka tertentu", sediaan: "Cairan Obat Luar" },
+      { id: "p185", nama: "sp troches", kandungan: "dequalinium chloride", indikasi: "untuk infeksi bakteri dan fungi dalam ruang mulut dan tenggorokan", sediaan: "Tablet Hisap" },
+      { id: "p186", nama: "tantum lozenges", kandungan: "benzydamine hydrochloride", indikasi: "untuk meringankan rasa sakit pada rongga mulut", sediaan: "Tablet Hisap" },
+      { id: "p187", nama: "degirol", kandungan: "dequalinium chloride 0,5 mg", indikasi: "untuk mengobati peradangan,sakit tenggorokan dan infeksi", sediaan: "Tablet Hisap" },
+      { id: "p188", nama: "meiji", kandungan: "neomycin+gramicidin", indikasi: "antibiotik ringan untuk untuk ingeksi pada rongga mulut", sediaan: "Tablet Hisap" },
+      { id: "p189", nama: "seretide diskus", kandungan: "salmeterol xinafote+fluticasone propionate", indikasi: "pengobatan rutin asma bronkial dan PPOK yang memerlukan kombinasi", sediaan: "Serbuk Inhalasi" },
+      { id: "p190", nama: "desolex-N", kandungan: "desonidine+neomycin sulfate", indikasi: "untuk meringankan inflamasi dari dermatoses yang responsif terhadap kortikosteroid", sediaan: "Krim" }
     ];
     window.ORIGINAL_190_PRODUCTS = ORIGINAL_190_PRODUCTS;
 
@@ -846,19 +826,6 @@
           if (!Array.isArray(products) || products.length === 0) {
             products = [...ORIGINAL_190_PRODUCTS];
             saveToStorage();
-          } else {
-            // Update otomatis produk yang belum memiliki nomor rak agar terisi "ETALASE 5B"
-            let needsSave = false;
-            products = products.map(p => {
-              if (!p.rak || p.rak.trim() === '') {
-                needsSave = true;
-                return { ...p, rak: 'ETALASE 5B' };
-              }
-              return p;
-            });
-            if (needsSave) {
-              saveToStorage();
-            }
           }
         } catch (e) {
           products = [...ORIGINAL_190_PRODUCTS];
@@ -897,7 +864,7 @@
       const sediaanFilter = document.getElementById('sediaanSelectFilter').value.toLowerCase();
 
       // Pecah pencarian menjadi beberapa kata kunci jika dipisahkan oleh koma, plus, atau spasi
-      // Mendukung multi-kandungan, multi-indikasi, dan kombinasi nama + sediaan
+      // Mendukung multi-kandungan seperti "betamethasone, neomycin" atau "paracetamol caffeine"
       const tokens = rawQuery.toLowerCase().split(/[,+]/).map(t => t.trim()).filter(Boolean);
 
       return products.filter(item => {
@@ -912,10 +879,10 @@
         const kandungan = (item.kandungan || '').toLowerCase();
         const indikasi = (item.indikasi || '').toLowerCase();
         const sediaan = (item.sediaan || '').toLowerCase();
-        const rak = (item.rak || '').toLowerCase();
 
         // Mode pencarian khusus kolom Kandungan Isi (Multi-Kandungan)
         if (currentFilterField === 'kandungan') {
+          // Semua kata kunci kandungan yang diketik harus ada di dalam kolom kandungan
           return tokens.every(token => kandungan.includes(token));
         } else if (currentFilterField === 'nama') {
           return tokens.every(token => nama.includes(token));
@@ -923,58 +890,20 @@
           return tokens.every(token => indikasi.includes(token));
         } else if (currentFilterField === 'sediaan') {
           return tokens.every(token => sediaan.includes(token));
-        } else if (currentFilterField === 'rak') {
-          return tokens.every(token => rak.includes(token));
         } else {
           // Mode Semua Kolom:
-          // 1. Cek apakah seluruh token ada bersamaan di kandungan
+          // 1. Cek apakah seluruh token ada bersamaan di kandungan (pencarian multi-kandungan umum)
           const allInKandungan = tokens.every(token => kandungan.includes(token));
           if (allInKandungan) return true;
 
-          // 2. Cek apakah seluruh token ada bersamaan di indikasi
-          const allInIndikasi = tokens.every(token => indikasi.includes(token));
-          if (allInIndikasi) return true;
-
-          // 3. Cek apakah cocok di lokasi rak
-          const allInRak = tokens.every(token => rak.includes(token));
-          if (allInRak) return true;
-
-          // 4. Atau setiap kata cocok di gabungan Nama + Sediaan + Kandungan + Indikasi + Rak
-          const spaceTokens = rawQuery.toLowerCase().split(/\s+/).filter(Boolean);
-          const matchCombined = spaceTokens.every(tok => 
-            nama.includes(tok) || 
-            sediaan.includes(tok) || 
-            kandungan.includes(tok) || 
-            indikasi.includes(tok) ||
-            rak.includes(tok)
-          );
-          if (matchCombined) return true;
-
+          // 2. Atau setiap token ditemukan di salah satu atribut produk
           return tokens.every(token => 
             nama.includes(token) || 
             kandungan.includes(token) || 
             indikasi.includes(token) || 
-            sediaan.includes(token) ||
-            rak.includes(token)
+            sediaan.includes(token)
           );
         }
-      });
-    }
-
-    // Helper untuk mengecek apakah ada varian sediaan lain dari produk dengan nama serupa
-    function getProductVariants(currentProduct) {
-      const baseName = currentProduct.nama.toLowerCase()
-        .replace(/\b(krim|salep|gel|tetes|tablet|sirup|inhaler|drops|eye|ear)\b/gi, '')
-        .trim();
-      
-      if (baseName.length < 3) return [];
-      
-      return products.filter(p => {
-        if (p.id === currentProduct.id) return false;
-        const otherBase = p.nama.toLowerCase()
-          .replace(/\b(krim|salep|gel|tetes|tablet|sirup|inhaler|drops|eye|ear)\b/gi, '')
-          .trim();
-        return (otherBase === baseName || p.nama.toLowerCase().includes(baseName) || baseName.includes(otherBase)) && p.sediaan !== currentProduct.sediaan;
       });
     }
 
@@ -1032,17 +961,12 @@
       // 1. Render Kartu (Tampilan Bersih, Tenang, Nyaman Dibaca dengan Aksen Hijau Daun Teduh)
       grid.innerHTML = filtered.map(item => {
         const sediaanBadgeColor = getSediaanBadgeClass(item.sediaan);
-        const variants = getProductVariants(item);
-        
-        // Render lokasi rak (bisa 2 atau 3 badge lokasi)
-        const rakLocations = (item.rak || '').split(/[,+]/).map(r => r.trim()).filter(Boolean);
-
         return `
           <div class="bg-white rounded-2xl p-4.5 sm:p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-md border border-slate-150 flex flex-col justify-between transition-all group hover:border-leaf-300">
             <div>
               <div class="flex items-start justify-between gap-2.5 mb-2.5">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-semibold ${sediaanBadgeColor}">
-                  <i class="fa-solid fa-capsules mr-1.5 text-[10px]"></i> ${highlightText(item.sediaan, query)}
+                  ${highlightText(item.sediaan, query)}
                 </span>
                 <div class="flex items-center gap-1 opacity-70 group-hover:opacity-100 transition">
                   <button onclick="openModal('edit', '${item.id}')" title="Edit Produk" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-leaf-50 text-slate-600 hover:text-leaf-700 flex items-center justify-center text-xs transition border border-slate-100">
@@ -1058,34 +982,6 @@
               <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-leaf-800 transition tracking-tight">
                 ${highlightText(item.nama, query)}
               </h3>
-
-              <!-- Badge Lokasi Nomor Rak / Posisi Lemari -->
-              <div class="mt-2 flex flex-wrap items-center gap-1">
-                <span class="text-[10px] font-bold text-slate-400 flex items-center gap-1 mr-0.5">
-                  <i class="fa-solid fa-boxes-stacked text-leaf-600 text-[10px]"></i> Lokasi:
-                </span>
-                ${rakLocations.length > 0 ? rakLocations.map(loc => `
-                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200">
-                    <i class="fa-solid fa-location-dot text-[8px] mr-1 text-amber-600"></i> ${highlightText(loc, query)}
-                  </span>
-                `).join('') : `
-                  <span class="text-[10px] text-slate-400 italic">Belum diatur</span>
-                `}
-              </div>
-
-              <!-- Deteksi Varian Sediaan Lain Jika Ada -->
-              ${variants.length > 0 ? `
-                <div class="mt-2 flex flex-wrap items-center gap-1.5 p-1.5 bg-amber-50/80 rounded-xl border border-amber-200/60">
-                  <span class="text-[10px] font-bold text-amber-800 flex items-center gap-1">
-                    <i class="fa-solid fa-shuffle text-[9px]"></i> Varian lain:
-                  </span>
-                  ${variants.map(v => `
-                    <button onclick="filterSpecificProduct('${v.nama.replace(/'/g, "\\'")}', '${v.sediaan}')" class="text-[10px] font-semibold px-2 py-0.5 bg-white text-slate-700 border border-amber-200 rounded-md hover:bg-amber-100 hover:text-amber-900 transition">
-                      ${v.sediaan}
-                    </button>
-                  `).join('')}
-                </div>
-              ` : ''}
 
               <!-- Kandungan Zat Aktif (Nuansa Hijau Daun Teduh & Jelas Dibaca) -->
               <div class="mt-3 bg-[#f5f9f2] rounded-xl p-2.5 border border-leaf-200/80">
@@ -1120,19 +1016,10 @@
       }).join('');
 
       // 2. Render Tabel Ringkas
-      tableBody.innerHTML = filtered.map(item => {
-        const rakLocations = (item.rak || '').split(/[,+]/).map(r => r.trim()).filter(Boolean);
-        return `
+      tableBody.innerHTML = filtered.map(item => `
         <tr class="hover:bg-leaf-50/40 transition">
           <td class="py-3 px-4 font-bold text-slate-900">
             ${highlightText(item.nama, query)}
-          </td>
-          <td class="py-3 px-4 text-xs font-semibold">
-            ${rakLocations.length > 0 ? rakLocations.map(loc => `
-              <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200 mr-1 mb-1">
-                ${highlightText(loc, query)}
-              </span>
-            `).join('') : '<span class="text-slate-400 italic text-[11px]">-</span>'}
           </td>
           <td class="py-3 px-4 text-xs font-semibold text-slate-800 max-w-xs">
             ${highlightText(item.kandungan, query)}
@@ -1156,7 +1043,7 @@
             </div>
           </td>
         </tr>
-      `}).join('');
+      `).join('');
     }
 
     function getSediaanBadgeClass(sediaan = '') {
@@ -1196,11 +1083,9 @@
         document.getElementById('inputKandungan').value = item.kandungan;
         document.getElementById('inputIndikasi').value = item.indikasi;
         document.getElementById('inputSediaan').value = item.sediaan;
-        document.getElementById('inputRak').value = item.rak || '';
       } else {
         modalTitle.textContent = 'Tambah Produk Obat Baru';
         saveBtnText.textContent = 'Simpan ke Katalog';
-        document.getElementById('inputRak').value = '';
       }
 
       modal.classList.remove('hidden');
@@ -1218,17 +1103,16 @@
       const kandungan = document.getElementById('inputKandungan').value.trim();
       const indikasi = document.getElementById('inputIndikasi').value.trim();
       const sediaan = document.getElementById('inputSediaan').value.trim();
-      const rak = document.getElementById('inputRak').value.trim();
 
       if (!nama || !kandungan || !indikasi || !sediaan) {
-        showToast('Mohon isi semua kolom produk wajib!', 'warning');
+        showToast('Mohon isi semua kolom produk!', 'warning');
         return;
       }
 
       if (editId) {
         const index = products.findIndex(p => p.id === editId);
         if (index !== -1) {
-          const updated = { ...products[index], nama, kandungan, indikasi, sediaan, rak };
+          const updated = { ...products[index], nama, kandungan, indikasi, sediaan };
           products[index] = updated;
           saveToLocalStorageOnly();
           if (window.cloudEngine) {
@@ -1245,7 +1129,6 @@
           kandungan,
           indikasi,
           sediaan,
-          rak,
           createdAt: Date.now()
         };
         products.unshift(newProduct);
@@ -1330,13 +1213,6 @@
       renderProducts();
     }
 
-    // Fungsi klik cepat varian sediaan lain
-    function filterSpecificProduct(nama, sediaan) {
-      const searchInput = document.getElementById('searchInput');
-      searchInput.value = `${nama} ${sediaan}`;
-      handleSearchInput();
-    }
-
     // Switch View
     function switchView(mode) {
       currentViewMode = mode;
@@ -1390,12 +1266,11 @@
 
     function exportDataCSV() {
       toggleDataMenu();
-      let csvContent = "data:text/csv;charset=utf-8,ID,Nama Produk,Nomor Rak / Posisi Lemari,Kandungan Isi,Indikasi,Jenis Sediaan\n";
+      let csvContent = "data:text/csv;charset=utf-8,ID,Nama Produk,Kandungan Isi,Indikasi,Jenis Sediaan\n";
       products.forEach(p => {
         const row = [
           `"${p.id}"`,
           `"${(p.nama || '').replace(/"/g, '""')}"`,
-          `"${(p.rak || '').replace(/"/g, '""')}"`,
           `"${(p.kandungan || '').replace(/"/g, '""')}"`,
           `"${(p.indikasi || '').replace(/"/g, '""')}"`,
           `"${(p.sediaan || '').replace(/"/g, '""')}"`
@@ -1441,8 +1316,7 @@
       const p = products.find(item => item.id === id);
       if (!p) return;
 
-      const rakText = p.rak ? `\nNomor Rak/Lemari: ${p.rak}` : '';
-      const text = `APOTEK VALENCIA (Solusi Sehat Kita)\nNama Produk: ${p.nama}${rakText}\nKandungan Isi: ${p.kandungan}\nIndikasi: ${p.indikasi}\nJenis Sediaan: ${p.sediaan}`;
+      const text = `APOTEK VALENCIA (Solusi Sehat Kita)\nNama Produk: ${p.nama}\nKandungan Isi: ${p.kandungan}\nIndikasi: ${p.indikasi}\nJenis Sediaan: ${p.sediaan}`;
 
       const el = document.createElement('textarea');
       el.value = text;
