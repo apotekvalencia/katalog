@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apotek Valencia - Solusi Sehat Kita</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,700;1,800&family=Alex+Brush&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            lavender: {
+              50: '#f8f4fe',
+              100: '#f0e6fd',
+              200: '#e3d0fc',
+              300: '#ceadf9',
+              400: '#b482f5',
+              500: '#ab7cf8',
+              600: '#955cee',
+              700: '#7e3ed6',
+              800: '#6933b2',
+              900: '#562b90',
+            },
+            leaf: {
+              50: '#f3f8f0',
+              100: '#e4f1de',
+              200: '#cce5c2',
+              300: '#a7d296',
+              400: '#7eb967',
+              500: '#6fa652',
+              600: '#58883e',
+              700: '#466c32',
+              800: '#3a572b',
+              900: '#314825',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Clean Smooth Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #faf9fd;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #dfd4f2;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c7b3e8;
+    }
+    .highlight-match {
+      background-color: #fef08a;
+      color: #854d0e;
+      font-weight: 700;
+      padding: 0 3px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-[#fbfafd] text-slate-800 antialiased min-h-screen flex flex-col font-sans selection:bg-lavender-200 selection:text-lavender-900">
+
+  <!-- ================= TOP NAVIGATION HEADER (GRADASI HIJAU DAUN DOMINAN KE UNGU LAVENDER) ================= -->
+  <header class="bg-gradient-to-r from-[#4d8639] via-[#5c9d4a] via-70% to-[#9b6af0] sticky top-0 z-40 border-b border-[#437532] shadow-[0_4px_22px_-2px_rgba(77,134,57,0.35)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 sm:h-24">
+        
+        <!-- Brand & Logo Presisi Sesuai Panduan Brand Background Hijau-Ungu -->
+        <div class="flex items-center gap-3 sm:gap-4.5 cursor-pointer py-1.5 select-none" onclick="clearSearch()">
+          <!-- Ikon Vektor Presisi (Varian Putih Bersih di atas Latar Gradasi) -->
+          <div class="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shrink-0 drop-shadow-md">
+            <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Atap Heksagon Isometrik (Putih Solid Berongga) -->
+              <path d="M 50 12 L 79 28 L 79 43 L 50 27 L 21 43 L 21 28 Z" fill="#ffffff" />
+              <!-- Dinding Kotak Bawah Kiri Terbuka -->
+              <path d="M 21 45 L 50 61 L 50 71 L 21 55 Z" fill="#ffffff" />
+              <!-- Kelopak Daun Organik di Kanan Bawah dengan Rongga Urat Daun Oval -->
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M 50 71 C 50 71 52 50 67 44 C 82 38 88 51 86 58 C 82 72 63 80 50 71 Z M 57 66 C 67 68 76 60 77 54 C 77 50 72 45 64 49 C 55 53 54 63 57 66 Z" fill="#ffffff" />
+            </svg>
+          </div>
+          
+          <!-- Tipografi Identik Brand Guide: "Apotek Valencia" Berwarna Putih Bersih -->
+          <div class="flex flex-col justify-center">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 leading-none">
+              <span class="text-xl sm:text-[27px] font-bold tracking-tight text-white font-serif italic drop-shadow-sm">Apotek</span>
+              <span class="text-[25px] sm:text-[33px] font-semibold text-white tracking-wide drop-shadow-sm -mt-1 sm:mt-0" style="font-family: 'Playfair Display', serif; font-style: italic;">Valencia</span>
+            </div>
+            <div class="flex items-center gap-2 mt-1 sm:mt-1.5">
+              <span class="text-[11px] sm:text-[12.5px] font-medium text-emerald-100 tracking-wider italic font-sans">
+                Solusi Sehat Kita
+              </span>
+              <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
+              <span class="hidden sm:inline-block text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-xs shadow-xs border border-white/20">
+                Katalog Resmi
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Status Sinkronisasi Cloud & Offline -->
+          <div id="syncStatusBadge" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/20 text-white border border-white/30 backdrop-blur-xs shadow-xs transition-all">
+            <span id="syncDot" class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+            <span id="syncText" class="hidden sm:inline">Sinkron Cloud</span>
+            <span id="syncTextMobile" class="sm:hidden">Live</span>
+          </div>
+
+          <!-- Tambah Produk Button (Desktop) - Menggunakan Aksen Putih Bersih di atas Gradasi -->
+          <button onclick="openModal('add')" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-emerald-50 active:scale-95 text-[#466c32] font-bold text-xs rounded-xl transition-all shadow-md shadow-emerald-950/20 border border-white">
+            <i class="fa-solid fa-plus text-xs text-[#58883e]"></i>
+            <span>Tambah Obat</span>
+          </button>
+
+          <!-- Kelola Data & Cadangan Button -->
+          <button onclick="toggleDataMenu()" title="Kelola Cadangan & Pulihkan Data" class="w-9 h-9 rounded-xl bg-white/20 hover:bg-white/30 text-white transition border border-white/30 flex items-center justify-center active:scale-95 text-sm backdrop-blur-xs">
+            <i class="fa-solid fa-sliders"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dropdown Kelola Cadangan / Reset -->
+  <div id="dataMenu" class="hidden fixed top-24 right-4 sm:right-8 w-80 bg-white rounded-3xl shadow-2xl border border-leaf-100 z-50 p-4 transition-all">
+    <div class="flex items-center justify-between pb-3 border-b border-leaf-100">
+      <h4 class="font-bold text-xs uppercase tracking-wider text-leaf-800 flex items-center gap-1.5">
+        <i class="fa-solid fa-database text-leaf-600"></i> Kelola Database Apotek
+      </h4>
+      <button onclick="toggleDataMenu()" class="text-slate-400 hover:text-slate-600 text-sm"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="space-y-2 mt-3">
+      <!-- Ekspor JSON -->
+      <button onclick="exportDataJSON()" class="w-full text-left flex items-center gap-3 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-leaf-50 hover:text-leaf-800 rounded-xl transition">
+        <i class="fa-solid fa-file-code text-leaf-600 text-base"></i>
+        <span>Cadangkan Data (Format JSON)</span>
+      </button>
+
+      <!-- Ekspor CSV/Excel -->
+      <button onclick="exportDataCSV()" class="w-full text-left flex items-center gap-3 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-leaf-50 hover:text-leaf-800 rounded-xl transition">
+        <i class="fa-solid fa-file-excel text-leaf-600 text-base"></i>
+        <span>Ekspor ke Excel / CSV</span>
+      </button>
+
+      <!-- Impor Cadangan -->
+      <label class="w-full text-left flex items-center gap-3 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-leaf-50 hover:text-leaf-800 rounded-xl transition cursor-pointer">
+        <i class="fa-solid fa-upload text-leaf-600 text-base"></i>
+        <span>Pulihkan dari File Cadangan</span>
+        <input type="file" id="jsonFileInput" accept=".json" class="hidden" onchange="importDataJSON(event)">
+      </label>
+
+      <!-- Pulihkan 190 Data Obat Bawaan -->
+      <button onclick="confirmReset190()" class="w-full text-left flex items-center gap-3 px-3 py-2 text-xs font-semibold text-rose-700 bg-rose-50/70 hover:bg-rose-100 rounded-xl transition">
+        <i class="fa-solid fa-rotate-left text-rose-500 text-base"></i>
+        <span>Reset Ulang 190 Data Asli</span>
+      </button>
+
+      <div class="pt-2 border-t border-slate-100 text-[11px] text-slate-400 flex justify-between">
+        <span>Total item aktif:</span>
+        <span id="menuProductCount" class="font-bold text-leaf-700">190</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-6">
+
+    <!-- SEARCH & MULTI-FIELD FILTER SECTION -->
+    <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-leaf-100/60 relative">
+      <!-- Bilah Pencarian Utama -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-4 sm:pl-4.5 flex items-center pointer-events-none text-slate-400 text-base">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Cari nama obat, zat aktif (kandungan), keluhan / indikasi, atau sediaan..." 
+          class="w-full pl-11 sm:pl-12 pr-10 sm:pr-20 py-3.5 rounded-xl bg-slate-50/80 border border-slate-200 text-slate-800 placeholder-slate-400 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-leaf-400/40 focus:border-leaf-500 transition font-medium"
+          oninput="handleSearchInput()"
+        >
+        <button 
+          id="clearSearchBtn" 
+          onclick="clearSearch()" 
+          class="hidden absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-slate-600 text-sm">
+          <span class="bg-slate-200 text-slate-600 rounded-full w-5 h-5 flex items-center justify-center hover:bg-slate-300">
+            <i class="fa-solid fa-xmark text-[11px]"></i>
+          </span>
+        </button>
+      </div>
+
+      <!-- Fokus Pencarian Kolom & Dropdown Filter -->
+      <div class="mt-3.5 flex flex-col md:flex-row md:items-center justify-between gap-2.5 pt-3 border-t border-slate-100">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-xs font-semibold text-slate-500 mr-1 flex items-center gap-1">
+            <i class="fa-solid fa-filter text-leaf-600"></i> Kolom:
+          </span>
+          <button type="button" onclick="setSearchFilter('all')" id="filter-all" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-leaf-600 text-white shadow-xs transition">
+            Semua
+          </button>
+          <button type="button" onclick="setSearchFilter('nama')" id="filter-nama" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            Nama Produk
+          </button>
+          <button type="button" onclick="setSearchFilter('kandungan')" id="filter-kandungan" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            Kandungan Isi
+          </button>
+          <button type="button" onclick="setSearchFilter('indikasi')" id="filter-indikasi" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            Indikasi
+          </button>
+          <button type="button" onclick="setSearchFilter('sediaan')" id="filter-sediaan" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            Jenis Sediaan
+          </button>
+          <button type="button" onclick="setSearchFilter('rak')" id="filter-rak" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            <i class="fa-solid fa-boxes-stacked text-[10px] mr-1"></i> Nomor Rak
+          </button>
+        </div>
+
+        <!-- Dropdown Sediaan Filter Cepat -->
+        <div class="flex items-center gap-2 w-full md:w-auto">
+          <select id="sediaanSelectFilter" onchange="handleSediaanSelect(this.value)" class="text-xs font-medium text-slate-700 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-leaf-300 cursor-pointer w-full md:w-auto">
+            <option value="">Semua Bentuk Sediaan</option>
+            <option value="Krim">Krim</option>
+            <option value="Salep">Salep</option>
+            <option value="Gel">Gel</option>
+            <option value="Tetes Mata">Tetes Mata</option>
+            <option value="Salep Mata">Salep Mata</option>
+            <option value="Tetes Telinga">Tetes Telinga</option>
+            <option value="Semprot Hidung">Semprot Hidung</option>
+            <option value="Obat Kumur">Obat Kumur</option>
+            <option value="Semprot Mulut">Semprot Mulut</option>
+            <option value="Tablet Hisap">Tablet Hisap</option>
+            <option value="Inhaler">Inhaler</option>
+            <option value="Cairan Obat Luar">Cairan Obat Luar</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS COUNTER & VIEW SWITCH BAR -->
+    <div class="flex items-center justify-between px-1">
+      <div class="flex items-center gap-2">
+        <span id="productCountBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-leaf-100 text-leaf-800 border border-leaf-200">
+          Memuat produk...
+        </span>
+        <span id="filteredNotice" class="hidden text-xs text-slate-400 font-medium"></span>
+      </div>
+
+      <!-- Mode View Grid / Table Switcher -->
+      <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+        <button id="viewGridBtn" onclick="switchView('grid')" title="Tampilan Kartu" class="px-2.5 py-1 rounded-lg bg-white text-leaf-800 shadow-xs font-bold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-grip"></i>
+          <span class="hidden sm:inline">Kartu</span>
+        </button>
+        <button id="viewTableBtn" onclick="switchView('table')" title="Tampilan Tabel" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-800 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-table-list"></i>
+          <span class="hidden sm:inline">Tabel</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PRODUCT DISPLAY CONTAINER -->
+    <!-- Mode 1: Cards View -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      <!-- Generated Cards via JavaScript -->
+    </div>
+
+    <!-- Mode 2: Table View -->
+    <div id="productTableWrapper" class="hidden bg-white rounded-2xl shadow-xs border border-leaf-100 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-leaf-50/80 border-b border-leaf-100 text-xs font-bold text-leaf-900 uppercase tracking-wider">
+              <th class="py-3.5 px-4">Nama Produk</th>
+              <th class="py-3.5 px-4">Posisi Rak / Lemari</th>
+              <th class="py-3.5 px-4">Kandungan Isi (Zat Aktif)</th>
+              <th class="py-3.5 px-4">Indikasi</th>
+              <th class="py-3.5 px-4">Jenis Sediaan</th>
+              <th class="py-3.5 px-4 text-center">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody" class="divide-y divide-leaf-50 text-slate-700 font-medium">
+            <!-- Generated rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- EMPTY SEARCH STATE -->
+    <div id="emptyState" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-leaf-200">
+      <div class="w-16 h-16 bg-leaf-50 text-leaf-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+        <i class="fa-solid fa-prescription-bottle-medical"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-800">Tidak ada produk yang cocok</h3>
+      <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1 mb-5">
+        Coba gunakan kata kunci zat aktif lain atau periksa ejaan nama obat.
+      </p>
+      <div class="flex flex-wrap justify-center gap-2">
+        <button onclick="clearSearch()" class="px-4 py-2 text-xs font-semibold bg-leaf-100 hover:bg-leaf-200 text-leaf-800 rounded-xl transition">
+          Bersihkan Pencarian
+        </button>
+        <button onclick="openModal('add')" class="px-4 py-2 text-xs font-bold bg-leaf-600 hover:bg-leaf-700 text-white rounded-xl transition shadow-sm">
+          + Tambah Obat Baru
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= FLOATING ACTION BUTTON (MOBILE ONLY) ================= -->
+  <div class="sm:hidden fixed bottom-6 right-6 z-40">
+    <button onclick="openModal('add')" aria-label="Tambah Produk Obat" class="w-14 h-14 bg-gradient-to-tr from-leaf-500 to-leaf-600 active:scale-95 text-white rounded-full shadow-xl flex items-center justify-center text-xl transition-all border-2 border-white">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-white border-t border-leaf-100 py-6 text-center text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-500"></span>
+        <span>Apotek Valencia &bull; <em class="not-italic font-bold text-slate-700">Solusi Sehat Kita</em> &copy; <span id="currentYear"></span></span>
+      </div>
+      <div class="flex items-center gap-3 text-slate-400">
+        <span class="flex items-center gap-1.5 text-leaf-800 font-semibold">
+          <i class="fa-solid fa-shield-halved text-leaf-600"></i> 190 Data Obat Tersimpan
+        </span>
+        <span>&bull;</span>
+        <span class="text-leaf-600 font-semibold">Siap Digunakan Offline</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL TAMBAH / EDIT PRODUK ================= -->
+  <div id="productModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+    <div class="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150 border border-leaf-200">
+      
+      <!-- Modal Header -->
+      <div class="bg-gradient-to-r from-leaf-700 via-leaf-600 to-leaf-700 px-6 py-4 text-white flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-emerald-100">
+            <i class="fa-solid fa-prescription-bottle-medical text-lg"></i>
+          </div>
+          <div>
+            <h3 id="modalTitle" class="text-base font-bold">Tambah Produk Obat Baru</h3>
+            <p class="text-[11px] text-emerald-100">Apotek Valencia &bull; Solusi Sehat Kita</p>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Form Murni 4 Kolom) -->
+      <form id="productForm" onsubmit="saveProduct(event)" class="overflow-y-auto p-5 sm:p-6 space-y-4 text-sm">
+        <input type="hidden" id="editProductId" value="">
+
+        <!-- 1. Nama Produk -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            Nama Produk <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="inputNama" 
+            required 
+            placeholder="Contoh: Panadol Extra, Cendo Xitrol, Bioplacenton" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-semibold bg-leaf-50/20"
+          >
+        </div>
+
+        <!-- 2. Kandungan Isi -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            Kandungan Isi (Zat Aktif) <span class="text-rose-500">*</span>
+          </label>
+          <textarea 
+            id="inputKandungan" 
+            required 
+            rows="2"
+            placeholder="Bisa pakai koma atau plus (+). Contoh: Paracetamol + Caffeine ATAU Betamethasone, Neomycin Sulfate" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
+          ></textarea>
+          <p class="text-[11px] text-slate-400 mt-1">Bebas gunakan tanda koma (,) atau tanda plus (+) untuk memisahkan zat aktif.</p>
+        </div>
+
+        <!-- 3. Indikasi -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            Indikasi / Khasiat <span class="text-rose-500">*</span>
+          </label>
+          <textarea 
+            id="inputIndikasi" 
+            required 
+            rows="2"
+            placeholder="Bisa pakai koma atau plus (+). Contoh: Meredakan sakit kepala, sakit gigi, demam ATAU gatal + eksim" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
+          ></textarea>
+          <p class="text-[11px] text-slate-400 mt-1">Bebas gunakan koma (,) atau plus (+) untuk memisahkan beberapa keluhan / indikasi.</p>
+        </div>
+
+        <!-- 4. Jenis Sediaan -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            Jenis Sediaan <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="inputSediaan" 
+            required 
+            placeholder="Contoh: Krim, Salep, Gel, Tetes Mata, Tablet Hisap, Inhaler" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
+          >
+        </div>
+
+        <!-- 5. Nomor Rak / Posisi Lemari (Bisa 2 atau 3 Lokasi Sekaligus) -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 flex items-center justify-between">
+            <span>Nomor Rak / Posisi Lemari</span>
+            <span class="text-[10px] text-leaf-700 font-semibold lowercase">Bisa 2 atau 3 lokasi</span>
+          </label>
+          <input 
+            type="text" 
+            id="inputRak" 
+            placeholder="Contoh: Rak A-02, Lemari Kaca 1, Etalase Depan" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
+          >
+          <p class="text-[11px] text-slate-400 mt-1">Pisahkan dengan koma (,) jika obat ditempatkan di lebih dari satu rak/lemari.</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-4 border-t border-leaf-100 flex items-center justify-end gap-3 shrink-0">
+          <button 
+            type="button" 
+            onclick="closeModal()" 
+            class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-bold text-xs hover:bg-slate-100 transition"
+          >
+            Batal
+          </button>
+          <button 
+            type="submit" 
+            class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-leaf-600 to-leaf-700 hover:from-leaf-700 hover:to-leaf-800 active:scale-95 text-white font-bold text-xs transition shadow-md shadow-leaf-600/20 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span id="saveBtnText">Simpan Produk</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= DELETE CONFIRMATION MODAL ================= -->
+  <div id="deleteModal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl p-6 max-w-sm w-full text-center shadow-2xl border border-lavender-200 animate-in fade-in zoom-in-95">
+      <div class="w-14 h-14 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-900">Hapus Produk Ini?</h3>
+      <p id="deletePromptName" class="text-xs text-slate-500 mt-1 mb-6">Produk ini akan dihapus dari data apotek.</p>
+      <div class="flex gap-2">
+        <button onclick="closeDeleteModal()" class="flex-1 py-2.5 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs hover:bg-slate-100 transition">
+          Batal
+        </button>
+        <button id="confirmDeleteBtn" class="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs transition shadow-md">
+          Ya, Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- FIREBASE CLOUD REAL-TIME ENGINE (MULTI-DEVICE & ANTI-BENTROK) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Global variable fallback jika env cloud aktif
+    const rawAppId = typeof __app_id !== 'undefined' ? __app_id : 'apotek-valencia-app';
+    const rawConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : null;
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+    let db = null;
+    let auth = null;
+    let isCloudActive = false;
+
+    window.cloudEngine = {
+      isAvailable: () => isCloudActive,
+      addProduct: async (product) => {
+        if (!isCloudActive) return false;
+        try {
+          const colRef = doc(db, 'artifacts', rawAppId, 'public', 'data', 'katalog_obat', product.id);
+          await setDoc(colRef, product);
+          return true;
+        } catch (e) {
+          console.error("Cloud save failed, local will handle:", e);
+          return false;
+        }
+      },
+      updateProduct: async (product) => {
+        if (!isCloudActive) return false;
+        try {
+          const docRef = doc(db, 'artifacts', rawAppId, 'public', 'data', 'katalog_obat', product.id);
+          await setDoc(docRef, product);
+          return true;
+        } catch (e) {
+          console.error("Cloud update failed:", e);
+          return false;
+        }
+      },
+      deleteProduct: async (productId) => {
+        if (!isCloudActive) return false;
+        try {
+          const docRef = doc(db, 'artifacts', rawAppId, 'public', 'data', 'katalog_obat', productId);
+          await deleteDoc(docRef);
+          return true;
+        } catch (e) {
+          console.error("Cloud delete failed:", e);
+          return false;
+        }
+      },
+      batchSeed: async (list) => {
+        if (!isCloudActive) return;
+        try {
+          // Batch upload non-blocking
+          for (const item of list) {
+            const docRef = doc(db, 'artifacts', rawAppId, 'public', 'data', 'katalog_obat', item.id);
+            setDoc(docRef, item);
+          }
+        } catch (err) {
+          console.error("Seeding error:", err);
+        }
+      }
+    };
+
+    async function initCloudSync() {
+      if (!rawConfig) {
+        updateSyncStatusUI('offline', 'Offline (Lokal)');
+        return;
+      }
+
+      try {
+        const firebaseConfig = JSON.parse(rawConfig);
+        const app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+
+        // Auth requirement
+        if (initialAuthToken) {
+          await signInWithCustomToken(auth, initialAuthToken);
+        } else {
+          await signInAnonymously(auth);
+        }
+
+        isCloudActive = true;
+        updateSyncStatusUI('live', 'Sinkron Cloud');
+
+        // Listen for real-time changes across all connected devices
+        const q = collection(db, 'artifacts', rawAppId, 'public', 'data', 'katalog_obat');
+        onSnapshot(q, (snapshot) => {
+          if (snapshot.empty) {
+            // Seed initial 190 items if cloud is brand new
+            window.cloudEngine.batchSeed(window.ORIGINAL_190_PRODUCTS);
+            return;
+          }
+
+          const remoteItems = [];
+          snapshot.forEach(docSnap => {
+            remoteItems.push(docSnap.data());
+          });
+
+          // Update local memory and UI smoothly
+          window.handleRemoteSync(remoteItems);
+          updateSyncStatusUI('live', 'Sinkron Cloud');
+        }, (err) => {
+          console.warn("Firestore onSnapshot warning (fallback to offline):", err);
+          updateSyncStatusUI('offline', 'Mode Offline');
+        });
+
+      } catch (err) {
+        console.warn("Cloud connection error, using local storage mode:", err);
+        updateSyncStatusUI('offline', 'Mode Offline');
+      }
+    }
+
+    function updateSyncStatusUI(status, label) {
+      const dot = document.getElementById('syncDot');
+      const text = document.getElementById('syncText');
+      const textMobile = document.getElementById('syncTextMobile');
+      if (!dot || !text) return;
+
+      if (status === 'live') {
+        dot.className = "w-2 h-2 rounded-full bg-emerald-300 animate-pulse";
+        text.textContent = label;
+        if (textMobile) textMobile.textContent = "Live";
+      } else {
+        dot.className = "w-2 h-2 rounded-full bg-amber-300";
+        text.textContent = label;
+        if (textMobile) textMobile.textContent = "Offline";
+      }
+    }
+
+    // Run cloud initialization
+    window.addEventListener('load', () => {
+      initCloudSync();
+    });
+  </script>
+
+  <!-- ================= JAVASCRIPT APPLICATION CORE ================= -->
+  <script>
+    // 190 DATA PRODUK LENGKAP UTUH APOTEK VALENCIA DENGAN 4 KOLOM UTAMA + NOMOR RAK / POSISI LEMARI (ETALASE 5B)
+    const ORIGINAL_190_PRODUCTS = [
+      { id: "p1", nama: "Anfuhex", kandungan: "Ketoconazole", indikasi: "Infeksi dermatofit pada kulit, seperti tinea kruris", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p2", nama: "Aloclair Plus Gel", kandungan: "Gel", indikasi: "Meredakan nyeri dan membantu penyembuhan ulkus rongga mulut", sediaan: "Gel", rak: "ETALASE 5B" },
+      { id: "p3", nama: "Afucid", kandungan: "Fusidic Acid", indikasi: "Infeksi kulit disebabkan staphylococcus atau bakteri lain", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p4", nama: "Aciclovir", kandungan: "Aciclovir", indikasi: "Anti bakteri dan Jamur", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p5", nama: "Benoson-G", kandungan: "Betamethasone Valerate + Gentamicin Sulfate", indikasi: "Dermatosis yang responsif", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p6", nama: "Betason-N", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi Virus", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p7", nama: "Betamethasone Valerate", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Untuk peradangan kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p8", nama: "Betadin", kandungan: "Antiseptic Ointment", indikasi: "Antiseptik untuk membunuh kuman", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p9", nama: "Bioplacenton", kandungan: "Placenta Extract + Neomycin Sulfate", indikasi: "Membantu menyembuhkan berbagai jenis luka pada kulit", sediaan: "Gel", rak: "ETALASE 5B" },
+      { id: "p10", nama: "Beneson-N", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi bakteri sekunder", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p11", nama: "Bevalex", kandungan: "Betamethasone Valerate + Neomycin Sulfate", indikasi: "Infeksi pada kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p12", nama: "Borraginol-S", kandungan: "Lithospermi Radix Extract + Prednisolone + Benzocaine + Lidocaine + Cetrimide", indikasi: "Obat wasir", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p13", nama: "Biocream", kandungan: "Ambiphilic Dermatological Cream", indikasi: "Krim ambifilik untuk kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p14", nama: "Benoson-G", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Infeksi perkutan primer yang disebabkan oleh virus", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p15", nama: "Brion", kandungan: "Policresulen 50 mg/g + Cinchocaine HCl 10 mg/g", indikasi: "Mengobati hemoroid (wasir) dan fisura ani", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p16", nama: "Bravoderm Cream", kandungan: "Fluocinolone Acetonide", indikasi: "Meringankan manifestasi inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p17", nama: "Besol", kandungan: "Clobetasol Propionate Cream 0.05 %", indikasi: "Pengobatan jangka pendek terhadap dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p18", nama: "Biocort", kandungan: "Gentamicin Sulfate + Betamethasone Valerate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p19", nama: "Cinolon", kandungan: "Fluocinolone Acetonide", indikasi: "Peradangan kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p20", nama: "Cinolon-N", kandungan: "Fluocinolone Acetonide + Neomycin Sulfate", indikasi: "Penyakit kulit inflamasi dan lesi kulit meradang", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p21", nama: "Centabio", kandungan: "Placenta Extract + Neomycin Sulfate Gel", indikasi: "Infeksi bakteri", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p22", nama: "Clobetasol Propionate", kandungan: "Clobetasol Propionate Cream 0.05 %", indikasi: "Peradangan kulit yang berat dan resistensi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p23", nama: "Clinovir", kandungan: "Aciclovir Krim 5%", indikasi: "Infeksi pada virus herpes", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p24", nama: "Desomex", kandungan: "Desoximetasone Krim 2,5 mg/g", indikasi: "Untuk meringankan manifestasi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p25", nama: "Desoximetasone", kandungan: "Desoximetasone Krim 0,25%", indikasi: "Penyakit kulit inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p26", nama: "Dip rosta", kandungan: "Betamethasone Dipropionate + Gentamicin Sulfate", indikasi: "Penyakit kulit akibat reaksi alergi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p27", nama: "Desigen", kandungan: "Desoximetasone", indikasi: "Indikasi infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p28", nama: "Digenta", kandungan: "Gentamicin Sulfate + Betamethasone Dipropionate", indikasi: "Manifestasi inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p29", nama: "Dolones", kandungan: "Lidocaine + Prilocaine Cream", indikasi: "Efek kebas atau mati rasa sementara pada kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p30", nama: "Erladerm", kandungan: "Betamethasone Valerate Krim 0,1 %", indikasi: "Meredakan peradangan, gatal, kemerahan dan bengkak", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p31", nama: "Diclofenac Diethylamine", kandungan: "Diclofenac Diethylamine Emulgel 1%", indikasi: "Peradangan akibat trauma, terkilir, keseleo, memar", sediaan: "Gel", rak: "ETALASE 5B" },
+      { id: "p32", nama: "Enbatic", kandungan: "Neomycin Sulfate + Bacitracin Zinc", indikasi: "Anti bakteri pada kulit", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p33", nama: "Erymed", kandungan: "Erythromycin 2%", indikasi: "Untuk jerawat", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p34", nama: "Evalen Adapalene", kandungan: "Adapalene Gel 0,1%", indikasi: "Untuk jerawat", sediaan: "Gel", rak: "ETALASE 5B" },
+      { id: "p35", nama: "Enbatic", kandungan: "Neomycin Sulfate + Bacitracin Zinc", indikasi: "Untuk infeksi bakteri superfisial", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p36", nama: "Funtas", kandungan: "Miconazole Nitrate Cream", indikasi: "Pengobatan kandidiasis kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p37", nama: "Fasolon Cream", kandungan: "Fluocinolone Acetonide 0,025% + Neomycin Sulphate 0,5%", indikasi: "Pengobatan manifestasi inflamasi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p38", nama: "Fucilex", kandungan: "Fusidic Acid", indikasi: "Infeksi kulit staphylococcus atau bakteri lain", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p39", nama: "Salep Kulit Geranium Wilfordii", kandungan: "Geranium Wilfordii Ointment 10g", indikasi: "Eksim, gatal-gatal dan bengkak akibat gigitan serangga", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p40", nama: "Gentamicin Sulfate", kandungan: "Gentamicin Sulfate Krim 0,1%", indikasi: "Infeksi kulit primer dan sekunder", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p41", nama: "Taisho", kandungan: "Kenacort-A Cream + Triamcinolone Acetonide", indikasi: "Meredakan peradangan, kemerahan, gatal dan bengkak", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p42", nama: "Taisho", kandungan: "Kenalog in Orabase + Triamcinolone Acetonide", indikasi: "Sariawan, luka dimulut, peradangan selaput lendir", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p43", nama: "Klorfeson Krim", kandungan: "Chloramphenicol + Prednisolon", indikasi: "Nyeri inflamasi dan dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p44", nama: "Kalpanax Salep", kandungan: "Salicylic Acid + Champhora + Sulfur Praecipitatum + Benzoic Acid + Menthol", indikasi: "Kutu air, panu, kadas, kuap, gatal gatal", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p45", nama: "Kalpanax Krim", kandungan: "Miconazole Nitrate 2%", indikasi: "Kutu air dan infeksi penyakit jamur", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p46", nama: "Inerson", kandungan: "Desoximetasone Salep", indikasi: "Eksim dan dermatitis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p47", nama: "Ikaderm Cream", kandungan: "Clobetasol Propionate 0,5 mg", indikasi: "Psoriasis, eksim berat, dermatitis kronis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p48", nama: "Ikaderm Ointment", kandungan: "Clobetasol Propionate 0,5 mg", indikasi: "Psoriasis, eksim berat, dermatitis kronis", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p49", nama: "Hansaplast Salep Luka", kandungan: "Dexpanthenol 5%", indikasi: "Mempercepat penyembuhan luka", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p50", nama: "Heltiskin Cream", kandungan: "Clotrimazole + Betamethasone Dipropionate", indikasi: "Tinea cruris, tinea corporis dan tinea pedis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p51", nama: "Genoint Gentamicin Sulfate", kandungan: "Gentamicin 1 mg", indikasi: "Infeksi kulit oleh bakteri yang peka terhadap gentamicin", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p52", nama: "lafalos krim", kandungan: "menthol+eugenol+methyl salicylate", indikasi: "meredakan berbagai keluhan nyeri otot dan nyeri sendi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p53", nama: "miconazole nitrate", kandungan: "miconazole 0,02 gram", indikasi: "untuk tinea pedis, krusis, korporis, kandidiasis dan tinea versikolor", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p54", nama: "medicort", kandungan: "fluticasone propionate 0,05%", indikasi: "mengatasi peradangan dan gatal gatal", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p55", nama: "mycorine cream", kandungan: "miconazole nitrate 2%", indikasi: "tinea corporis, tinea pedis, tinea cruris, tinea versicolor", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p56", nama: "metcovazin silver", kandungan: "zinc oxide+cetearyl alcohol+capric triglyceride", indikasi: "mengurangi infeksi pada luka, membantu penyembuhan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
+      { id: "p57", nama: "metcovazin reguler 25gram", kandungan: "chitozan+zinc oxide", indikasi: "mepercepat penyembuhan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
+      { id: "p58", nama: "metcivazin reguler 10gram", kandungan: "chitozan+zinc oxide", indikasi: "Mempercepat penyembuhan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
+      { id: "p59", nama: "Taisho", kandungan: "myco-z ointment nystatin-zinc oxide", indikasi: "menyembuhkan infeksi jamur candida pada kulit", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p60", nama: "mebo mild burn treatment", kandungan: "coptis chinensis rhizoma+phellodendron chinense cortex", indikasi: "meringankan luka bakar ringan", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p61", nama: "matrovir cream", kandungan: "aciclovir", indikasi: "untuk infeksi virus herpes simplex pada kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p62", nama: "metcovazin red", kandungan: "hyaluronate acid + zinc oxide", indikasi: "mempercepat penyembuhan luka dan menjaga kelembapan luka", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
+      { id: "p63", nama: "nebacetin powder", kandungan: "neomycin Sulfate + Bacitracin", indikasi: "untuk mengobati infeksi bakteri pada luka", sediaan: "Serbuk", rak: "ETALASE 5B" },
+      { id: "p64", nama: "nebacetin salep", kandungan: "neomycin 5 mg+bacitracin", indikasi: "untuk mencegah dan mengobati infeksi bakteri pada luka", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p65", nama: "nerilon", kandungan: "diflucortolone valerate 1 mg", indikasi: "untuk mengobati gatal, eksim dan dermatitis", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p66", nama: "oxytetracycline hcl", kandungan: "oxytetracycline hcl", indikasi: "infeksi bakteri pada mata", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p67", nama: "octenilin", kandungan: "allatoin 0,20%+octenidine hydrochloide 0,5%", indikasi: "pertolongan cepat untuk luka pada kulit dan mukosa", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p68", nama: "oviskin-N", kandungan: "betamethasone valerate+neomycin sulfate", indikasi: "untuk penyakit kulit yang meradang, gstsl dan terinfeksi bakteri", sediaan: "Krim/Salep", rak: "ETALASE 5B" },
+      { id: "p69", nama: "pasquam dexpanthenol", kandungan: "Dexpanthenol 5%", indikasi: "untuk kulit yang mengalami ruam popok, lecet, dan luka ringan", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p70", nama: "parmethrin krim", kandungan: "permethrin", indikasi: "infeksi kulit kudis,membasmi  kutu tubuh dan kutu kemaluan", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p71", nama: "krim pi khang shuang", kandungan: "triamcilone acetonide+micinazole titrate+neomycin sulfate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p72", nama: "pai du zhi yang krim", kandungan: "asam salisilat+belerang+mentol+tea tree oil", indikasi: "meringankan penyakit kulit yang disebabkan jamur seperti panu", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p73", nama: "pizolon", kandungan: "triamcilone acetonide+micinazole titrate+neomycin sulfate", indikasi: "Meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p74", nama: "permethrin krim", kandungan: "permethrin", indikasi: "infeksi kulit kudis, membasmi kutu tubuh dan kemaluan", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p75", nama: "pai yan pin", kandungan: "dexametasone asetat", indikasi: "untuk gatallokal yang menetap dan dermatitis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p76", nama: "star ag", kandungan: "collidal silver+basis gel", indikasi: "untuk luka meliputi pressure ulcers, venous ulcers dan ulkus diabetik", sediaan: "Gel", rak: "ETALASE 5B" },
+      { id: "p77", nama: "silver healing bio-gel", kandungan: "ion perak aktif+glisein+karbomer+trietanolamin+air murni", indikasi: "untuk penanganan luka dekubitus, luka statis vena dan luka diabetes", sediaan: "Gel", rak: "ETALASE 5B" },
+      { id: "p78", nama: "scabimite krim", kandungan: "permethrin 5%", indikasi: "untuk mengobati dan mengatasi scabies (gudik)", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p79", nama: "sulfadiazine silver cream", kandungan: "sulfadiazine silver 10 mg", indikasi: "sediaan antimikroba topikal untuk pencegahan dan pengobatan sepsis luka", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p80", nama: "synalten cream", kandungan: "fluconolone acetonide+gentamicin sulfate", indikasi: "untuk meringankan inflamasi dari dermatosis", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p81", nama: "sinobiotik", kandungan: "flucinolone acetonide+gentamicin sulfate", indikasi: "untuk peradangan dan gatal pada kulit disertai infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p82", nama: "sagestam krim", kandungan: "gentamicin sulfate", indikasi: "infeksi kulit akibat bakteri dan luka gores, luka lecet dan luka bakar ringan", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p83", nama: "ultrasiline", kandungan: "Clotrimazole + Betamethasone Dipropionate", indikasi: "untuk mengobati candidiasin", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p84", nama: "tix salep", kandungan: "nellumbinis nucifera folium+shoporae flavescentis radix", indikasi: "untuk meredakan gatal gatal pada kulit", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p85", nama: "vicansort", kandungan: "hydrocortisone+clioquinol+camphor", indikasi: "untuk mengobati dermatitis dan eksim yang disertai gatal, kemerahan dan infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p86", nama: "zensoderm", kandungan: "betamethasone+gentamicin", indikasi: "untuk penyakit kulit yang meradang dan gatal disertai infeksi bakteri", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p87", nama: "zoralin", kandungan: "ketoconazole", indikasi: "untuk mengobati dermatofitosis, pityriasis dan kandidosis kulit", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p88", nama: "zenalog", kandungan: "triamcinolone acetonide", indikasi: "untuk mengobati sariawan,luka di mulut,peradangan dan luka di gusi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p89", nama: "zalf", kandungan: "acidum salicylicum+sulfur praecipitatum+zalf base ad", indikasi: "membantu meringangankan penyakit kulit seperti kutu air, kadas dan kurap", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p90", nama: "pagoda salep", kandungan: "sulfur praecipitatum+asam benzoat+asam salisilat+camphora", indikasi: "untuk penyakit kulit seperti gatal di telapak tangan dan kaki", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p91", nama: "salep 2-4", kandungan: "asam salisilat+sulfur praecipitatum", indikasi: "meringankankan penyakit kulit yang disebabkan jamur", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p92", nama: "nosib cap bison", kandungan: "acidium salisilat+acidium benzocium+sulfur praecipitatum", indikasi: "meringankankan penyakit kulit seperti panu dan gatal karna kutu air", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p93", nama: "salep hitam ichtyol", kandungan: "icthammolum", indikasi: "untuk bisul", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p94", nama: "krim 88", kandungan: "miconazole nitrate 2%", indikasi: "krim anti jamur seperti kutu air kurap, dan panu", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p95", nama: "salep 88", kandungan: "acidum salicylum+acidum benzocum+sulfur praecipitatum", indikasi: "meringankan penyakit kulit seperti panu, kadas, kurap, dan kutu air", sediaan: "Salep", rak: "ETALASE 5B" },
+      { id: "p96", nama: "counterpain krim", kandungan: "metilsalisilat+eugenol+mentol+vanishing cream base", indikasi: "meringankan sakit pada otot, nyeri sendi, dan nyeri akibat encok", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p97", nama: "Diclofenac Diethylamine", kandungan: "diclofenac diethylamine", indikasi: "peradangan akibat trauma pada tedon, ligamenta, otot dan sendi", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p98", nama: "lumbar spine cooling gel", kandungan: "bahan herbal+mentol+metil salisilat", indikasi: "meredakan rasa nyeri dan pegal di area pinggang/punggung", sediaan: "Gel", rak: "ETALASE 5B" },
+      { id: "p99", nama: "cenfresh", kandungan: "carmellose sodium", indikasi: "untuk melembapkan keluhan mata kering serta lelah", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p100", nama: "floxa", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p101", nama: "polynel", kandungan: "fluorometholone+neomycin sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p102", nama: "polydex", kandungan: "dexamethasone sodium posphate+neomicyn+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p103", nama: "cendo xitrol", kandungan: "dexamethashone+neomycin sulfate+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p104", nama: "eyefresh mild", kandungan: "hypromellose+dextran", indikasi: "mengurangi iritasi pada mata yang kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p105", nama: "cendo LFX", kandungan: "levofloxacin hemihydrate", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p106", nama: "cendo lyteers", kandungan: "sodium chloride+potassium chloride", indikasi: "melembabkan, melumasi dan meredakan rasa kering serta iritasi", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p107", nama: "tobro", kandungan: "tobramycin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p108", nama: "0,5% mydriatil", kandungan: "tropicamide", indikasi: "memperlebar pupil mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p109", nama: "natacen", kandungan: "natamycin", indikasi: "mengobati infeksi jamur pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p110", nama: "0,5% cendo tropin", kandungan: "atropine sulfate", indikasi: "memperlebar pupil mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p111", nama: "polygran", kandungan: "polymyxin b sulfate+neomycin sulfate+gramicidin", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p112", nama: "vasacon-A", kandungan: "antazholinehydrochloride+naphazoline hydrochloride", indikasi: "meredakan kemerahan dan pembengkakan pada mata akibat alergi/ iritas", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p113", nama: "vasacon", kandungan: "naphazoline hydrochloride", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p114", nama: "0,5% timol", kandungan: "timolol maleate", indikasi: "pengobatan kenaikan tekanan intraokuler pada penderita hipertensi", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p115", nama: "p-pred", kandungan: "prednisolone acetate", indikasi: "meredakan peradangan pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p116", nama: "sanbe tears", kandungan: "dextran 70+hypromellose", indikasi: "mencegah kekeringan dan iritasi mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p117", nama: "Genoint Gentamicin Sulfate", kandungan: "gentamicin sulfate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p118", nama: "ximex optixitrol", kandungan: "polymixin b sulfat+neomycin sulfate+dexamethasone sodium", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p119", nama: "cendo mycos", kandungan: "hydrocortisone acetate+chloramphenicol", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Salep Mata", rak: "ETALASE 5B" },
+      { id: "p120", nama: "cendo xitrol", kandungan: "dexamethshone+neoumycin+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Salep Mata", rak: "ETALASE 5B" },
+      { id: "p121", nama: "timol 0,5%", kandungan: "timolol maleate", indikasi: "menurunkan tekanan intraokular pada penderita glaukoma", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p122", nama: "0,5% cendo tropin", kandungan: "atropine sulfate", indikasi: "memperlebar pupil mata dan peradangan pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p123", nama: "0,5% cendo mydriatil", kandungan: "tropicamide", indikasi: "sebagaisiklopelgia dan midriasis", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p124", nama: "floxa", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata yang disebabkan bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p125", nama: "augentonic", kandungan: "phenylephrine hydrochloride+zinc sulfate heptahydrate", indikasi: "mengobati mata merah dan peradangan akibat iritasi minor", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p126", nama: "cenfresh", kandungan: "carmellose sodium", indikasi: "melembapkan dan meredakan mata kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p127", nama: "0,3% genta", kandungan: "gentamicin sulfate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p128", nama: "vitrolenta", kandungan: "potassium iodide+sodium iodide", indikasi: "mengobati kekeruhan dan pendarahan pada vitreous body", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p129", nama: "polynel", kandungan: "fluorometholone+neomycin sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p130", nama: "catarlent", kandungan: "potassium iodide", indikasi: "membantu memperlambat perkembangan katarak pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p131", nama: "vasacon", kandungan: "naphazoline hydrochloride", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p132", nama: "vasacon-A", kandungan: "antazholinehydrochloride+naphazoline hydrochloride", indikasi: "untuk meredakan sementara alergi tertentu pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p133", nama: "0,5% pantocain", kandungan: "tetracaine hydrochlorise", indikasi: "sebagai obat bius lokal", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p134", nama: "tobroson", kandungan: "tobramycin+dexamethasone sodium phosphate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p135", nama: "eyefresh", kandungan: "hypromellose+dextran", indikasi: "mengurangi iritasi pada mata yang kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p136", nama: "polygran", kandungan: "polymyxin b sulfate+neomycin sulfate+gramicidin", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p137", nama: "lfx", kandungan: "levofloxacin hemihydrate", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p138", nama: "polydex", kandungan: "dexamethasone sodium posphate+neomicyn+polymyxin b sulfate", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p139", nama: "p-pred", kandungan: "prednisolone acetate", indikasi: "mengobati peradangan dan alergi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p140", nama: "cendo hyalub", kandungan: "sodium hyaluronate", indikasi: "melembapkan dan meredakan mata kering yang berat", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p141", nama: "akilen eye dops", kandungan: "ofloxacin", indikasi: "mengobati infeksi pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p142", nama: "akilen ear drops", kandungan: "oflaxacin", indikasi: "mengobati infeksi pada telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p143", nama: "rohto v-estra", kandungan: "tetrahydrozoline hcl 0,05%+macrogol", indikasi: "meredakan mata merah dang mata kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p144", nama: "erlamycetin chlorampenicol", kandungan: "chloramphenicoll", indikasi: "mengobati infeksi pada telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p145", nama: "blecidex ear/eye", kandungan: "framcetyn sulfate+gramicidin+dexamethasone sodium metasulfo", indikasi: "mengobati peradangan yang disertai infeksi", sediaan: "Tetes Telinga Dan Mata", rak: "ETALASE 5B" },
+      { id: "p146", nama: "bralifex plus", kandungan: "tobramycin+dexamethasone", indikasi: "mengobati peradangan yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p147", nama: "polidemisin", kandungan: "neomycin sulfate+polymyxin b sulfate+dexamethasone", indikasi: "mengobati peradangan mata yang disertai infeksi bakteri", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p148", nama: "braito", kandungan: "tetrahydrozoline hcl 0,05%+benzalkonium chloride 0.0%", indikasi: "meredakan mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p149", nama: "braito dry eye", kandungan: "hydroxypropyl methylcellulose+benzalkokonium chloride 0.01%", indikasi: "mengatasi gejala mata kering,menyejukkan dan sebagai lubrican mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p150", nama: "baquinor", kandungan: "ciprofloxacin hydrochloride", indikasi: "mengobati infeksi bakteri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p151", nama: "otolin", kandungan: "chloramphenicol+polymyxin b sulphate+benzocaine", indikasi: "mengobati infeksi bakteri pada telinga yang disertai nyeri", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p152", nama: "hialid", kandungan: "sodium hyaluronate", indikasi: "melembapkan dan meredakan mata kering", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p153", nama: "otilon", kandungan: "polymyxin b sulfate+neomycin sulfate+fludrocortisone acetate+lidocaine hcl", indikasi: "mengobati peradangan dan infeksi bakteri pada telinga disertai nyeri", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p154", nama: "flamar", kandungan: "diclofenac sodium", indikasi: "mengurangi peradangan dan nyeri pada mata", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p155", nama: "rohto cool", kandungan: "naphazoline hcl 0,012%", indikasi: "meredakan sementara mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p156", nama: "rohto", kandungan: "tetrahydrozoline hcl 0,05%", indikasi: "mengatasi mata merah akibat iritasi ringan", sediaan: "Tetes Mata", rak: "ETALASE 5B" },
+      { id: "p157", nama: "sterimar", kandungan: "air laut alami", indikasi: "membersihkan saluran hidung bayi secara lembut", sediaan: "Semprotan Hidung", rak: "ETALASE 5B" },
+      { id: "p158", nama: "forumen", kandungan: "docusate sodium", indikasi: "untuk mengeluarkan kotoran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p159", nama: "cooling 5", kandungan: "phenol crystal 1,4%", indikasi: "meredakan sakit tenggorokan,iritasi,sakit pada mulut, gusi dan sariawan", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
+      { id: "p160", nama: "docusate sodium", kandungan: "docusate sodium", indikasi: "untuk membantu mengeluarkan kotoran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p161", nama: "aloclair Plus spray", kandungan: "aloe vera dan asam hyaluronic", indikasi: "meredakan nyeri secara cepat dan penyembuhan ulkus mulut", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
+      { id: "p162", nama: "vital ear oil", kandungan: "thymol+peppermint oil+champor", indikasi: "sebagai antiseptik pada saluran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p163", nama: "iliadin", kandungan: "oxymerazoline hcl 0,05%", indikasi: "untuk meringankan hidung tersumbat akibat rhinitis akut", sediaan: "Semprot Hidung", rak: "ETALASE 5B" },
+      { id: "p164", nama: "modexa", kandungan: "mometasone furuate monohydrte", indikasi: "mengobati rhinitis alergi (hidung tersumbat,berair dan bersin-bersin)", sediaan: "Semprotan Hidung", rak: "ETALASE 5B" },
+      { id: "p165", nama: "nasonex", kandungan: "mometasone furuate monohydrte", indikasi: "pengobatan dan pencegahan rinitis alergi", sediaan: "Semprot Hidung", rak: "ETALASE 5B" },
+      { id: "p166", nama: "callusol", kandungan: "salicylic acid+lactic acid+polidocanol", indikasi: "mengobsti mata ikan,kapalan,kulit yang mengeras dan kutil", sediaan: "Cairan Obat Luar", rak: "ETALASE 5B" },
+      { id: "p167", nama: "ofloxacin", kandungan: "ofloxacin", indikasi: "mengobati infeksi bakteri pada saluran telinga", sediaan: "Tetes Telinga", rak: "ETALASE 5B" },
+      { id: "p168", nama: "nubreathe nasal wash", kandungan: "natrium klorida", indikasi: "membersihkan saluran hidung", sediaan: "Larutan Cuci", rak: "ETALASE 5B" },
+      { id: "p169", nama: "tupepe", kandungan: "urea+dimethicone+ekstrsak lidah buaya", indikasi: "melembapkan dan merawat kulit yang, pecah-pecah, dan menebal", sediaan: "Krim", rak: "ETALASE 5B" },
+      { id: "p170", nama: "aloclair plus mouthwash", kandungan: "aloevera+asam hialuronat", indikasi: "meredakan nyeri ulkus rongga mulut secara cepat", sediaan: "Cairan Kumur", rak: "ETALASE 5B" },
+      { id: "p171", nama: "cooling 5 cherry", kandungan: "phenol crystal 1,4%", indikasi: "meredakan sakit tenggorokan,iritasi,sakit pada mulut, gusi dan sariawan", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
+      { id: "p172", nama: "cooling 5 plus", kandungan: "phenol+benzocaine", indikasi: "menghilangkan rasa sakit seperti sakit gigi dan radang gusi", sediaan: "Semprot Mulut", rak: "ETALASE 5B" },
+      { id: "p173", nama: "tantum verde", kandungan: "benzydamine", indikasi: "meringankan rasa sakit pada mulut dan tenggorokan seperti tonsilitis", sediaan: "Larutan Kumur", rak: "ETALASE 5B" },
+      { id: "p174", nama: "regrou", kandungan: "minoxidil", indikasi: "membantu menumbuhkan kembali rambut", sediaan: "Cairan Obat Luar", rak: "ETALASE 5B" },
+      { id: "p175", nama: "ketomed", kandungan: "ketoconozale", indikasi: "menghilangkan ketombe", sediaan: "Larutan Kulit Kepala", rak: "ETALASE 5B" },
+      { id: "p176", nama: "betadine cleanser", kandungan: "povidone-lodine 7,5%", indikasi: "cairan untuk membersihkan luka", sediaan: "Cairan Pembersih Kulit", rak: "ETALASE 5B" },
+      { id: "p177", nama: "betadine feminine hygiene", kandungan: "povidone-lodine 10%", indikasi: "pembersih khusus kewanitaan untuk gejala iritas ringan", sediaan: "Cairan", rak: "ETALASE 5B" },
+      { id: "p178", nama: "betadine moutwash", kandungan: "povidone-lodine 1%", indikasi: "untuk rongga mulut seperti gusi bengkak dan sakit tenggorokan", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
+      { id: "p179", nama: "minosep extra", kandungan: "chlorhexadine gluconate +cpc", indikasi: "meredakan nyeri dan melindungi rongga mulut", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
+      { id: "p180", nama: "minosep red", kandungan: "chlorhexadine gluconate", indikasi: "meringankan sariawan", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
+      { id: "p181", nama: "minosep mild", kandungan: "chlorhexadine gluconate", indikasi: "meringankan sariawan", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
+      { id: "p182", nama: "minosep kids", kandungan: "cpc+sodium flouride", indikasi: "untuk gigi berlubang", sediaan: "Obat Kumur", rak: "ETALASE 5B" },
+      { id: "p183", nama: "ventolin inhaler", kandungan: "salbutamol", indikasi: "membantu melegakan sesak napas pada asma dan penyakit paru", sediaan: "Inhaler", rak: "ETALASE 5B" },
+      { id: "p184", nama: "medisio", kandungan: "policresulen", indikasi: "untuk kauterisasi dan irigasi pada luka/ perawatan luka tertentu", sediaan: "Cairan Obat Luar", rak: "ETALASE 5B" },
+      { id: "p185", nama: "sp troches", kandungan: "dequalinium chloride", indikasi: "untuk infeksi bakteri dan fungi dalam ruang mulut dan tenggorokan", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
+      { id: "p186", nama: "tantum lozenges", kandungan: "benzydamine hydrochloride", indikasi: "untuk meringankan rasa sakit pada rongga mulut", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
+      { id: "p187", nama: "degirol", kandungan: "dequalinium chloride 0,5 mg", indikasi: "untuk mengobati peradangan,sakit tenggorokan dan infeksi", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
+      { id: "p188", nama: "meiji", kandungan: "neomycin+gramicidin", indikasi: "antibiotik ringan untuk untuk ingeksi pada rongga mulut", sediaan: "Tablet Hisap", rak: "ETALASE 5B" },
+      { id: "p189", nama: "seretide diskus", kandungan: "salmeterol xinafote+fluticasone propionate", indikasi: "pengobatan rutin asma bronkial dan PPOK yang memerlukan kombinasi", sediaan: "Serbuk Inhalasi", rak: "ETALASE 5B" },
+      { id: "p190", nama: "desolex-N", kandungan: "desonidine+neomycin sulfate", indikasi: "untuk meringankan inflamasi dari dermatoses yang responsif terhadap kortikosteroid", sediaan: "Krim", rak: "ETALASE 5B" }
+    ];
+    window.ORIGINAL_190_PRODUCTS = ORIGINAL_190_PRODUCTS;
+
+    const LOCAL_STORAGE_KEY = 'apotek_valencia_catalog_lavender_leaf_v1';
+    let products = [];
+    let currentFilterField = 'all';
+    let currentViewMode = 'grid';
+    let productToDeleteId = null;
+
+    // Listener ketika data diterima dari cloud (Realtime sinkron antar HP & Laptop)
+    window.handleRemoteSync = function(remoteList) {
+      if (Array.isArray(remoteList) && remoteList.length > 0) {
+        products = remoteList;
+        saveToLocalStorageOnly();
+        renderProducts();
+      }
+    };
+
+    // Inisialisasi Database
+    function initDatabase() {
+      const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (stored) {
+        try {
+          products = JSON.parse(stored);
+          if (!Array.isArray(products) || products.length === 0) {
+            products = [...ORIGINAL_190_PRODUCTS];
+            saveToStorage();
+          } else {
+            // Update otomatis produk yang belum memiliki nomor rak agar terisi "ETALASE 5B"
+            let needsSave = false;
+            products = products.map(p => {
+              if (!p.rak || p.rak.trim() === '') {
+                needsSave = true;
+                return { ...p, rak: 'ETALASE 5B' };
+              }
+              return p;
+            });
+            if (needsSave) {
+              saveToStorage();
+            }
+          }
+        } catch (e) {
+          products = [...ORIGINAL_190_PRODUCTS];
+          saveToStorage();
+        }
+      } else {
+        products = [...ORIGINAL_190_PRODUCTS];
+        saveToStorage();
+      }
+      updateUI();
+    }
+
+    function saveToLocalStorageOnly() {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
+      const counter = document.getElementById('menuProductCount');
+      if (counter) counter.textContent = products.length;
+    }
+
+    function saveToStorage() {
+      saveToLocalStorageOnly();
+      // Sinkronkan ke cloud jika koneksi cloud aktif
+      if (window.cloudEngine && window.cloudEngine.isAvailable()) {
+        // Individual save handled on add/update
+      }
+    }
+
+    function updateUI() {
+      renderProducts();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      document.getElementById('menuProductCount').textContent = products.length;
+    }
+
+    // Filter Logic
+    function getFilteredProducts() {
+      const rawQuery = (document.getElementById('searchInput').value || '').trim();
+      const sediaanFilter = document.getElementById('sediaanSelectFilter').value.toLowerCase();
+
+      // Pecah pencarian menjadi beberapa kata kunci jika dipisahkan oleh koma, plus, atau spasi
+      // Mendukung multi-kandungan, multi-indikasi, dan kombinasi nama + sediaan
+      const tokens = rawQuery.toLowerCase().split(/[,+]/).map(t => t.trim()).filter(Boolean);
+
+      return products.filter(item => {
+        // Filter Jenis Sediaan dari Dropdown jika dipilih
+        if (sediaanFilter && !item.sediaan.toLowerCase().includes(sediaanFilter)) {
+          return false;
+        }
+
+        if (tokens.length === 0) return true;
+
+        const nama = (item.nama || '').toLowerCase();
+        const kandungan = (item.kandungan || '').toLowerCase();
+        const indikasi = (item.indikasi || '').toLowerCase();
+        const sediaan = (item.sediaan || '').toLowerCase();
+        const rak = (item.rak || '').toLowerCase();
+
+        // Mode pencarian khusus kolom Kandungan Isi (Multi-Kandungan)
+        if (currentFilterField === 'kandungan') {
+          return tokens.every(token => kandungan.includes(token));
+        } else if (currentFilterField === 'nama') {
+          return tokens.every(token => nama.includes(token));
+        } else if (currentFilterField === 'indikasi') {
+          return tokens.every(token => indikasi.includes(token));
+        } else if (currentFilterField === 'sediaan') {
+          return tokens.every(token => sediaan.includes(token));
+        } else if (currentFilterField === 'rak') {
+          return tokens.every(token => rak.includes(token));
+        } else {
+          // Mode Semua Kolom:
+          // 1. Cek apakah seluruh token ada bersamaan di kandungan
+          const allInKandungan = tokens.every(token => kandungan.includes(token));
+          if (allInKandungan) return true;
+
+          // 2. Cek apakah seluruh token ada bersamaan di indikasi
+          const allInIndikasi = tokens.every(token => indikasi.includes(token));
+          if (allInIndikasi) return true;
+
+          // 3. Cek apakah cocok di lokasi rak
+          const allInRak = tokens.every(token => rak.includes(token));
+          if (allInRak) return true;
+
+          // 4. Atau setiap kata cocok di gabungan Nama + Sediaan + Kandungan + Indikasi + Rak
+          const spaceTokens = rawQuery.toLowerCase().split(/\s+/).filter(Boolean);
+          const matchCombined = spaceTokens.every(tok => 
+            nama.includes(tok) || 
+            sediaan.includes(tok) || 
+            kandungan.includes(tok) || 
+            indikasi.includes(tok) ||
+            rak.includes(tok)
+          );
+          if (matchCombined) return true;
+
+          return tokens.every(token => 
+            nama.includes(token) || 
+            kandungan.includes(token) || 
+            indikasi.includes(token) || 
+            sediaan.includes(token) ||
+            rak.includes(token)
+          );
+        }
+      });
+    }
+
+    // Helper untuk mengecek apakah ada varian sediaan lain dari produk dengan nama serupa
+    function getProductVariants(currentProduct) {
+      const baseName = currentProduct.nama.toLowerCase()
+        .replace(/\b(krim|salep|gel|tetes|tablet|sirup|inhaler|drops|eye|ear)\b/gi, '')
+        .trim();
+      
+      if (baseName.length < 3) return [];
+      
+      return products.filter(p => {
+        if (p.id === currentProduct.id) return false;
+        const otherBase = p.nama.toLowerCase()
+          .replace(/\b(krim|salep|gel|tetes|tablet|sirup|inhaler|drops|eye|ear)\b/gi, '')
+          .trim();
+        return (otherBase === baseName || p.nama.toLowerCase().includes(baseName) || baseName.includes(otherBase)) && p.sediaan !== currentProduct.sediaan;
+      });
+    }
+
+    function highlightText(text, query) {
+      if (!query || !text) return text || '-';
+      // Pecah kata kunci untuk menyoroti setiap kata yang cocok
+      const tokens = query.toLowerCase().split(/[,+]/).map(t => t.trim()).filter(Boolean);
+      if (tokens.length === 0) return text;
+
+      let result = text;
+      // Urutkan token terpanjang lebih dahulu agar tidak terjadi tabrakan regex
+      const sortedTokens = [...tokens].sort((a, b) => b.length - a.length);
+      
+      sortedTokens.forEach(tok => {
+        const escaped = tok.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${escaped})`, 'gi');
+        result = result.replace(regex, '<span class="highlight-match">$1</span>');
+      });
+
+      return result;
+    }
+
+    function renderProducts() {
+      const filtered = getFilteredProducts();
+      const query = (document.getElementById('searchInput').value || '').trim();
+      const countBadge = document.getElementById('productCountBadge');
+      const emptyState = document.getElementById('emptyState');
+      const grid = document.getElementById('productGrid');
+      const tableWrapper = document.getElementById('productTableWrapper');
+      const tableBody = document.getElementById('productTableBody');
+      const filteredNotice = document.getElementById('filteredNotice');
+
+      if (countBadge) {
+        countBadge.textContent = `${filtered.length} Produk`;
+      }
+
+      if (filteredNotice) {
+        if (query || (document.getElementById('sediaanSelectFilter') && document.getElementById('sediaanSelectFilter').value)) {
+          filteredNotice.classList.remove('hidden');
+          filteredNotice.textContent = `(difilter dari ${products.length} total obat)`;
+        } else {
+          filteredNotice.classList.add('hidden');
+        }
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        tableBody.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      // 1. Render Kartu (Tampilan Bersih, Tenang, Nyaman Dibaca dengan Aksen Hijau Daun Teduh)
+      grid.innerHTML = filtered.map(item => {
+        const sediaanBadgeColor = getSediaanBadgeClass(item.sediaan);
+        const variants = getProductVariants(item);
+        
+        // Render lokasi rak (bisa 2 atau 3 badge lokasi)
+        const rakLocations = (item.rak || '').split(/[,+]/).map(r => r.trim()).filter(Boolean);
+
+        return `
+          <div class="bg-white rounded-2xl p-4.5 sm:p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-md border border-slate-150 flex flex-col justify-between transition-all group hover:border-leaf-300">
+            <div>
+              <div class="flex items-start justify-between gap-2.5 mb-2.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-semibold ${sediaanBadgeColor}">
+                  <i class="fa-solid fa-capsules mr-1.5 text-[10px]"></i> ${highlightText(item.sediaan, query)}
+                </span>
+                <div class="flex items-center gap-1 opacity-70 group-hover:opacity-100 transition">
+                  <button onclick="openModal('edit', '${item.id}')" title="Edit Produk" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-leaf-50 text-slate-600 hover:text-leaf-700 flex items-center justify-center text-xs transition border border-slate-100">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button onclick="promptDelete('${item.id}', '${item.nama.replace(/'/g, "\\'")}')" title="Hapus Produk" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 flex items-center justify-center text-xs transition border border-slate-100">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Nama Obat -->
+              <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-leaf-800 transition tracking-tight">
+                ${highlightText(item.nama, query)}
+              </h3>
+
+              <!-- Badge Lokasi Nomor Rak / Posisi Lemari -->
+              <div class="mt-2 flex flex-wrap items-center gap-1">
+                <span class="text-[10px] font-bold text-slate-400 flex items-center gap-1 mr-0.5">
+                  <i class="fa-solid fa-boxes-stacked text-leaf-600 text-[10px]"></i> Lokasi:
+                </span>
+                ${rakLocations.length > 0 ? rakLocations.map(loc => `
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200">
+                    <i class="fa-solid fa-location-dot text-[8px] mr-1 text-amber-600"></i> ${highlightText(loc, query)}
+                  </span>
+                `).join('') : `
+                  <span class="text-[10px] text-slate-400 italic">Belum diatur</span>
+                `}
+              </div>
+
+              <!-- Deteksi Varian Sediaan Lain Jika Ada -->
+              ${variants.length > 0 ? `
+                <div class="mt-2 flex flex-wrap items-center gap-1.5 p-1.5 bg-amber-50/80 rounded-xl border border-amber-200/60">
+                  <span class="text-[10px] font-bold text-amber-800 flex items-center gap-1">
+                    <i class="fa-solid fa-shuffle text-[9px]"></i> Varian lain:
+                  </span>
+                  ${variants.map(v => `
+                    <button onclick="filterSpecificProduct('${v.nama.replace(/'/g, "\\'")}', '${v.sediaan}')" class="text-[10px] font-semibold px-2 py-0.5 bg-white text-slate-700 border border-amber-200 rounded-md hover:bg-amber-100 hover:text-amber-900 transition">
+                      ${v.sediaan}
+                    </button>
+                  `).join('')}
+                </div>
+              ` : ''}
+
+              <!-- Kandungan Zat Aktif (Nuansa Hijau Daun Teduh & Jelas Dibaca) -->
+              <div class="mt-3 bg-[#f5f9f2] rounded-xl p-2.5 border border-leaf-200/80">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-leaf-800 flex items-center gap-1 mb-0.5">
+                  <i class="fa-solid fa-flask-vial text-[10px] text-leaf-600"></i> Kandungan Isi
+                </div>
+                <p class="text-xs font-semibold text-slate-800 leading-snug">
+                  ${highlightText(item.kandungan, query)}
+                </p>
+              </div>
+
+              <!-- Indikasi (Elemen Bersih & Nyaman di Mata) -->
+              <div class="mt-2 bg-[#fafcf9] rounded-xl p-2.5 border border-leaf-100">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-leaf-700 flex items-center gap-1 mb-0.5">
+                  <i class="fa-solid fa-notes-medical text-[10px] text-leaf-500"></i> Indikasi
+                </div>
+                <p class="text-xs text-slate-600 font-normal leading-snug">
+                  ${highlightText(item.indikasi, query)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Footer Card -->
+            <div class="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+              <span class="font-medium text-slate-400">ID: ${item.id}</span>
+              <button onclick="copyProductDetail('${item.id}')" class="text-leaf-600 hover:text-leaf-800 font-semibold flex items-center gap-1 transition">
+                <i class="fa-regular fa-copy"></i> Salin Info
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // 2. Render Tabel Ringkas
+      tableBody.innerHTML = filtered.map(item => {
+        const rakLocations = (item.rak || '').split(/[,+]/).map(r => r.trim()).filter(Boolean);
+        return `
+        <tr class="hover:bg-leaf-50/40 transition">
+          <td class="py-3 px-4 font-bold text-slate-900">
+            ${highlightText(item.nama, query)}
+          </td>
+          <td class="py-3 px-4 text-xs font-semibold">
+            ${rakLocations.length > 0 ? rakLocations.map(loc => `
+              <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200 mr-1 mb-1">
+                ${highlightText(loc, query)}
+              </span>
+            `).join('') : '<span class="text-slate-400 italic text-[11px]">-</span>'}
+          </td>
+          <td class="py-3 px-4 text-xs font-semibold text-slate-800 max-w-xs">
+            ${highlightText(item.kandungan, query)}
+          </td>
+          <td class="py-3 px-4 text-xs text-slate-600 max-w-sm">
+            ${highlightText(item.indikasi, query)}
+          </td>
+          <td class="py-3 px-4">
+            <span class="px-2.5 py-1 rounded-xl text-[11px] font-bold ${getSediaanBadgeClass(item.sediaan)} inline-block">
+              ${highlightText(item.sediaan, query)}
+            </span>
+          </td>
+          <td class="py-3 px-4 text-center whitespace-nowrap">
+            <div class="flex items-center justify-center gap-1">
+              <button onclick="openModal('edit', '${item.id}')" title="Edit" class="w-7 h-7 rounded-lg bg-leaf-100 text-leaf-800 hover:bg-leaf-200 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button onclick="promptDelete('${item.id}', '${item.nama.replace(/'/g, "\\'")}')" title="Hapus" class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `}).join('');
+    }
+
+    function getSediaanBadgeClass(sediaan = '') {
+      const lower = sediaan.toLowerCase();
+      if (lower.includes('krim') || lower.includes('salep') || lower.includes('gel')) {
+        return 'bg-leaf-50 text-leaf-800 border border-leaf-200/80';
+      } else if (lower.includes('mata')) {
+        return 'bg-emerald-50 text-emerald-800 border border-emerald-200/80';
+      } else if (lower.includes('telinga') || lower.includes('hidung')) {
+        return 'bg-teal-50 text-teal-800 border border-teal-200/80';
+      } else if (lower.includes('hisap') || lower.includes('kumur') || lower.includes('semprot')) {
+        return 'bg-amber-50 text-amber-800 border border-amber-200/80';
+      } else if (lower.includes('inhaler') || lower.includes('inhalasi')) {
+        return 'bg-cyan-50 text-cyan-800 border border-cyan-200/80';
+      }
+      return 'bg-slate-50 text-slate-700 border border-slate-200';
+    }
+
+    // Modal Add & Edit Handlers
+    function openModal(mode, productId = null) {
+      const modal = document.getElementById('productModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const saveBtnText = document.getElementById('saveBtnText');
+      const form = document.getElementById('productForm');
+
+      form.reset();
+      document.getElementById('editProductId').value = '';
+
+      if (mode === 'edit' && productId) {
+        const item = products.find(p => p.id === productId);
+        if (!item) return;
+
+        modalTitle.textContent = 'Edit Data Obat';
+        saveBtnText.textContent = 'Simpan Perubahan';
+        document.getElementById('editProductId').value = item.id;
+        document.getElementById('inputNama').value = item.nama;
+        document.getElementById('inputKandungan').value = item.kandungan;
+        document.getElementById('inputIndikasi').value = item.indikasi;
+        document.getElementById('inputSediaan').value = item.sediaan;
+        document.getElementById('inputRak').value = item.rak || '';
+      } else {
+        modalTitle.textContent = 'Tambah Produk Obat Baru';
+        saveBtnText.textContent = 'Simpan ke Katalog';
+        document.getElementById('inputRak').value = '';
+      }
+
+      modal.classList.remove('hidden');
+      document.getElementById('inputNama').focus();
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.add('hidden');
+    }
+
+    async function saveProduct(event) {
+      event.preventDefault();
+      const editId = document.getElementById('editProductId').value;
+      const nama = document.getElementById('inputNama').value.trim();
+      const kandungan = document.getElementById('inputKandungan').value.trim();
+      const indikasi = document.getElementById('inputIndikasi').value.trim();
+      const sediaan = document.getElementById('inputSediaan').value.trim();
+      const rak = document.getElementById('inputRak').value.trim();
+
+      if (!nama || !kandungan || !indikasi || !sediaan) {
+        showToast('Mohon isi semua kolom produk wajib!', 'warning');
+        return;
+      }
+
+      if (editId) {
+        const index = products.findIndex(p => p.id === editId);
+        if (index !== -1) {
+          const updated = { ...products[index], nama, kandungan, indikasi, sediaan, rak };
+          products[index] = updated;
+          saveToLocalStorageOnly();
+          if (window.cloudEngine) {
+            await window.cloudEngine.updateProduct(updated);
+          }
+          showToast(`Produk "${nama}" berhasil diperbarui!`, 'success');
+        }
+      } else {
+        // UUID & Timestamp unik menjamin tidak akan bentrok meski 10 orang menginput di detik yang sama
+        const uniqueId = 'p_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+        const newProduct = {
+          id: uniqueId,
+          nama,
+          kandungan,
+          indikasi,
+          sediaan,
+          rak,
+          createdAt: Date.now()
+        };
+        products.unshift(newProduct);
+        saveToLocalStorageOnly();
+        if (window.cloudEngine) {
+          await window.cloudEngine.addProduct(newProduct);
+        }
+        showToast(`Produk "${nama}" berhasil ditambahkan!`, 'success');
+      }
+
+      closeModal();
+      renderProducts();
+    }
+
+    // Delete Handlers
+    function promptDelete(id, nama) {
+      productToDeleteId = id;
+      document.getElementById('deletePromptName').textContent = `Produk "${nama}" akan dihapus dari data apotek.`;
+      document.getElementById('deleteModal').classList.remove('hidden');
+
+      document.getElementById('confirmDeleteBtn').onclick = async function () {
+        if (productToDeleteId) {
+          const targetId = productToDeleteId;
+          products = products.filter(p => p.id !== targetId);
+          saveToLocalStorageOnly();
+          if (window.cloudEngine) {
+            await window.cloudEngine.deleteProduct(targetId);
+          }
+          closeDeleteModal();
+          renderProducts();
+          showToast('Produk berhasil dihapus.', 'info');
+        }
+      };
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('deleteModal').classList.add('hidden');
+      productToDeleteId = null;
+    }
+
+    // Search & Filter Handlers
+    function handleSearchInput() {
+      const val = document.getElementById('searchInput').value;
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (val) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderProducts();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      document.getElementById('sediaanSelectFilter').value = '';
+      setSearchFilter('all');
+      renderProducts();
+    }
+
+    function setSearchFilter(field) {
+      currentFilterField = field;
+      document.querySelectorAll('.filter-tab').forEach(btn => {
+        btn.classList.remove('bg-leaf-600', 'text-white', 'shadow-xs');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+
+      const activeBtn = document.getElementById(`filter-${field}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+        activeBtn.classList.add('bg-leaf-600', 'text-white', 'shadow-xs');
+      }
+      renderProducts();
+    }
+
+    function handleSediaanSelect(val) {
+      renderProducts();
+    }
+
+    function quickFilterSediaan(val) {
+      document.getElementById('sediaanSelectFilter').value = val;
+      renderProducts();
+    }
+
+    // Fungsi klik cepat varian sediaan lain
+    function filterSpecificProduct(nama, sediaan) {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = `${nama} ${sediaan}`;
+      handleSearchInput();
+    }
+
+    // Switch View
+    function switchView(mode) {
+      currentViewMode = mode;
+      const grid = document.getElementById('productGrid');
+      const tableWrapper = document.getElementById('productTableWrapper');
+      const gridBtn = document.getElementById('viewGridBtn');
+      const tableBtn = document.getElementById('viewTableBtn');
+
+      if (mode === 'grid') {
+        grid.classList.remove('hidden');
+        tableWrapper.classList.add('hidden');
+        gridBtn.classList.add('bg-white', 'text-leaf-800', 'shadow-xs', 'font-bold');
+        gridBtn.classList.remove('text-slate-600');
+        tableBtn.classList.remove('bg-white', 'text-leaf-800', 'shadow-xs', 'font-bold');
+        tableBtn.classList.add('text-slate-600');
+      } else {
+        grid.classList.add('hidden');
+        tableWrapper.classList.remove('hidden');
+        tableBtn.classList.add('bg-white', 'text-leaf-800', 'shadow-xs', 'font-bold');
+        tableBtn.classList.remove('text-slate-600');
+        gridBtn.classList.remove('bg-white', 'text-leaf-800', 'shadow-xs', 'font-bold');
+        gridBtn.classList.add('text-slate-600');
+      }
+    }
+
+    // Backup & Data Export
+    function toggleDataMenu() {
+      const menu = document.getElementById('dataMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function confirmReset190() {
+      toggleDataMenu();
+      products = [...ORIGINAL_190_PRODUCTS];
+      saveToStorage();
+      renderProducts();
+      showToast('190 data obat asli Apotek Valencia berhasil dimuat kembali!', 'success');
+    }
+
+    function exportDataJSON() {
+      toggleDataMenu();
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(products, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `Apotek_Valencia_Data_Produk_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast('Cadangan JSON berhasil diunduh.', 'success');
+    }
+
+    function exportDataCSV() {
+      toggleDataMenu();
+      let csvContent = "data:text/csv;charset=utf-8,ID,Nama Produk,Nomor Rak / Posisi Lemari,Kandungan Isi,Indikasi,Jenis Sediaan\n";
+      products.forEach(p => {
+        const row = [
+          `"${p.id}"`,
+          `"${(p.nama || '').replace(/"/g, '""')}"`,
+          `"${(p.rak || '').replace(/"/g, '""')}"`,
+          `"${(p.kandungan || '').replace(/"/g, '""')}"`,
+          `"${(p.indikasi || '').replace(/"/g, '""')}"`,
+          `"${(p.sediaan || '').replace(/"/g, '""')}"`
+        ];
+        csvContent += row.join(",") + "\n";
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `Apotek_Valencia_Katalog_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      showToast('Data berhasil diekspor ke format Excel/CSV.', 'success');
+    }
+
+    function importDataJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            products = imported;
+            saveToStorage();
+            renderProducts();
+            toggleDataMenu();
+            showToast(`Berhasil memuat ${products.length} data produk!`, 'success');
+          } else {
+            showToast('Format file JSON tidak sesuai.', 'error');
+          }
+        } catch (err) {
+          showToast('Gagal membaca file JSON.', 'error');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function copyProductDetail(id) {
+      const p = products.find(item => item.id === id);
+      if (!p) return;
+
+      const rakText = p.rak ? `\nNomor Rak/Lemari: ${p.rak}` : '';
+      const text = `APOTEK VALENCIA (Solusi Sehat Kita)\nNama Produk: ${p.nama}${rakText}\nKandungan Isi: ${p.kandungan}\nIndikasi: ${p.indikasi}\nJenis Sediaan: ${p.sediaan}`;
+
+      const el = document.createElement('textarea');
+      el.value = text;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+
+      showToast(`Rincian ${p.nama} berhasil disalin!`, 'info');
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+
+      let icon = 'fa-circle-info text-lavender-300';
+      if (type === 'success') icon = 'fa-circle-check text-leaf-400';
+      if (type === 'warning') icon = 'fa-triangle-exclamation text-amber-300';
+      if (type === 'error') icon = 'fa-circle-xmark text-rose-400';
+
+      toast.className = `flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-slate-900/95 text-white text-xs font-semibold shadow-xl backdrop-blur-md border border-slate-700/80 transition-all duration-300 pointer-events-auto max-w-sm`;
+      toast.innerHTML = `<i class="fa-solid ${icon} text-sm"></i> <span>${message}</span>`;
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    window.addEventListener('click', function(e) {
+      const menu = document.getElementById('dataMenu');
+      const btn = e.target.closest('button[onclick="toggleDataMenu()"]');
+      if (!menu.contains(e.target) && !btn && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    window.onload = function() {
+      initDatabase();
+    };
+  </script>
+</body>
+</html>
