@@ -235,6 +235,9 @@
           <button type="button" onclick="setSearchFilter('sediaan')" id="filter-sediaan" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
             Jenis Sediaan
           </button>
+          <button type="button" onclick="setSearchFilter('rak')" id="filter-rak" class="filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            Rak / Lemari
+          </button>
         </div>
 
         <!-- Dropdown Sediaan Filter Cepat -->
@@ -296,6 +299,7 @@
               <th class="py-3.5 px-4">Kandungan Isi (Zat Aktif)</th>
               <th class="py-3.5 px-4">Indikasi</th>
               <th class="py-3.5 px-4">Jenis Sediaan</th>
+              <th class="py-3.5 px-4">Lokasi Rak</th>
               <th class="py-3.5 px-4 text-center">Aksi</th>
             </tr>
           </thead>
@@ -371,7 +375,7 @@
         </button>
       </div>
 
-      <!-- Modal Body (Form Murni 4 Kolom) -->
+      <!-- Modal Body (Form 5 Kolom Lengkap dengan Lokasi Rak) -->
       <form id="productForm" onsubmit="saveProduct(event)" class="overflow-y-auto p-5 sm:p-6 space-y-4 text-sm">
         <input type="hidden" id="editProductId" value="">
 
@@ -430,6 +434,20 @@
             placeholder="Contoh: Krim, Salep, Gel, Tetes Mata, Tablet Hisap, Inhaler" 
             class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-medium bg-leaf-50/20"
           >
+        </div>
+
+        <!-- 5. Lokasi Rak / Lemari (Bisa Multi-Lokasi) -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            Lokasi Rak / Lemari
+          </label>
+          <input 
+            type="text" 
+            id="inputRak" 
+            placeholder="Contoh: RAK 5B, Etalase Depan (pisahkan koma jika >1 lokasi)" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-leaf-200 focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-leaf-500 text-slate-800 text-sm font-semibold bg-leaf-50/20"
+          >
+          <p class="text-[11px] text-slate-400 mt-1">Jika produk ada di 2 atau 3 tempat, pisahkan dengan tanda koma (,).</p>
         </div>
 
         <!-- Action Buttons -->
@@ -614,8 +632,8 @@
 
   <!-- ================= JAVASCRIPT APPLICATION CORE ================= -->
   <script>
-    // 190 DATA PRODUK LENGKAP UTUH APOTEK VALENCIA DENGAN 4 KOLOM UTAMA
-    const ORIGINAL_190_PRODUCTS = [
+    // 190 DATA PRODUK LENGKAP UTUH APOTEK VALENCIA DENGAN LOKASI RAK 5B
+    const RAW_190_PRODUCTS = [
       { id: "p1", nama: "Anfuhex", kandungan: "Ketoconazole", indikasi: "Infeksi dermatofit pada kulit, seperti tinea kruris", sediaan: "Krim" },
       { id: "p2", nama: "Aloclair Plus Gel", kandungan: "Gel", indikasi: "Meredakan nyeri dan membantu penyembuhan ulkus rongga mulut", sediaan: "Gel" },
       { id: "p3", nama: "Afucid", kandungan: "Fusidic Acid", indikasi: "Infeksi kulit disebabkan staphylococcus atau bakteri lain", sediaan: "Krim" },
@@ -807,9 +825,10 @@
       { id: "p189", nama: "seretide diskus", kandungan: "salmeterol xinafote+fluticasone propionate", indikasi: "pengobatan rutin asma bronkial dan PPOK yang memerlukan kombinasi", sediaan: "Serbuk Inhalasi" },
       { id: "p190", nama: "desolex-N", kandungan: "desonidine+neomycin sulfate", indikasi: "untuk meringankan inflamasi dari dermatoses yang responsif terhadap kortikosteroid", sediaan: "Krim" }
     ];
+    const ORIGINAL_190_PRODUCTS = RAW_190_PRODUCTS.map(item => ({ ...item, rak: "RAK 5B" }));
     window.ORIGINAL_190_PRODUCTS = ORIGINAL_190_PRODUCTS;
 
-    const LOCAL_STORAGE_KEY = 'apotek_valencia_catalog_lavender_leaf_v1';
+    const LOCAL_STORAGE_KEY = 'apotek_valencia_catalog_lavender_leaf_v2';
     let products = [];
     let currentFilterField = 'all';
     let currentViewMode = 'grid';
@@ -818,7 +837,7 @@
     // Listener ketika data diterima dari cloud (Realtime sinkron antar HP & Laptop)
     window.handleRemoteSync = function(remoteList) {
       if (Array.isArray(remoteList) && remoteList.length > 0) {
-        products = remoteList;
+        products = remoteList.map(p => ({ ...p, rak: p.rak !== undefined ? p.rak : "RAK 5B" }));
         saveToLocalStorageOnly();
         renderProducts();
       }
@@ -833,6 +852,8 @@
           if (!Array.isArray(products) || products.length === 0) {
             products = [...ORIGINAL_190_PRODUCTS];
             saveToStorage();
+          } else {
+            products = products.map(p => ({ ...p, rak: p.rak !== undefined ? p.rak : "RAK 5B" }));
           }
         } catch (e) {
           products = [...ORIGINAL_190_PRODUCTS];
@@ -853,30 +874,27 @@
 
     function saveToStorage() {
       saveToLocalStorageOnly();
-      // Sinkronkan ke cloud jika koneksi cloud aktif
-      if (window.cloudEngine && window.cloudEngine.isAvailable()) {
-        // Individual save handled on add/update
-      }
     }
 
     function updateUI() {
       renderProducts();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      document.getElementById('menuProductCount').textContent = products.length;
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+      const counterEl = document.getElementById('menuProductCount');
+      if (counterEl) counterEl.textContent = products.length;
     }
 
     // Filter Logic
     function getFilteredProducts() {
-      const rawQuery = (document.getElementById('searchInput').value || '').trim();
-      const sediaanFilter = document.getElementById('sediaanSelectFilter').value.toLowerCase();
+      const searchEl = document.getElementById('searchInput');
+      const sediaanEl = document.getElementById('sediaanSelectFilter');
+      const rawQuery = searchEl ? searchEl.value.trim() : '';
+      const sediaanFilter = sediaanEl ? sediaanEl.value.toLowerCase() : '';
 
-      // Pecah pencarian menjadi beberapa kata kunci jika dipisahkan oleh koma, plus, atau spasi
-      // Mendukung multi-kandungan seperti "betamethasone, neomycin" atau "paracetamol caffeine"
       const tokens = rawQuery.toLowerCase().split(/[,+]/).map(t => t.trim()).filter(Boolean);
 
       return products.filter(item => {
-        // Filter Jenis Sediaan dari Dropdown jika dipilih
-        if (sediaanFilter && !item.sediaan.toLowerCase().includes(sediaanFilter)) {
+        if (sediaanFilter && !(item.sediaan || '').toLowerCase().includes(sediaanFilter)) {
           return false;
         }
 
@@ -886,10 +904,9 @@
         const kandungan = (item.kandungan || '').toLowerCase();
         const indikasi = (item.indikasi || '').toLowerCase();
         const sediaan = (item.sediaan || '').toLowerCase();
+        const rak = (item.rak || '').toLowerCase();
 
-        // Mode pencarian khusus kolom Kandungan Isi (Multi-Kandungan)
         if (currentFilterField === 'kandungan') {
-          // Semua kata kunci kandungan yang diketik harus ada di dalam kolom kandungan
           return tokens.every(token => kandungan.includes(token));
         } else if (currentFilterField === 'nama') {
           return tokens.every(token => nama.includes(token));
@@ -897,18 +914,18 @@
           return tokens.every(token => indikasi.includes(token));
         } else if (currentFilterField === 'sediaan') {
           return tokens.every(token => sediaan.includes(token));
+        } else if (currentFilterField === 'rak') {
+          return tokens.every(token => rak.includes(token));
         } else {
-          // Mode Semua Kolom:
-          // 1. Cek apakah seluruh token ada bersamaan di kandungan (pencarian multi-kandungan umum)
           const allInKandungan = tokens.every(token => kandungan.includes(token));
           if (allInKandungan) return true;
 
-          // 2. Atau setiap token ditemukan di salah satu atribut produk
           return tokens.every(token => 
             nama.includes(token) || 
             kandungan.includes(token) || 
             indikasi.includes(token) || 
-            sediaan.includes(token)
+            sediaan.includes(token) ||
+            rak.includes(token)
           );
         }
       });
@@ -916,12 +933,10 @@
 
     function highlightText(text, query) {
       if (!query || !text) return text || '-';
-      // Pecah kata kunci untuk menyoroti setiap kata yang cocok
       const tokens = query.toLowerCase().split(/[,+]/).map(t => t.trim()).filter(Boolean);
       if (tokens.length === 0) return text;
 
-      let result = text;
-      // Urutkan token terpanjang lebih dahulu agar tidak terjadi tabrakan regex
+      let result = String(text);
       const sortedTokens = [...tokens].sort((a, b) => b.length - a.length);
       
       sortedTokens.forEach(tok => {
@@ -935,11 +950,11 @@
 
     function renderProducts() {
       const filtered = getFilteredProducts();
-      const query = (document.getElementById('searchInput').value || '').trim();
+      const searchEl = document.getElementById('searchInput');
+      const query = searchEl ? searchEl.value.trim() : '';
       const countBadge = document.getElementById('productCountBadge');
       const emptyState = document.getElementById('emptyState');
       const grid = document.getElementById('productGrid');
-      const tableWrapper = document.getElementById('productTableWrapper');
       const tableBody = document.getElementById('productTableBody');
       const filteredNotice = document.getElementById('filteredNotice');
 
@@ -948,7 +963,8 @@
       }
 
       if (filteredNotice) {
-        if (query || (document.getElementById('sediaanSelectFilter') && document.getElementById('sediaanSelectFilter').value)) {
+        const sediaanEl = document.getElementById('sediaanSelectFilter');
+        if (query || (sediaanEl && sediaanEl.value)) {
           filteredNotice.classList.remove('hidden');
           filteredNotice.textContent = `(difilter dari ${products.length} total obat)`;
         } else {
@@ -957,100 +973,131 @@
       }
 
       if (filtered.length === 0) {
-        grid.innerHTML = '';
-        tableBody.innerHTML = '';
-        emptyState.classList.remove('hidden');
+        if (grid) grid.innerHTML = '';
+        if (tableBody) tableBody.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
         return;
       }
 
-      emptyState.classList.add('hidden');
+      if (emptyState) emptyState.classList.add('hidden');
 
-      // 1. Render Kartu (Tampilan Bersih, Tenang, Nyaman Dibaca dengan Aksen Hijau Daun Teduh)
-      grid.innerHTML = filtered.map(item => {
-        const sediaanBadgeColor = getSediaanBadgeClass(item.sediaan);
-        return `
-          <div class="bg-white rounded-2xl p-4.5 sm:p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-md border border-slate-150 flex flex-col justify-between transition-all group hover:border-leaf-300">
-            <div>
-              <div class="flex items-start justify-between gap-2.5 mb-2.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-semibold ${sediaanBadgeColor}">
-                  ${highlightText(item.sediaan, query)}
-                </span>
-                <div class="flex items-center gap-1 opacity-70 group-hover:opacity-100 transition">
-                  <button onclick="openModal('edit', '${item.id}')" title="Edit Produk" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-leaf-50 text-slate-600 hover:text-leaf-700 flex items-center justify-center text-xs transition border border-slate-100">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  </button>
-                  <button onclick="promptDelete('${item.id}', '${item.nama.replace(/'/g, "\\'")}')" title="Hapus Produk" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 flex items-center justify-center text-xs transition border border-slate-100">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button>
+      // 1. Render Kartu
+      if (grid) {
+        grid.innerHTML = filtered.map(item => {
+          const sediaanBadgeColor = getSediaanBadgeClass(item.sediaan);
+          const rakList = (item.rak || '').split(',').map(r => r.trim()).filter(Boolean);
+          const rakBadgesHTML = rakList.length > 0 
+            ? rakList.map(r => `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-lavender-100 text-lavender-800 border border-lavender-200"><i class="fa-solid fa-layer-group text-[9px]"></i> ${highlightText(r, query)}</span>`).join('')
+            : `<span class="text-[10px] text-slate-400 italic">Lokasi belum diisi</span>`;
+
+          return `
+            <div class="bg-white rounded-2xl p-4.5 sm:p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-md border border-slate-150 flex flex-col justify-between transition-all group hover:border-leaf-300">
+              <div>
+                <div class="flex items-start justify-between gap-2.5 mb-2.5">
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-semibold ${sediaanBadgeColor}">
+                      ${highlightText(item.sediaan, query)}
+                    </span>
+                    ${rakBadgesHTML}
+                  </div>
+                  <div class="flex items-center gap-1 opacity-70 group-hover:opacity-100 transition shrink-0">
+                    <button onclick="openModal('edit', '${item.id}')" title="Edit Produk" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-leaf-50 text-slate-600 hover:text-leaf-700 flex items-center justify-center text-xs transition border border-slate-100">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="promptDelete('${item.id}', '${item.nama.replace(/'/g, "\\'")}')" title="Hapus Produk" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-500 hover:text-rose-600 flex items-center justify-center text-xs transition border border-slate-100">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Nama Obat -->
+                <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-leaf-800 transition tracking-tight">
+                  ${highlightText(item.nama, query)}
+                </h3>
+
+                <!-- Kandungan Zat Aktif -->
+                <div class="mt-3 bg-[#f5f9f2] rounded-xl p-2.5 border border-leaf-200/80">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-leaf-800 flex items-center gap-1 mb-0.5">
+                    <i class="fa-solid fa-flask-vial text-[10px] text-leaf-600"></i> Kandungan Isi
+                  </div>
+                  <p class="text-xs font-semibold text-slate-800 leading-snug">
+                    ${highlightText(item.kandungan, query)}
+                  </p>
+                </div>
+
+                <!-- Indikasi -->
+                <div class="mt-2 bg-[#fafcf9] rounded-xl p-2.5 border border-leaf-100">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-leaf-700 flex items-center gap-1 mb-0.5">
+                    <i class="fa-solid fa-notes-medical text-[10px] text-leaf-500"></i> Indikasi
+                  </div>
+                  <p class="text-xs text-slate-600 font-normal leading-snug">
+                    ${highlightText(item.indikasi, query)}
+                  </p>
+                </div>
+
+                <!-- Lokasi Rak / Lemari -->
+                <div class="mt-2.5 pt-2 border-t border-dashed border-slate-100">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-lavender-800 flex items-center gap-1 mb-1.5">
+                    <i class="fa-solid fa-boxes-stacked text-[10px] text-lavender-600"></i> Lokasi Rak / Lemari
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    ${rakBadgesHTML}
+                  </div>
                 </div>
               </div>
 
-              <!-- Nama Obat -->
-              <h3 class="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-leaf-800 transition tracking-tight">
-                ${highlightText(item.nama, query)}
-              </h3>
-
-              <!-- Kandungan Zat Aktif (Nuansa Hijau Daun Teduh & Jelas Dibaca) -->
-              <div class="mt-3 bg-[#f5f9f2] rounded-xl p-2.5 border border-leaf-200/80">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-leaf-800 flex items-center gap-1 mb-0.5">
-                  <i class="fa-solid fa-flask-vial text-[10px] text-leaf-600"></i> Kandungan Isi
-                </div>
-                <p class="text-xs font-semibold text-slate-800 leading-snug">
-                  ${highlightText(item.kandungan, query)}
-                </p>
-              </div>
-
-              <!-- Indikasi (Elemen Bersih & Nyaman di Mata) -->
-              <div class="mt-2 bg-[#fafcf9] rounded-xl p-2.5 border border-leaf-100">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-leaf-700 flex items-center gap-1 mb-0.5">
-                  <i class="fa-solid fa-notes-medical text-[10px] text-leaf-500"></i> Indikasi
-                </div>
-                <p class="text-xs text-slate-600 font-normal leading-snug">
-                  ${highlightText(item.indikasi, query)}
-                </p>
+              <!-- Footer Card -->
+              <div class="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                <span class="font-medium text-slate-400">ID: ${item.id}</span>
+                <button onclick="copyProductDetail('${item.id}')" class="text-leaf-600 hover:text-leaf-800 font-semibold flex items-center gap-1 transition">
+                  <i class="fa-regular fa-copy"></i> Salin Info
+                </button>
               </div>
             </div>
-
-            <!-- Footer Card -->
-            <div class="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-              <span class="font-medium text-slate-400">ID: ${item.id}</span>
-              <button onclick="copyProductDetail('${item.id}')" class="text-leaf-600 hover:text-leaf-800 font-semibold flex items-center gap-1 transition">
-                <i class="fa-regular fa-copy"></i> Salin Info
-              </button>
-            </div>
-          </div>
-        `;
-      }).join('');
+          `;
+        }).join('');
+      }
 
       // 2. Render Tabel Ringkas
-      tableBody.innerHTML = filtered.map(item => `
-        <tr class="hover:bg-leaf-50/40 transition">
-          <td class="py-3 px-4 font-bold text-slate-900">
-            ${highlightText(item.nama, query)}
-          </td>
-          <td class="py-3 px-4 text-xs font-semibold text-slate-800 max-w-xs">
-            ${highlightText(item.kandungan, query)}
-          </td>
-          <td class="py-3 px-4 text-xs text-slate-600 max-w-sm">
-            ${highlightText(item.indikasi, query)}
-          </td>
-          <td class="py-3 px-4">
-            <span class="px-2.5 py-1 rounded-xl text-[11px] font-bold ${getSediaanBadgeClass(item.sediaan)} inline-block">
-              ${highlightText(item.sediaan, query)}
-            </span>
-          </td>
-          <td class="py-3 px-4 text-center whitespace-nowrap">
-            <div class="flex items-center justify-center gap-1">
-              <button onclick="openModal('edit', '${item.id}')" title="Edit" class="w-7 h-7 rounded-lg bg-leaf-100 text-leaf-800 hover:bg-leaf-200 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-              <button onclick="promptDelete('${item.id}', '${item.nama.replace(/'/g, "\\'")}')" title="Hapus" class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-trash-can"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
-      `).join('');
+      if (tableBody) {
+        tableBody.innerHTML = filtered.map(item => {
+          const rakList = (item.rak || '').split(',').map(r => r.trim()).filter(Boolean);
+          const rakTableHTML = rakList.length > 0
+            ? `<div class="flex flex-wrap gap-1">${rakList.map(r => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-lavender-100 text-lavender-800 border border-lavender-200 whitespace-nowrap">${highlightText(r, query)}</span>`).join('')}</div>`
+            : `<span class="text-xs text-slate-400">-</span>`;
+
+          return `
+          <tr class="hover:bg-leaf-50/40 transition">
+            <td class="py-3 px-4 font-bold text-slate-900">
+              ${highlightText(item.nama, query)}
+            </td>
+            <td class="py-3 px-4 text-xs font-semibold text-slate-800 max-w-xs">
+              ${highlightText(item.kandungan, query)}
+            </td>
+            <td class="py-3 px-4 text-xs text-slate-600 max-w-sm">
+              ${highlightText(item.indikasi, query)}
+            </td>
+            <td class="py-3 px-4">
+              <span class="px-2.5 py-1 rounded-xl text-[11px] font-bold ${getSediaanBadgeClass(item.sediaan)} inline-block">
+                ${highlightText(item.sediaan, query)}
+              </span>
+            </td>
+            <td class="py-3 px-4">
+              ${rakTableHTML}
+            </td>
+            <td class="py-3 px-4 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-1">
+                <button onclick="openModal('edit', '${item.id}')" title="Edit" class="w-7 h-7 rounded-lg bg-leaf-100 text-leaf-800 hover:bg-leaf-200 flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button onclick="promptDelete('${item.id}', '${item.nama.replace(/'/g, "\\'")}')" title="Hapus" class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `}).join('');
+      }
     }
 
     function getSediaanBadgeClass(sediaan = '') {
@@ -1090,9 +1137,11 @@
         document.getElementById('inputKandungan').value = item.kandungan;
         document.getElementById('inputIndikasi').value = item.indikasi;
         document.getElementById('inputSediaan').value = item.sediaan;
+        document.getElementById('inputRak').value = item.rak || '';
       } else {
         modalTitle.textContent = 'Tambah Produk Obat Baru';
         saveBtnText.textContent = 'Simpan ke Katalog';
+        document.getElementById('inputRak').value = 'RAK 5B';
       }
 
       modal.classList.remove('hidden');
@@ -1110,16 +1159,17 @@
       const kandungan = document.getElementById('inputKandungan').value.trim();
       const indikasi = document.getElementById('inputIndikasi').value.trim();
       const sediaan = document.getElementById('inputSediaan').value.trim();
+      const rak = document.getElementById('inputRak').value.trim();
 
       if (!nama || !kandungan || !indikasi || !sediaan) {
-        showToast('Mohon isi semua kolom produk!', 'warning');
+        showToast('Mohon isi semua kolom wajib produk!', 'warning');
         return;
       }
 
       if (editId) {
         const index = products.findIndex(p => p.id === editId);
         if (index !== -1) {
-          const updated = { ...products[index], nama, kandungan, indikasi, sediaan };
+          const updated = { ...products[index], nama, kandungan, indikasi, sediaan, rak };
           products[index] = updated;
           saveToLocalStorageOnly();
           if (window.cloudEngine) {
@@ -1128,7 +1178,6 @@
           showToast(`Produk "${nama}" berhasil diperbarui!`, 'success');
         }
       } else {
-        // UUID & Timestamp unik menjamin tidak akan bentrok meski 10 orang menginput di detik yang sama
         const uniqueId = 'p_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
         const newProduct = {
           id: uniqueId,
@@ -1136,6 +1185,7 @@
           kandungan,
           indikasi,
           sediaan,
+          rak,
           createdAt: Date.now()
         };
         products.unshift(newProduct);
@@ -1189,9 +1239,12 @@
     }
 
     function clearSearch() {
-      document.getElementById('searchInput').value = '';
-      document.getElementById('clearSearchBtn').classList.add('hidden');
-      document.getElementById('sediaanSelectFilter').value = '';
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) searchInput.value = '';
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      const sediaanSelect = document.getElementById('sediaanSelectFilter');
+      if (sediaanSelect) sediaanSelect.value = '';
       setSearchFilter('all');
       renderProducts();
     }
@@ -1212,11 +1265,6 @@
     }
 
     function handleSediaanSelect(val) {
-      renderProducts();
-    }
-
-    function quickFilterSediaan(val) {
-      document.getElementById('sediaanSelectFilter').value = val;
       renderProducts();
     }
 
@@ -1273,14 +1321,15 @@
 
     function exportDataCSV() {
       toggleDataMenu();
-      let csvContent = "data:text/csv;charset=utf-8,ID,Nama Produk,Kandungan Isi,Indikasi,Jenis Sediaan\n";
+      let csvContent = "data:text/csv;charset=utf-8,ID,Nama Produk,Kandungan Isi,Indikasi,Jenis Sediaan,Lokasi Rak\n";
       products.forEach(p => {
         const row = [
           `"${p.id}"`,
           `"${(p.nama || '').replace(/"/g, '""')}"`,
           `"${(p.kandungan || '').replace(/"/g, '""')}"`,
           `"${(p.indikasi || '').replace(/"/g, '""')}"`,
-          `"${(p.sediaan || '').replace(/"/g, '""')}"`
+          `"${(p.sediaan || '').replace(/"/g, '""')}"`,
+          `"${(p.rak || '').replace(/"/g, '""')}"`
         ];
         csvContent += row.join(",") + "\n";
       });
@@ -1304,7 +1353,7 @@
         try {
           const imported = JSON.parse(e.target.result);
           if (Array.isArray(imported)) {
-            products = imported;
+            products = imported.map(p => ({ ...p, rak: p.rak !== undefined ? p.rak : "RAK 5B" }));
             saveToStorage();
             renderProducts();
             toggleDataMenu();
@@ -1323,7 +1372,7 @@
       const p = products.find(item => item.id === id);
       if (!p) return;
 
-      const text = `APOTEK VALENCIA (Solusi Sehat Kita)\nNama Produk: ${p.nama}\nKandungan Isi: ${p.kandungan}\nIndikasi: ${p.indikasi}\nJenis Sediaan: ${p.sediaan}`;
+      const text = `APOTEK VALENCIA (Solusi Sehat Kita)\nNama Produk: ${p.nama}\nKandungan Isi: ${p.kandungan}\nIndikasi: ${p.indikasi}\nJenis Sediaan: ${p.sediaan}\nLokasi Rak: ${p.rak || '-'}`;
 
       const el = document.createElement('textarea');
       el.value = text;
@@ -1358,7 +1407,7 @@
     window.addEventListener('click', function(e) {
       const menu = document.getElementById('dataMenu');
       const btn = e.target.closest('button[onclick="toggleDataMenu()"]');
-      if (!menu.contains(e.target) && !btn && !menu.classList.contains('hidden')) {
+      if (menu && !menu.contains(e.target) && !btn && !menu.classList.contains('hidden')) {
         menu.classList.add('hidden');
       }
     });
