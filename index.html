@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apotek Valencia - Solusi Sehat Kita</title>
+  <!-- Ikon Aplikasi untuk Layar Utama HP (Android & iPhone) serta Tab Browser -->
+  <link id="faviconLink" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ffffff'/%3E%3Cpath d='M 50 14 L 82 31 L 82 45 L 50 28 L 18 45 L 18 31 Z' fill='%239b6af0'/%3E%3Cpath d='M 18 48 L 50 64 L 50 76 L 18 60 Z' fill='%2358883e'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M 50 76 C 50 76 52 52 69 46 C 85 40 92 53 89 61 C 85 76 65 85 50 76 Z M 57 70 C 69 72 79 63 80 57 C 80 52 74 47 65 51 C 55 56 54 67 57 70 Z' fill='%236fa652'/%3E%3C/svg%3E">
+  <link id="appleTouchIcon" rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ffffff'/%3E%3Cpath d='M 50 14 L 82 31 L 82 45 L 50 28 L 18 45 L 18 31 Z' fill='%239b6af0'/%3E%3Cpath d='M 18 48 L 50 64 L 50 76 L 18 60 Z' fill='%2358883e'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M 50 76 C 50 76 52 52 69 46 C 85 40 92 53 89 61 C 85 76 65 85 50 76 Z M 57 70 C 69 72 79 63 80 57 C 80 52 74 47 65 51 C 55 56 54 67 57 70 Z' fill='%236fa652'/%3E%3C/svg%3E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Apotek Valencia">
+  <meta name="application-name" content="Apotek Valencia">
+  <meta name="theme-color" content="#4d8639">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons -->
@@ -1358,7 +1365,39 @@
 
     window.onload = function() {
       initDatabase();
+      generateAppIconPNG();
     };
+
+    // Konversi otomatis logo SVG ke PNG resolusi tinggi (512x512) agar Android & iOS menampilkan ikon aplikasi secara penuh
+    function generateAppIconPNG() {
+      try {
+        const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 100 100">
+          <rect width="100" height="100" rx="22" fill="#ffffff"/>
+          <path d="M 50 14 L 82 31 L 82 45 L 50 28 L 18 45 L 18 31 Z" fill="#9b6af0"/>
+          <path d="M 18 48 L 50 64 L 50 76 L 18 60 Z" fill="#58883e"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M 50 76 C 50 76 52 52 69 46 C 85 40 92 53 89 61 C 85 76 65 85 50 76 Z M 57 70 C 69 72 79 63 80 57 C 80 52 74 47 65 51 C 55 56 54 67 57 70 Z" fill="#6fa652"/>
+        </svg>`;
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.onload = function() {
+          ctx.drawImage(img, 0, 0, 512, 512);
+          const pngUrl = canvas.toDataURL('image/png');
+          const appleLink = document.getElementById('appleTouchIcon');
+          const favLink = document.getElementById('faviconLink');
+          if (appleLink) appleLink.href = pngUrl;
+          if (favLink) {
+            favLink.type = 'image/png';
+            favLink.href = pngUrl;
+          }
+        };
+        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgStr);
+      } catch (e) {
+        console.warn('App icon render skip:', e);
+      }
+    }
   </script>
 </body>
 </html>
