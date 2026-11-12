@@ -134,7 +134,7 @@
           <!-- Tambah Produk Button (Desktop) - Menggunakan Aksen Putih Bersih di atas Gradasi -->
           <button onclick="openModal('add')" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-emerald-50 active:scale-95 text-[#466c32] font-bold text-xs rounded-xl transition-all shadow-md shadow-emerald-950/20 border border-white">
             <i class="fa-solid fa-plus text-xs text-[#58883e]"></i>
-            <span>Tambah Obat</span>
+            <span>Tambah Produk</span>
           </button>
 
           <!-- Kelola Data & Cadangan Button -->
@@ -324,7 +324,7 @@
           Bersihkan Pencarian
         </button>
         <button onclick="openModal('add')" class="px-4 py-2 text-xs font-bold bg-leaf-600 hover:bg-leaf-700 text-white rounded-xl transition shadow-sm">
-          + Tambah Obat Baru
+          + Tambah Produk
         </button>
       </div>
     </div>
@@ -333,7 +333,7 @@
 
   <!-- ================= FLOATING ACTION BUTTON (MOBILE ONLY) ================= -->
   <div class="sm:hidden fixed bottom-6 right-6 z-40">
-    <button onclick="openModal('add')" aria-label="Tambah Produk Obat" class="w-14 h-14 bg-gradient-to-tr from-leaf-500 to-leaf-600 active:scale-95 text-white rounded-full shadow-xl flex items-center justify-center text-xl transition-all border-2 border-white">
+    <button onclick="openModal('add')" aria-label="Tambah Produk" class="w-14 h-14 bg-gradient-to-tr from-leaf-500 to-leaf-600 active:scale-95 text-white rounded-full shadow-xl flex items-center justify-center text-xl transition-all border-2 border-white">
       <i class="fa-solid fa-plus"></i>
     </button>
   </div>
@@ -366,7 +366,7 @@
             <i class="fa-solid fa-prescription-bottle-medical text-lg"></i>
           </div>
           <div>
-            <h3 id="modalTitle" class="text-base font-bold">Tambah Produk Obat Baru</h3>
+            <h3 id="modalTitle" class="text-base font-bold">Tambah Produk Baru</h3>
             <p class="text-[11px] text-emerald-100">Apotek Valencia &bull; Solusi Sehat Kita</p>
           </div>
         </div>
@@ -1149,7 +1149,7 @@
         document.getElementById('inputSediaan').value = item.sediaan;
         document.getElementById('inputRak').value = item.rak || '';
       } else {
-        modalTitle.textContent = 'Tambah Produk Obat Baru';
+        modalTitle.textContent = 'Tambah Produk Baru';
         saveBtnText.textContent = 'Simpan ke Katalog';
         document.getElementById('inputRak').value = 'RAK 5B';
       }
