@@ -310,6 +310,20 @@
       </div>
     </div>
 
+    <!-- LOAD MORE / TAMPILKAN BERTAHAP (OPTIMASI RIBUAN DATA) -->
+    <div id="loadMoreWrapper" class="hidden flex flex-col items-center justify-center gap-2 pt-2 pb-4">
+      <p id="loadMoreInfo" class="text-xs text-slate-500 font-medium"></p>
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <button type="button" onclick="loadMoreProducts(60)" class="px-5 py-2.5 rounded-xl bg-white hover:bg-leaf-50 text-leaf-800 border border-leaf-200 font-bold text-xs shadow-xs transition active:scale-95 flex items-center gap-2">
+          <i class="fa-solid fa-angles-down text-leaf-600"></i>
+          <span>Tampilkan 60 Produk Berikutnya</span>
+        </button>
+        <button type="button" onclick="loadAllProducts()" class="px-4 py-2.5 rounded-xl bg-leaf-100/70 hover:bg-leaf-100 text-leaf-800 font-semibold text-xs transition active:scale-95">
+          Tampilkan Semua
+        </button>
+      </div>
+    </div>
+
     <!-- EMPTY SEARCH STATE -->
     <div id="emptyState" class="hidden text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-leaf-200">
       <div class="w-16 h-16 bg-leaf-50 text-leaf-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
@@ -952,6 +966,8 @@
     let currentViewMode = 'grid';
     let productToDeleteId = null;
     let pendingDuplicateContext = null;
+    const PAGE_SIZE = 60;
+    let visibleLimit = PAGE_SIZE;
 
     // Listener ketika data diterima dari cloud (Realtime sinkron antar HP & Laptop)
     window.handleRemoteSync = function(remoteList) {
@@ -1080,6 +1096,8 @@
       const grid = document.getElementById('productGrid');
       const tableBody = document.getElementById('productTableBody');
       const filteredNotice = document.getElementById('filteredNotice');
+      const loadMoreWrapper = document.getElementById('loadMoreWrapper');
+      const loadMoreInfo = document.getElementById('loadMoreInfo');
 
       if (countBadge) {
         countBadge.textContent = `${filtered.length} Produk`;
@@ -1098,15 +1116,30 @@
       if (filtered.length === 0) {
         if (grid) grid.innerHTML = '';
         if (tableBody) tableBody.innerHTML = '';
+        if (loadMoreWrapper) loadMoreWrapper.classList.add('hidden');
         if (emptyState) emptyState.classList.remove('hidden');
         return;
       }
 
       if (emptyState) emptyState.classList.add('hidden');
 
+      // Potong tampilan sesuai batas halaman (visibleLimit) agar ribuan data tetap super ringan
+      const displayedItems = filtered.slice(0, visibleLimit);
+
+      if (loadMoreWrapper) {
+        if (filtered.length > displayedItems.length) {
+          loadMoreWrapper.classList.remove('hidden');
+          if (loadMoreInfo) {
+            loadMoreInfo.textContent = `Menampilkan ${displayedItems.length} dari ${filtered.length} produk`;
+          }
+        } else {
+          loadMoreWrapper.classList.add('hidden');
+        }
+      }
+
       // 1. Render Kartu
       if (grid) {
-        grid.innerHTML = filtered.map(item => {
+        grid.innerHTML = displayedItems.map(item => {
           const sediaanBadgeColor = getSediaanBadgeClass(item.sediaan);
           const rakList = (item.rak || '').split(',').map(r => r.trim()).filter(Boolean);
           const rakBadgesHTML = rakList.length > 0 
@@ -1183,7 +1216,7 @@
 
       // 2. Render Tabel Ringkas
       if (tableBody) {
-        tableBody.innerHTML = filtered.map(item => {
+        tableBody.innerHTML = displayedItems.map(item => {
           const rakList = (item.rak || '').split(',').map(r => r.trim()).filter(Boolean);
           const rakTableHTML = rakList.length > 0
             ? `<div class="flex flex-wrap gap-1">${rakList.map(r => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-lavender-100 text-lavender-800 border border-lavender-200 whitespace-nowrap">${highlightText(r, query)}</span>`).join('')}</div>`
@@ -1522,7 +1555,18 @@
     }
 
     // Search & Filter Handlers
+    function loadMoreProducts(step = PAGE_SIZE) {
+      visibleLimit += step;
+      renderProducts();
+    }
+
+    function loadAllProducts() {
+      visibleLimit = products.length + 1000;
+      renderProducts();
+    }
+
     function handleSearchInput() {
+      visibleLimit = PAGE_SIZE;
       const val = document.getElementById('searchInput').value;
       const clearBtn = document.getElementById('clearSearchBtn');
       if (val) {
@@ -1530,6 +1574,39 @@
       } else {
         clearBtn.classList.add('hidden');
       }
+      renderProducts();
+    }
+
+    function clearSearch() {
+      visibleLimit = PAGE_SIZE;
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) searchInput.value = '';
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      const sediaanSelect = document.getElementById('sediaanSelectFilter');
+      if (sediaanSelect) sediaanSelect.value = '';
+      setSearchFilter('all');
+      renderProducts();
+    }
+
+    function setSearchFilter(field) {
+      visibleLimit = PAGE_SIZE;
+      currentFilterField = field;
+      document.querySelectorAll('.filter-tab').forEach(btn => {
+        btn.classList.remove('bg-leaf-600', 'text-white', 'shadow-xs');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+
+      const activeBtn = document.getElementById(`filter-${field}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+        activeBtn.classList.add('bg-leaf-600', 'text-white', 'shadow-xs');
+      }
+      renderProducts();
+    }
+
+    function handleSediaanSelect(val) {
+      visibleLimit = PAGE_SIZE;
       renderProducts();
     }
 
